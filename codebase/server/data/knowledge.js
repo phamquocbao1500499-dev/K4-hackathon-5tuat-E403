@@ -113,4 +113,13 @@ function getSectionGroundingText(day, sectionId) {
     return chunks.join("\n\n");
 }
 
-module.exports = { decks, sections, getSection, getSectionGroundingText };
+// Same as getSectionGroundingText but for the whole day's deck — used by the
+// "Hỏi AI" chat, which can be asked about anything in that day, not just one
+// section at a time.
+function getDocGroundingText(day) {
+    const list = sections[day];
+    if (!list) return null;
+    return list.map((s) => getSectionGroundingText(day, s.id)).join("\n\n");
+}
+
+module.exports = { decks, sections, getSection, getSectionGroundingText, getDocGroundingText };

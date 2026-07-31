@@ -5,9 +5,929 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VLearn — Nền tảng học tập thích ứng (Active Recall Demo)</title>
+    <script>
+        // Applied before CSS loads so there's no flash of the wrong theme/language.
+        (function () {
+            var theme = localStorage.getItem('vlearn-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+            var lang = localStorage.getItem('vlearn-lang') || 'vi';
+            document.documentElement.lang = lang;
+        })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --vlearn-bg: #f4f5f8;
+            --sidebar-bg: #f8fafc;
+            --border-color: #e2e8f0;
+            --primary-blue: #2563eb;
+            --primary-red: #ea580c;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --card-cream: #fffdf9;
+            --card-border: #f1e9db;
+            --accent-cyan: #0891b2;
+            --accent-purple: #7c3aed;
+            --accent-rose: #e11d48;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--vlearn-bg);
+            color: var(--text-dark);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Top Header */
+        header {
+            height: 56px;
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .btn-back {
+            border: 1px solid var(--border-color);
+            background: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .vlearn-logo {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 800;
+            font-size: 22px;
+        }
+
+        .logo-v { color: #dc2626; }
+        .logo-learn { color: #1d4ed8; }
+
+        .doc-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-left: 1px solid var(--border-color);
+            padding-left: 16px;
+        }
+
+        .doc-title-main {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .doc-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .pill-btn {
+            border: 1px solid var(--border-color);
+            background: #fff;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        /* Main Workspace */
+        .workspace {
+            display: flex;
+            flex-grow: 1;
+            height: calc(100vh - 56px);
+            position: relative;
+        }
+
+        /* Left Sidebar */
+        .sidebar {
+            width: 300px;
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            padding: 20px 16px;
+            gap: 16px;
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+
+        .sidebar-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .sidebar-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .day-group {
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        .day-header {
+            padding: 12px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: #fafafa;
+        }
+
+        .day-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .badge-studying {
+            background: #e0f2fe;
+            color: #0369a1;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 12px;
+        }
+
+        .file-list {
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .file-item {
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .file-item.active {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        /* Center Content Area */
+        .content-area {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            background: #eef2f6;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Floating PDF Toolbar */
+        .pdf-toolbar {
+            height: 48px;
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            z-index: 10;
+        }
+
+        .toolbar-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tb-btn {
+            border: 1px solid var(--border-color);
+            background: #fff;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tb-btn.active {
+            background: #eff6ff;
+            color: var(--primary-blue);
+            border-color: #bfdbfe;
+        }
+
+        /* Drawing Sub-Toolbar */
+        .draw-sub-toolbar {
+            display: none;
+            align-items: center;
+            gap: 6px;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 4px 10px;
+        }
+
+        .color-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: transform 0.1s;
+        }
+
+        .color-dot:hover { transform: scale(1.15); }
+        .color-dot.active { border-color: #0f172a; transform: scale(1.15); }
+
+        /* Slide Frame Overlay Canvas */
+        .slide-frame {
+            position: relative;
+        }
+
+        .draw-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+            border-radius: 12px;
+        }
+
+        /* Custom Text Highlight Container */
+        .custom-text-highlight {
+            cursor: pointer;
+            position: relative;
+            display: inline;
+            transition: all 0.2s ease;
+        }
+
+        .custom-text-highlight:hover {
+            box-shadow: 0 0 0 2px #3b82f6;
+            border-radius: 4px;
+        }
+
+        /* Hover Action Badge Container at Top-Right Corner */
+        .hl-actions-badge {
+            position: absolute;
+            top: -12px;
+            right: -6px;
+            display: none;
+            align-items: center;
+            gap: 3px;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            padding: 2px 5px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            z-index: 25;
+            pointer-events: auto;
+        }
+
+        .custom-text-highlight:hover > .hl-actions-badge {
+            display: inline-flex;
+        }
+
+        .hl-color-btn {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.15s;
+            display: inline-block;
+        }
+
+        .hl-color-btn:hover {
+            transform: scale(1.3);
+        }
+
+        .hl-delete-btn {
+            width: 12px;
+            height: 12px;
+            background: #ef4444;
+            color: #ffffff;
+            font-size: 9px;
+            font-weight: bold;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            cursor: pointer;
+            margin-left: 2px;
+            transition: transform 0.15s;
+        }
+
+        .hl-delete-btn:hover {
+            transform: scale(1.2);
+            background: #dc2626;
+        }
+
+        /* Document Scroll Viewer */
+        .doc-scroll-viewer {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 32px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 28px;
+            scroll-behavior: smooth;
+        }
+
+        /* Vertical Slide Frame */
+        .slide-frame {
+            width: 820px;
+            min-height: 480px;
+            background: var(--card-cream);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            padding: 36px 44px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .watermark {
+            position: absolute;
+            top: 16px;
+            right: 24px;
+            font-size: 11px;
+            font-family: 'JetBrains Mono', monospace;
+            color: #cbd5e1;
+        }
+
+        .slide-page-num {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .slide-heading {
+            font-size: 26px;
+            font-weight: 800;
+            color: #1e293b;
+            line-height: 1.3;
+        }
+
+        .slide-subheading {
+            font-size: 16px;
+            color: #2563eb;
+            font-weight: 600;
+            margin-top: 6px;
+        }
+
+        .slide-content-box {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #334155;
+        }
+
+        .doc-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .slide-bullets {
+            margin: 0;
+            padding-left: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .slide-takeaway {
+            background: #eff6ff;
+            border-left: 3px solid #2563eb;
+            color: #1d4ed8;
+            font-weight: 600;
+            font-size: 13px;
+            padding: 10px 14px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 16px;
+            line-height: 1.5;
+        }
+
+        .slide-source {
+            font-size: 11px;
+            color: #94a3b8;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        .attention-demo {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .token {
+            padding: 6px 12px;
+            border-radius: 6px;
+            background: #f1f5f9;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+        }
+
+        .token.highlight {
+            background: #dbeafe;
+            color: #1d4ed8;
+            font-weight: 700;
+            border: 1px solid #93c5fd;
+        }
+
+        .token.target {
+            background: #ffe4e6;
+            color: #e11d48;
+            font-weight: 700;
+            border: 1px solid #fda4af;
+        }
+
+        /* ------------------------------------------------------------- */
+        /* END OF DOCUMENT: ACTIVE RECALL QUIZ SECTION */
+        /* ------------------------------------------------------------- */
+        .active-recall-section {
+            width: 820px;
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.12);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+
+        .quiz-section-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            border-bottom: 2px solid #eff6ff;
+            padding-bottom: 20px;
+        }
+
+        .quiz-header-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+
+        .quiz-header-title h3 {
+            font-size: 20px;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .quiz-header-title p {
+            font-size: 13px;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        .quiz-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .quiz-card-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+
+        .quiz-textarea {
+            width: 100%;
+            height: 100px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 14px;
+            font-family: inherit;
+            font-size: 13px;
+            outline: none;
+            resize: vertical;
+            transition: border-color 0.2s;
+        }
+
+        .quiz-textarea:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        /* Multiple Choice Options Styling */
+        .mc-options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 6px;
+        }
+
+        .mc-option-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .mc-option-card:hover {
+            border-color: #94a3b8;
+            background: #f1f5f9;
+        }
+
+        .mc-option-card.selected {
+            border-color: #2563eb;
+            background: #eff6ff;
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+        }
+
+        .mc-option-card.explain-selected {
+            border-color: #8b5cf6;
+            background: #f5f3ff;
+        }
+
+        .mc-radio {
+            margin-top: 3px;
+            width: 16px;
+            height: 16px;
+            accent-color: #2563eb;
+            cursor: pointer;
+        }
+
+        .mc-option-text {
+            font-size: 13px;
+            color: #334155;
+            line-height: 1.5;
+        }
+
+        .btn-submit-quiz {
+            align-self: flex-start;
+            background: #2563eb;
+            color: #fff;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-submit-quiz:hover { background: #1d4ed8; }
+
+        /* Misconception Result Box */
+        .result-box {
+            display: none;
+            background: #fff5f5;
+            border-left: 4px solid #f43f5e;
+            border-radius: 0 10px 10px 0;
+            padding: 16px;
+            flex-direction: column;
+            gap: 10px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        .result-tag {
+            font-size: 12px;
+            font-weight: 700;
+            color: #e11d48;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .result-text {
+            font-size: 13px;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .citation-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #f1f5f9;
+            color: #475569;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .escalate-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8fafc;
+            padding: 10px 14px;
+            border-radius: 8px;
+            margin-top: 6px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .btn-escalate-ta {
+            background: #fff7ed;
+            color: #c2410c;
+            border: 1px solid #ffedd5;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-escalate-ta:hover { background: #ffedd5; }
+
+        .btn-explain-live {
+            background: #eef2ff;
+            color: #4338ca;
+            border: 1px solid #e0e7ff;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .btn-explain-live:hover { background: #e0e7ff; }
+        .btn-explain-live:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        .explain-result-box {
+            margin-top: 8px;
+            padding: 10px 12px;
+            background: #f5f3ff;
+            border: 1px solid #ddd6fe;
+            border-radius: 8px;
+            font-size: 12.5px;
+            color: #3730a3;
+        }
+        .explain-result-box .verdict-tag { font-weight: 700; font-size: 12px; margin-bottom: 4px; }
+        .explain-result-box .explain-hint { color: #64748b; margin-top: 6px; }
+
+        /* ------------------------------------------------------------- */
+        /* AI CHAT PANEL (right-side Q&A over the real slide content)     */
+        /* ------------------------------------------------------------- */
+        .ai-chat-panel {
+            position: fixed;
+            top: 56px;
+            right: 0;
+            bottom: 0;
+            width: 380px;
+            max-width: 92vw;
+            background: #ffffff;
+            border-left: 1px solid var(--border-color);
+            box-shadow: -8px 0 24px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            transform: translateX(100%);
+            transition: transform 0.25s ease;
+            z-index: 200;
+        }
+
+        .ai-chat-panel.open { transform: translateX(0); }
+
+        .ai-chat-header {
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-shrink: 0;
+        }
+
+        .ai-chat-header-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .ai-chat-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 3px;
+        }
+
+        .ai-chat-close-btn {
+            background: transparent;
+            border: none;
+            font-size: 16px;
+            color: var(--text-muted);
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .ai-chat-messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            background: #f8fafc;
+        }
+
+        .chat-bubble {
+            max-width: 90%;
+            padding: 10px 14px;
+            border-radius: 14px;
+            font-size: 13px;
+            line-height: 1.55;
+        }
+
+        .chat-bubble.user {
+            align-self: flex-end;
+            background: #2563eb;
+            color: #ffffff;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-bubble.ai {
+            align-self: flex-start;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            color: #1e293b;
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        .chat-bubble.ai .citation-badge { cursor: pointer; }
+        .chat-bubble.ai .citation-badge:hover { background: #e2e8f0; }
+
+        .chat-typing {
+            align-self: flex-start;
+            display: flex;
+            gap: 4px;
+            padding: 12px 14px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-typing span {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #94a3b8;
+            animation: chatTypingBlink 1.2s infinite ease-in-out;
+        }
+
+        .chat-typing span:nth-child(2) { animation-delay: 0.2s; }
+        .chat-typing span:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes chatTypingBlink {
+            0%, 80%, 100% { opacity: 0.3; transform: translateY(0); }
+            40% { opacity: 1; transform: translateY(-3px); }
+        }
+
+        .ai-chat-suggest {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 0 16px 12px;
+            flex-shrink: 0;
+        }
+
+        .chat-suggest-chip {
+            font-size: 11px;
+            background: #eff6ff;
+            color: #2563eb;
+            border: 1px solid #bfdbfe;
+            padding: 5px 10px;
+            border-radius: 14px;
+            cursor: pointer;
+        }
+
+        .chat-suggest-chip:hover { background: #dbeafe; }
+
+        .ai-chat-input-row {
+            padding: 12px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 8px;
+            align-items: flex-end;
+            flex-shrink: 0;
+        }
+
+        .ai-chat-textarea {
+            flex-grow: 1;
+            resize: none;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 10px 12px;
+            font-family: inherit;
+            font-size: 13px;
+            max-height: 100px;
+            outline: none;
+        }
+
+        .ai-chat-textarea:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .ai-chat-send-btn {
+            background: #2563eb;
+            color: #fff;
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            flex-shrink: 0;
+        }
+
+        .ai-chat-send-btn:hover { background: #1d4ed8; }
+        .ai-chat-send-btn:disabled { background: #93c5fd; cursor: not-allowed; }
+    </style>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="public/pdf.min.js"></script>
     <script>
@@ -36,9 +956,9 @@
             </div>
         </div>
         <div class="header-right">
-            <button class="pill-btn" id="btnAiChatToggle" onclick="toggleAiChat()">💬 Hỏi AI</button>
-            <button class="pill-btn">VI</button>
-            <button class="pill-btn">🌙</button>
+            <button class="pill-btn" id="btnAiChatToggle" onclick="toggleAiChat()" data-i18n="btnAskAi">💬 Hỏi AI</button>
+            <button class="pill-btn" id="btnLangToggle" onclick="toggleLanguage()" title="Switch language / Đổi ngôn ngữ">EN</button>
+            <button class="pill-btn" id="btnThemeToggle" onclick="cycleTheme()" title="Đổi giao diện / Switch theme">🌙</button>
         </div>
     </header>
 
@@ -48,8 +968,8 @@
         <!-- Left Accordion Sidebar -->
         <div class="sidebar">
             <div>
-                <div class="sidebar-title">Học liệu môn học</div>
-                <div class="sidebar-sub">Chương, slide và tài liệu đã upload</div>
+                <div class="sidebar-title" data-i18n="sidebarTitle">Học liệu môn học</div>
+                <div class="sidebar-sub" data-i18n="sidebarSub">Chương, slide và tài liệu đã upload</div>
             </div>
 
             <!-- Day 01 -->
@@ -57,12 +977,12 @@
                 <div class="day-header">
                     <div>
                         <div class="day-title">Day01</div>
-                        <div style="font-size: 11px; color: var(--text-muted);">1 TÀI LIỆU · PUBLISHED</div>
+                        <div style="font-size: 11px; color: var(--text-muted);" data-i18n="docCountOne">1 TÀI LIỆU · PUBLISHED</div>
                     </div>
-                    <span class="badge-studying" id="badgeD1">STUDYING</span>
+                    <span class="badge-studying" id="badgeD1" data-i18n="studying">STUDYING</span>
                 </div>
                 <div class="file-list">
-                    <div class="file-item active" id="fileItemD1" onclick="switchDoc('d1')">
+                    <div class="file-item active" id="fileItemD1" onclick="switchDoc('d1')" data-i18n="fileItemD1">
                         📄 d1-slide-hackathon.pdf (29 trang)
                     </div>
                 </div>
@@ -73,12 +993,12 @@
                 <div class="day-header">
                     <div>
                         <div class="day-title">Day02</div>
-                        <div style="font-size: 11px; color: var(--text-muted);">1 TÀI LIỆU · PUBLISHED</div>
+                        <div style="font-size: 11px; color: var(--text-muted);" data-i18n="docCountOne">1 TÀI LIỆU · PUBLISHED</div>
                     </div>
-                    <span class="badge-studying" id="badgeD2" style="display:none;">STUDYING</span>
+                    <span class="badge-studying" id="badgeD2" style="display:none;" data-i18n="studying">STUDYING</span>
                 </div>
                 <div class="file-list">
-                    <div class="file-item" id="fileItemD2" onclick="switchDoc('d2')">
+                    <div class="file-item" id="fileItemD2" onclick="switchDoc('d2')" data-i18n="fileItemD2">
                         📄 d2-slide-hackathon.pdf (24 trang)
                     </div>
                 </div>
@@ -89,7 +1009,7 @@
                 <div class="day-header">
                     <div>
                         <div class="day-title">Day03</div>
-                        <div style="font-size: 11px; color: var(--text-muted);">2 TÀI LIỆU · PUBLISHED</div>
+                        <div style="font-size: 11px; color: var(--text-muted);" data-i18n="docCountTwo">2 TÀI LIỆU · PUBLISHED</div>
                     </div>
                     <span style="font-size: 12px; color: var(--text-muted);">❯</span>
                 </div>
@@ -100,7 +1020,7 @@
                 <div class="day-header">
                     <div>
                         <div class="day-title">Day04</div>
-                        <div style="font-size: 11px; color: var(--text-muted);">3 TÀI LIỆU · PUBLISHED</div>
+                        <div style="font-size: 11px; color: var(--text-muted);" data-i18n="docCountThree">3 TÀI LIỆU · PUBLISHED</div>
                     </div>
                     <span style="font-size: 12px; color: var(--text-muted);">❯</span>
                 </div>
@@ -113,24 +1033,24 @@
             <!-- PDF Floating Toolbar -->
             <div class="pdf-toolbar">
                 <div class="toolbar-group">
-                    <button class="tb-btn active" id="btnModeRead" onclick="setToolMode('read')">👁️ Đọc</button>
-                    <button class="tb-btn" id="btnModePen" onclick="setToolMode('pen')">✏️ Bút</button>
+                    <button class="tb-btn active" id="btnModeRead" onclick="setToolMode('read')" data-i18n="toolRead">👁️ Đọc</button>
+                    <button class="tb-btn" id="btnModePen" onclick="setToolMode('pen')" data-i18n="toolPen">✏️ Bút</button>
                     <button class="tb-btn" id="btnModeHighlight" onclick="setToolMode('highlight')">🖍️
                         Highlight</button>
 
                     <!-- Drawing Tool Options (Color & Clear) -->
                     <div class="draw-sub-toolbar" id="drawSubToolbar">
-                        <span style="font-size: 11px; font-weight: 600; color: #475569;">Màu:</span>
+                        <span style="font-size: 11px; font-weight: 600; color: #475569;" data-i18n="colorLabel">Màu:</span>
                         <div class="color-dot active" style="background: #f43f5e;"
-                            onclick="setDrawColor('#f43f5e', this)" title="Đỏ"></div>
+                            onclick="setDrawColor('#f43f5e', this)" title="Đỏ" data-i18n-title="colorRed"></div>
                         <div class="color-dot" style="background: #2563eb;" onclick="setDrawColor('#2563eb', this)"
-                            title="Xanh"></div>
+                            title="Xanh" data-i18n-title="colorBlue"></div>
                         <div class="color-dot" style="background: #f59e0b;" onclick="setDrawColor('#f59e0b', this)"
-                            title="Vàng"></div>
+                            title="Vàng" data-i18n-title="colorYellow"></div>
                         <div class="color-dot" style="background: #10b981;" onclick="setDrawColor('#10b981', this)"
-                            title="Lục"></div>
+                            title="Lục" data-i18n-title="colorGreen"></div>
                         <button class="tb-btn" style="padding: 2px 8px; font-size: 11px;"
-                            onclick="clearAllDrawings()">🗑️ Xóa nét vẽ</button>
+                            onclick="clearAllDrawings()" data-i18n="clearDrawings">🗑️ Xóa nét vẽ</button>
                     </div>
                 </div>
                 <div class="toolbar-group">
@@ -140,7 +1060,7 @@
                     <button class="tb-btn">+</button>
                 </div>
                 <div class="toolbar-group">
-                    <button class="tb-btn" onclick="scrollToQuiz()">🎯 Đến bài kiểm tra hiểu bài</button>
+                    <button class="tb-btn" onclick="scrollToQuiz()" data-i18n="goToQuiz">🎯 Đến bài kiểm tra hiểu bài</button>
                 </div>
             </div>
 
@@ -162,29 +1082,28 @@
     <!-- Modal Dialog for TA Escalation (PAIR Feedback & Control) -->
     <div id="taModal"
         style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); z-index: 1000; align-items: center; justify-content: center;">
-        <div
-            style="background: #ffffff; border-radius: 14px; width: 460px; padding: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); display: flex; flex-direction: column; gap: 16px;">
-            <div
-                style="font-size: 16px; font-weight: 700; color: #0f172a; display: flex; align-items: center; gap: 8px;">
+        <div class="modal-box"
+            style="border-radius: 14px; width: 460px; padding: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); display: flex; flex-direction: column; gap: 16px;">
+            <div class="modal-title"
+                style="font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 8px;" data-i18n="taModalTitle">
                 📩 Xác nhận chuyển cho TA trực ban
             </div>
-            <div style="font-size: 13px; color: #475569; line-height: 1.6;" id="taModalText">
-                Bạn sắp gửi câu hỏi và vị trí slide <code id="taCitationTag"
-                    style="background:#f1f5f9; padding:2px 6px; border-radius:4px; font-weight:600;">[T01-022]</code>
+            <div class="modal-body" style="font-size: 13px; line-height: 1.6;" id="taModalText">
+                Bạn sắp gửi câu hỏi và vị trí slide <code class="modal-code" id="taCitationTag">[T01-022]</code>
                 cho TA trực ban hỗ trợ.
             </div>
-            <div
-                style="font-size: 12px; background: #fff7ed; border: 1px solid #ffedd5; color: #c2410c; padding: 10px; border-radius: 8px;">
-                ⚠️ <em>Theo khảo sát VLearn (N=24): 37.5% học viên yêu cầu bước xác nhận này trước khi gửi để tránh bị
-                    làm phiền.</em>
+            <div class="modal-note"
+                style="font-size: 12px; padding: 10px; border-radius: 8px;" data-i18n="taModalNote">
+                ⚠️ Theo khảo sát VLearn (N=24): 37.5% học viên yêu cầu bước xác nhận này trước khi gửi để tránh bị
+                làm phiền.
             </div>
             <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 8px;">
-                <button
-                    style="background: #f1f5f9; color: #475569; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 600; cursor: pointer;"
-                    onclick="closeTaModal()">Hủy</button>
-                <button
-                    style="background: #2563eb; color: #ffffff; border: none; padding: 8px 18px; border-radius: 6px; font-weight: 600; cursor: pointer;"
-                    onclick="confirmTaEscalate()">Đồng ý gửi TA</button>
+                <button class="btn-modal-secondary"
+                    style="border: none; padding: 8px 16px; border-radius: 6px; font-weight: 600; cursor: pointer;"
+                    onclick="closeTaModal()" data-i18n="btnCancel">Hủy</button>
+                <button class="btn-modal-primary"
+                    style="border: none; padding: 8px 18px; border-radius: 6px; font-weight: 600; cursor: pointer;"
+                    onclick="confirmTaEscalate()" data-i18n="btnSendTa">Đồng ý gửi TA</button>
             </div>
         </div>
     </div>
@@ -217,32 +1136,337 @@
     <div class="ai-chat-panel" id="aiChatPanel">
         <div class="ai-chat-header">
             <div>
-                <div class="ai-chat-header-title">🤖 Trợ lý AI VLearn</div>
-                <div class="ai-chat-sub">Hỏi đáp dựa trên nội dung Day 01 & Day 02 · luôn kèm trích dẫn slide</div>
+                <div class="ai-chat-header-title" data-i18n="chatTitle">🤖 Trợ lý AI VLearn</div>
+                <div class="ai-chat-sub" data-i18n="chatSub">Ưu tiên trả lời từ slide · chỉ tra thêm trên web khi slide không đủ thông tin</div>
             </div>
             <button class="ai-chat-close-btn" onclick="toggleAiChat()">✕</button>
         </div>
         <div class="ai-chat-messages" id="aiChatMessages">
-            <div class="chat-bubble ai">
-                Chào bạn 👋 Mình là trợ lý AI của VLearn. Hỏi mình bất cứ điều gì trong nội dung Day 01 (AI & LLM
-                Foundation) hoặc Day 02 (Xác định bài toán cho AI) — câu trả lời sẽ luôn kèm mã trích dẫn trang slide,
-                bấm vào để nhảy thẳng tới đúng slide.
+            <div class="chat-bubble ai" id="chatGreeting" data-i18n="chatGreeting">
+                Chào bạn 👋 Mình là trợ lý AI của VLearn. Hỏi mình bất cứ điều gì trong nội dung Day 01 (AI & LLM Foundation) hoặc Day 02 (Xác định bài toán cho AI) — mình luôn ưu tiên trả lời đúng theo slide (kèm mã trích dẫn, bấm để nhảy tới đúng trang), chỉ tra cứu thêm trên web khi slide không có đủ thông tin, và sẽ nói rõ khi nào câu trả lời đến từ web.
             </div>
         </div>
         <div class="ai-chat-suggest" id="aiChatSuggest">
-            <span class="chat-suggest-chip" onclick="askSuggested(this)">Attention là gì?</span>
-            <span class="chat-suggest-chip" onclick="askSuggested(this)">Khi nào nên Automate thay vì Augment?</span>
-            <span class="chat-suggest-chip" onclick="askSuggested(this)">MoE khác gì dense model?</span>
+            <span class="chat-suggest-chip" onclick="askSuggested(this)" data-i18n="chatSuggest1">Attention là gì?</span>
+            <span class="chat-suggest-chip" onclick="askSuggested(this)" data-i18n="chatSuggest2">Khi nào nên Automate thay vì Augment?</span>
+            <span class="chat-suggest-chip" onclick="askSuggested(this)" data-i18n="chatSuggest3">MoE khác gì dense model?</span>
         </div>
         <div class="ai-chat-input-row">
-            <textarea class="ai-chat-textarea" id="aiChatInput" rows="1"
-                placeholder="Nhập câu hỏi về nội dung bài học..." onkeydown="handleChatKeydown(event)"
-                oninput="autoGrowChatInput(this)"></textarea>
+            <textarea class="ai-chat-textarea" id="aiChatInput" rows="1" placeholder="Nhập câu hỏi về nội dung bài học..." data-i18n-placeholder="chatInputPlaceholder" onkeydown="handleChatKeydown(event)" oninput="autoGrowChatInput(this)"></textarea>
             <button class="ai-chat-send-btn" id="aiChatSendBtn" onclick="sendChatMessage()">➤</button>
         </div>
     </div>
 
     <script>
+        /* ============================================================= */
+        /* THEME (light/dark/rainbow) + LANGUAGE (vi/en) — UI chrome only. */
+        /* AI-generated quiz content, chat replies and the original slide */
+        /* deck stay exactly as the backend/PDF returns them (Vietnamese). */
+        /* ============================================================= */
+        const THEME_ORDER = ['light', 'dark', 'rainbow'];
+        const THEME_NEXT_ICON = { light: '🌙', dark: '🌈', rainbow: '☀️' };
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('vlearn-theme', theme);
+            const btn = document.getElementById('btnThemeToggle');
+            if (btn) btn.textContent = THEME_NEXT_ICON[theme];
+        }
+
+        function cycleTheme() {
+            const current = document.documentElement.getAttribute('data-theme') || 'light';
+            const next = THEME_ORDER[(THEME_ORDER.indexOf(current) + 1) % THEME_ORDER.length];
+            applyTheme(next);
+        }
+
+        let currentLang = localStorage.getItem('vlearn-lang') || 'vi';
+        let currentTaCitation = '[T01-022]';
+
+        const STATIC_I18N = {
+            vi: {
+                btnAskAi: '💬 Hỏi AI',
+                sidebarTitle: 'Học liệu môn học',
+                sidebarSub: 'Chương, slide và tài liệu đã upload',
+                docCountOne: '1 TÀI LIỆU · PUBLISHED',
+                docCountTwo: '2 TÀI LIỆU · PUBLISHED',
+                docCountThree: '3 TÀI LIỆU · PUBLISHED',
+                studying: 'STUDYING',
+                fileItemD1: '📄 d1-slide-hackathon.pdf (29 trang)',
+                fileItemD2: '📄 d2-slide-hackathon.pdf (24 trang)',
+                toolRead: '👁️ Đọc',
+                toolPen: '✏️ Bút',
+                colorLabel: 'Màu:',
+                colorRed: 'Đỏ',
+                colorBlue: 'Xanh',
+                colorYellow: 'Vàng',
+                colorGreen: 'Lục',
+                clearDrawings: '🗑️ Xóa nét vẽ',
+                goToQuiz: '🎯 Đến bài kiểm tra hiểu bài',
+                chatTitle: '🤖 Trợ lý AI VLearn',
+                chatSub: 'Ưu tiên trả lời từ slide · chỉ tra thêm trên web khi slide không đủ thông tin',
+                chatGreeting: 'Chào bạn 👋 Mình là trợ lý AI của VLearn. Hỏi mình bất cứ điều gì trong nội dung Day 01 (AI & LLM Foundation) hoặc Day 02 (Xác định bài toán cho AI) — mình luôn ưu tiên trả lời đúng theo slide (kèm mã trích dẫn, bấm để nhảy tới đúng trang), chỉ tra cứu thêm trên web khi slide không có đủ thông tin, và sẽ nói rõ khi nào câu trả lời đến từ web.',
+                chatSuggest1: 'Attention là gì?',
+                chatSuggest2: 'Khi nào nên Automate thay vì Augment?',
+                chatSuggest3: 'MoE khác gì dense model?',
+                chatInputPlaceholder: 'Nhập câu hỏi về nội dung bài học...',
+                taModalTitle: '📩 Xác nhận chuyển cho TA trực ban',
+                taModalNote: '⚠️ Theo khảo sát VLearn (N=24): 37.5% học viên yêu cầu bước xác nhận này trước khi gửi để tránh bị làm phiền.',
+                btnCancel: 'Hủy',
+                btnSendTa: 'Đồng ý gửi TA'
+            },
+            en: {
+                btnAskAi: '💬 Ask AI',
+                sidebarTitle: 'Course materials',
+                sidebarSub: 'Chapters, slides and uploaded documents',
+                docCountOne: '1 DOCUMENT · PUBLISHED',
+                docCountTwo: '2 DOCUMENTS · PUBLISHED',
+                docCountThree: '3 DOCUMENTS · PUBLISHED',
+                studying: 'STUDYING',
+                fileItemD1: '📄 d1-slide-hackathon.pdf (29 pages)',
+                fileItemD2: '📄 d2-slide-hackathon.pdf (24 pages)',
+                toolRead: '👁️ Read',
+                toolPen: '✏️ Pen',
+                colorLabel: 'Color:',
+                colorRed: 'Red',
+                colorBlue: 'Blue',
+                colorYellow: 'Yellow',
+                colorGreen: 'Green',
+                clearDrawings: '🗑️ Clear drawings',
+                goToQuiz: '🎯 Go to comprehension quiz',
+                chatTitle: '🤖 VLearn AI Assistant',
+                chatSub: "Answers from the slides first · only searches the web when the slides aren't enough",
+                chatGreeting: "Hi there 👋 I'm VLearn's AI assistant. Ask me anything about Day 01 (AI & LLM Foundation) or Day 02 (Defining the Problem for AI) — I always answer from the slides first (with citation codes you can click to jump to the right page), only search the web when the slides don't have enough info, and I'll always say when an answer comes from the web.",
+                chatSuggest1: 'What is Attention?',
+                chatSuggest2: 'When should you Automate instead of Augment?',
+                chatSuggest3: 'How does MoE differ from a dense model?',
+                chatInputPlaceholder: 'Type a question about the lesson content...',
+                taModalTitle: '📩 Confirm sending to the on-duty TA',
+                taModalNote: "⚠️ According to a VLearn survey (N=24): 37.5% of learners want this confirmation step before sending, so they aren't interrupted unnecessarily.",
+                btnCancel: 'Cancel',
+                btnSendTa: 'Send to TA'
+            }
+        };
+
+        function t(key) {
+            return (STATIC_I18N[currentLang] && STATIC_I18N[currentLang][key]) || STATIC_I18N.vi[key] || key;
+        }
+
+        const DYNAMIC_I18N = {
+            vi: {
+                pageLabel: (page, total) => `Trang ${page} / ${total}`,
+                quizGateTitle: (title) => `KIỂM TRA HIỂU BÀI — ${title}`,
+                quizGateDesc: () => 'Trắc nghiệm bám sát đúng nội dung phần slide phía trên — trả lời bất cứ lúc nào, không cần đúng mới đọc tiếp được.',
+                quizGenerating: () => '⏳ Đang tạo câu hỏi từ AI (Gemini)...',
+                quizLoadError: (msg) => `⚠️ Không tạo được câu hỏi (lỗi kết nối AI: ${msg}). Kiểm tra codebase/server đã chạy (node server.js) và GEMINI_API_KEY hợp lệ chưa.`,
+                retry: () => '🔄 Thử lại',
+                questionLabel: (n) => `Câu ${n}:`,
+                submitQuiz: () => 'Nộp đáp án & AI phân tích 🚀',
+                selectAnswerAlert: () => '⚠️ Vui lòng chọn một đáp án trước khi bấm Nộp!',
+                submittedCorrect: () => '🎉 Chính xác',
+                submittedWrong: () => '🔒 Đã nộp (chưa đúng)',
+                tagCorrect: () => '🟢 CHÍNH XÁC',
+                tagWrong: () => '🔴 CHƯA ĐÚNG — PHÁT HIỆN HIỂU LẦM',
+                correctAnswerLabel: (key) => `✅ Đáp án đúng (${key}):`,
+                aiRecapLabel: () => '📖 AI tutor tổng hợp lại kiến thức để bạn đọc:',
+                aiRecapFallback: () => 'AI chưa tổng hợp được nội dung cho câu này.',
+                reviewSlideLabel: () => 'Xem lại slide:',
+                pageBadge: (p) => `Trang ${p}`,
+                unclearFeedback: () => 'Chưa rõ nhận xét?',
+                escalateTa: () => '📩 Chuyển cho TA hỗ trợ',
+                sectionResult: (correct, total, pct) => `${pct >= 60 ? '✅' : '⚠️'} Kết quả phần này: ${correct}/${total} câu đúng (${pct}%)`,
+                retrySectionBtn: () => '🔁 Làm bộ câu hỏi khác cho phần này',
+                generatingNewSet: () => '⏳ Đang tạo bộ câu hỏi mới...',
+                retrySectionError: (msg) => `⚠️ Lỗi tạo lại câu hỏi: ${msg}.`,
+                notDone: () => '— chưa làm —',
+                finalScoreTitle: (doc) => `TỔNG KẾT ĐỘ HIỂU BÀI — ${doc === 'd1' ? 'Day 01' : 'Day 02'}`,
+                finalScoreComplete: (n, pct, correct, total) => `Đã hoàn thành cả ${n} phần — điểm hiểu bài: <strong>${pct}%</strong> (${correct}/${total} câu đúng).`,
+                finalScorePartial: (done, n, pct, correct, total) => `Đã làm ${done}/${n} phần. Điểm hiện tại: <strong>${pct}%</strong> (${correct}/${total} câu đúng) — làm tiếp các phần còn lại để có điểm đầy đủ.`,
+                slideAlt: (fileLabel, page) => `${fileLabel} — trang ${page}`,
+                citationLabel: (citation) => `Mã đoạn trích dẫn: [${citation}]`,
+                appendixTitle: () => '📎 Phụ lục — nội dung bổ sung (không có trong quiz)',
+                docSubD1: () => 'AI IN ACTION · Day 1 — AI & LLM Foundation',
+                docSubD2: () => 'AI IN ACTION · Day 2 — Xác định bài toán cho AI',
+                taModalBodyPrefix: () => 'Bạn sắp gửi câu hỏi và vị trí slide',
+                taModalBodySuffix: () => 'cho TA trực ban hỗ trợ.',
+                taSentAlert: (tag) => `✅ [PAIR Control] Đã gửi thành công câu hỏi và vị trí slide ${tag} tới TA trực ban! TA sẽ phản hồi bạn trong 15 phút.`,
+                webSourcesLabel: () => '🌐 Thông tin bổ sung từ web (ngoài slide chính thức):',
+                webUnavailable: () => '⚠️ Tra cứu web tạm thời không khả dụng cho gói API hiện tại — câu trả lời trên chỉ dựa vào slide.',
+                chatError: (msg) => `⚠️ Không hỏi được AI lúc này (${msg}). Bạn có muốn chuyển câu hỏi này cho TA trực ban hỗ trợ không?`,
+                notSure: () => 'Chưa chắc chắn?',
+                escalateTaShort: () => '📩 Chuyển cho TA',
+                noAiContent: () => '(AI không trả về nội dung)',
+                analyzing: () => '⏳ Đang phân tích...',
+                wantDeeper: () => 'Muốn hiểu sâu hơn?',
+                explainDeeper: () => '🧠 AI phân tích sâu hơn',
+                misconceptionLabel: () => 'Hiểu lầm:',
+                explainHintPrefix: () => 'Còn thắc mắc?',
+                explainHintLink: () => 'Hỏi tiếp AI trong khung chat →',
+                explainError: (msg) => `⚠️ Không phân tích được lúc này (${msg}).`,
+                verdictCorrect: () => 'AI xác nhận: hiểu đúng',
+                verdictMisconception: () => 'AI phát hiện hiểu lầm',
+                verdictAmbiguous: () => 'AI: câu trả lời còn mơ hồ',
+                verdictOutOfScope: () => 'AI: ngoài phạm vi câu hỏi',
+                verdictUngrounded: () => 'AI: chưa đủ căn cứ để chấm',
+                verdictFallback: () => 'Phân tích',
+                chatContextSeed: (q, a) => `Về câu hỏi "${q}" mình đã chọn đáp án "${a}". Bạn giải thích kỹ hơn giúp mình được không?`
+            },
+            en: {
+                pageLabel: (page, total) => `Page ${page} / ${total}`,
+                quizGateTitle: (title) => `COMPREHENSION CHECK — ${title}`,
+                quizGateDesc: () => "Multiple-choice questions closely follow the slides above — answer anytime, you don't need to get it right to keep reading.",
+                quizGenerating: () => '⏳ Generating questions with AI (Gemini)...',
+                quizLoadError: (msg) => `⚠️ Couldn't generate questions (AI connection error: ${msg}). Check that codebase/server is running (node server.js) and GEMINI_API_KEY is valid.`,
+                retry: () => '🔄 Retry',
+                questionLabel: (n) => `Question ${n}:`,
+                submitQuiz: () => 'Submit & AI analysis 🚀',
+                selectAnswerAlert: () => '⚠️ Please select an answer before submitting!',
+                submittedCorrect: () => '🎉 Correct',
+                submittedWrong: () => '🔒 Submitted (not correct)',
+                tagCorrect: () => '🟢 CORRECT',
+                tagWrong: () => '🔴 NOT CORRECT — MISCONCEPTION DETECTED',
+                correctAnswerLabel: (key) => `✅ Correct answer (${key}):`,
+                aiRecapLabel: () => '📖 AI tutor recap for you to read:',
+                aiRecapFallback: () => "The AI hasn't generated a recap for this question yet.",
+                reviewSlideLabel: () => 'Review the slide:',
+                pageBadge: (p) => `Page ${p}`,
+                unclearFeedback: () => 'Feedback unclear?',
+                escalateTa: () => '📩 Escalate to TA',
+                sectionResult: (correct, total, pct) => `${pct >= 60 ? '✅' : '⚠️'} Section result: ${correct}/${total} correct (${pct}%)`,
+                retrySectionBtn: () => '🔁 Try a different set of questions for this section',
+                generatingNewSet: () => '⏳ Generating a new set of questions...',
+                retrySectionError: (msg) => `⚠️ Failed to regenerate questions: ${msg}.`,
+                notDone: () => '— not done —',
+                finalScoreTitle: (doc) => `COMPREHENSION SUMMARY — ${doc === 'd1' ? 'Day 01' : 'Day 02'}`,
+                finalScoreComplete: (n, pct, correct, total) => `Completed all ${n} sections — comprehension score: <strong>${pct}%</strong> (${correct}/${total} correct).`,
+                finalScorePartial: (done, n, pct, correct, total) => `Completed ${done}/${n} sections. Current score: <strong>${pct}%</strong> (${correct}/${total} correct) — finish the remaining sections for a full score.`,
+                slideAlt: (fileLabel, page) => `${fileLabel} — page ${page}`,
+                citationLabel: (citation) => `Citation code: [${citation}]`,
+                appendixTitle: () => '📎 Appendix — supplementary content (not covered in the quiz)',
+                docSubD1: () => 'AI IN ACTION · Day 1 — AI & LLM Foundation',
+                docSubD2: () => 'AI IN ACTION · Day 2 — Defining the Problem for AI',
+                taModalBodyPrefix: () => "You're about to send this question and slide location",
+                taModalBodySuffix: () => 'to the on-duty TA.',
+                taSentAlert: (tag) => `✅ [PAIR Control] Successfully sent the question and slide location ${tag} to the on-duty TA! They'll respond within 15 minutes.`,
+                webSourcesLabel: () => '🌐 Additional info from the web (outside the official slides):',
+                webUnavailable: () => "⚠️ Web search is temporarily unavailable for the current API tier — the answer above is based on the slides only.",
+                chatError: (msg) => `⚠️ Couldn't reach the AI right now (${msg}). Would you like to escalate this question to the on-duty TA?`,
+                notSure: () => 'Not sure?',
+                escalateTaShort: () => '📩 Escalate to TA',
+                noAiContent: () => '(The AI returned no content)',
+                analyzing: () => '⏳ Analyzing...',
+                wantDeeper: () => 'Want a deeper explanation?',
+                explainDeeper: () => '🧠 AI deeper analysis',
+                misconceptionLabel: () => 'Misconception:',
+                explainHintPrefix: () => 'Still unsure?',
+                explainHintLink: () => 'Keep asking the AI in the chat panel →',
+                explainError: (msg) => `⚠️ Couldn't analyze right now (${msg}).`,
+                verdictCorrect: () => 'AI confirms: correct understanding',
+                verdictMisconception: () => 'AI detected a misconception',
+                verdictAmbiguous: () => "AI: answer is still ambiguous",
+                verdictOutOfScope: () => "AI: outside the question's scope",
+                verdictUngrounded: () => 'AI: not enough grounding to grade',
+                verdictFallback: () => 'Analysis',
+                chatContextSeed: (q, a) => `About the question "${q}" I chose the answer "${a}". Could you explain in more detail?`
+            }
+        };
+
+        function td(key, ...args) {
+            const dict = DYNAMIC_I18N[currentLang] || DYNAMIC_I18N.vi;
+            const fn = dict[key] || DYNAMIC_I18N.vi[key];
+            return fn ? fn(...args) : '';
+        }
+
+        function renderTaModalText() {
+            const el = document.getElementById('taModalText');
+            if (!el) return;
+            el.innerHTML = `${td('taModalBodyPrefix')} <code class="modal-code" id="taCitationTag">${escapeHtml(currentTaCitation)}</code> ${td('taModalBodySuffix')}`;
+        }
+
+        function openTaModal(citation) {
+            currentTaCitation = citation;
+            renderTaModalText();
+            document.getElementById('taModal').style.display = 'flex';
+        }
+
+        function applyLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('vlearn-lang', lang);
+            document.documentElement.lang = lang;
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                el.textContent = t(el.getAttribute('data-i18n'));
+            });
+            document.querySelectorAll('[data-i18n-title]').forEach(el => {
+                el.setAttribute('title', t(el.getAttribute('data-i18n-title')));
+            });
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                el.setAttribute('placeholder', t(el.getAttribute('data-i18n-placeholder')));
+            });
+
+            const langBtn = document.getElementById('btnLangToggle');
+            if (langBtn) langBtn.textContent = lang === 'vi' ? 'EN' : 'VI';
+
+            // Re-render chrome built dynamically in JS: quiz headers, page/citation
+            // captions and not-yet-submitted button labels. Already-submitted result
+            // boxes keep the AI-generated wording they were created with (that content
+            // is Gemini output, not part of the fixed-UI translation scope).
+            document.querySelectorAll('.slide-page-caption').forEach(el => {
+                el.textContent = td('pageLabel', el.dataset.page, el.dataset.total);
+            });
+            document.querySelectorAll('.slide-citation-caption').forEach(el => {
+                el.textContent = td('citationLabel', el.dataset.citation);
+            });
+            document.querySelectorAll('.appendix-divider-label').forEach(el => {
+                el.textContent = td('appendixTitle');
+            });
+
+            Object.keys(sections).forEach(doc => {
+                sections[doc].forEach(section => {
+                    const gate = document.getElementById(`quizGate-${doc}-${section.id}`);
+                    if (gate) {
+                        const h3 = gate.querySelector('.quiz-header-title h3');
+                        if (h3) h3.textContent = td('quizGateTitle', section.title);
+                        const p = gate.querySelector('.quiz-header-title p');
+                        if (p) p.textContent = td('quizGateDesc');
+                    }
+                    const bodyEl = document.getElementById(`quizBody-${doc}-${section.id}`);
+                    if (bodyEl && !progress[doc].quiz[section.id]) {
+                        const loadingEl = bodyEl.querySelector('div');
+                        if (loadingEl) loadingEl.textContent = td('quizGenerating');
+                    }
+                    const data = progress[doc].quiz[section.id];
+                    if (data) {
+                        data.questions.forEach((q, qIdx) => {
+                            const strong = document.querySelector(`#quizCard-${doc}-${section.id}-${qIdx} .quiz-card-title strong`);
+                            if (strong) strong.textContent = td('questionLabel', qIdx + 1);
+                            const ans = progress[doc].answers[section.id][qIdx];
+                            if (!ans || !ans.locked) {
+                                const btn = document.getElementById(`btnSubmit-${doc}-${section.id}-${qIdx}`);
+                                if (btn) btn.textContent = td('submitQuiz');
+                            }
+                        });
+                    }
+                });
+                updateFinalScore(doc);
+            });
+
+            const pageCounter = document.getElementById('pageCounter');
+            if (pageCounter) {
+                const m = /(\d+)\s*\/\s*(\d+)/.exec(pageCounter.textContent);
+                if (m) pageCounter.textContent = td('pageLabel', m[1], m[2]);
+            }
+
+            const isD1 = document.getElementById('docD1Container').style.display !== 'none';
+            const docSub = document.getElementById('docSub');
+            if (docSub) docSub.textContent = isD1 ? td('docSubD1') : td('docSubD2');
+
+            renderTaModalText();
+        }
+
+        function toggleLanguage() {
+            applyLanguage(currentLang === 'vi' ? 'en' : 'vi');
+        }
+
         /* ============================================================= */
         /* SECTION-GATED ACTIVE RECALL QUIZ — calls codebase/server (Gemini) */
         /* Each "phần kiến thức" must be passed (>=60% đúng) before the next */
@@ -263,22 +1487,19 @@
                 { id: "d2-s4", title: "Reward function & tiêu chí thành công", slideStart: 20, slideEnd: 23 }
             ]
         };
-        const PASS_THRESHOLD = 0.6; // ngưỡng % đúng để mở khoá phần tiếp theo
 
+        // No more section locking: every slide + its quiz is visible from the start.
+        // progress just tracks what's been answered, for the running score summary.
         const progress = {
-            d1: { unlocked: 5, results: {}, quiz: {}, answers: {} },
-            d2: { unlocked: 4, results: {}, quiz: {}, answers: {} }
+            d1: { results: {}, quiz: {}, answers: {} },
+            d2: { results: {}, quiz: {}, answers: {} }
         };
 
         function getSection(doc, sectionId) {
             return sections[doc].find(s => s.id === sectionId);
         }
 
-        function sectionPassed(doc, sectionId) {
-            const r = progress[doc].results[sectionId];
-            return !!r && (r.correct / r.total) >= PASS_THRESHOLD;
-        }
-
+        // Fallback only: used if the AI ever omits sourcePages for a question.
         function citationToPage(citation) {
             const m = /(\d+)\s*$/.exec(citation || '');
             return m ? parseInt(m[1], 10) : 1;
@@ -286,12 +1507,9 @@
 
         function scrollToQuiz() {
             const doc = document.getElementById('docD1Container').style.display !== 'none' ? 'd1' : 'd2';
-            const list = sections[doc];
-            const idx = Math.min(progress[doc].unlocked, list.length) - 1;
-            const target = document.getElementById(idx >= 0 && !sectionPassed(doc, list[idx].id)
-                ? 'quizGate-' + doc + '-' + list[idx].id
-                : 'finalScore-' + doc);
-            if (target) target.scrollIntoView({ behavior: 'smooth' });
+            const container = document.getElementById(doc === 'd1' ? 'docD1Container' : 'docD2Container');
+            const firstGate = container.querySelector('.active-recall-section');
+            if (firstGate) firstGate.scrollIntoView({ behavior: 'smooth' });
         }
 
         async function fetchQuiz(doc, sectionId, regenerate) {
@@ -313,12 +1531,12 @@
                 <div class="quiz-section-header">
                     <div class="quiz-header-icon">🎯</div>
                     <div class="quiz-header-title">
-                        <h3>KIỂM TRA HIỂU BÀI — ${escapeHtml(section.title)}</h3>
-                        <p>Trả lời đúng ≥60% để mở khoá phần tiếp theo. AI đọc đúng nội dung phần này và sẽ chỉ ra bạn đang hiểu lầm điều gì kèm trích dẫn slide.</p>
+                        <h3>${td('quizGateTitle', escapeHtml(section.title))}</h3>
+                        <p>${td('quizGateDesc')}</p>
                     </div>
                 </div>
                 <div id="quizBody-${doc}-${section.id}">
-                    <div style="font-size: 13px; color: #64748b;">⏳ Đang tạo câu hỏi từ AI (Gemini)...</div>
+                    <div style="font-size: 13px; color: #64748b;">${td('quizGenerating')}</div>
                 </div>
             </div>`;
         }
@@ -332,8 +1550,8 @@
                 renderQuizQuestions(doc, sectionId);
             } catch (err) {
                 bodyEl.innerHTML = `
-                    <div style="font-size: 13px; color: #dc2626;">⚠️ Không tạo được câu hỏi (lỗi kết nối AI: ${escapeHtml(String(err.message || err))}). Kiểm tra codebase/server đã chạy (node server.js) và GEMINI_API_KEY hợp lệ chưa.</div>
-                    <button class="btn-submit-quiz" style="margin-top:10px;" onclick="loadQuizInto('${doc}', '${sectionId}')">🔄 Thử lại</button>
+                    <div style="font-size: 13px; color: #dc2626;">${td('quizLoadError', escapeHtml(String(err.message || err)))}</div>
+                    <button class="btn-submit-quiz" style="margin-top:10px;" onclick="loadQuizInto('${doc}', '${sectionId}')">${td('retry')}</button>
                 `;
             }
         }
@@ -343,7 +1561,7 @@
             const bodyEl = document.getElementById('quizBody-' + doc + '-' + sectionId);
             const cardsHtml = data.questions.map((q, qIdx) => `
                 <div class="quiz-card" id="quizCard-${doc}-${sectionId}-${qIdx}">
-                    <div class="quiz-card-title">📌 <strong>Câu ${qIdx + 1}:</strong> ${escapeHtml(q.question)}</div>
+                    <div class="quiz-card-title">📌 <strong>${td('questionLabel', qIdx + 1)}</strong> ${escapeHtml(q.question)}</div>
                     <div class="mc-options-list" id="mcOptions-${doc}-${sectionId}-${qIdx}">
                         ${q.options.map(o => `
                             <label class="mc-option-card" onclick="selectQuizOption('${doc}','${sectionId}',${qIdx},'${o.key}',this)">
@@ -351,7 +1569,7 @@
                                 <span class="mc-option-text"><strong>${o.key}.</strong> ${escapeHtml(o.text)}</span>
                             </label>`).join('')}
                     </div>
-                    <button class="btn-submit-quiz" id="btnSubmit-${doc}-${sectionId}-${qIdx}" onclick="submitQuizAnswer('${doc}','${sectionId}',${qIdx})">Nộp đáp án & AI phân tích 🚀</button>
+                    <button class="btn-submit-quiz" id="btnSubmit-${doc}-${sectionId}-${qIdx}" onclick="submitQuizAnswer('${doc}','${sectionId}',${qIdx})">${td('submitQuiz')}</button>
                     <div id="res-${doc}-${sectionId}-${qIdx}" class="result-box"></div>
                 </div>
             `).join('');
@@ -371,7 +1589,7 @@
 
         function submitQuizAnswer(doc, sectionId, qIdx) {
             const ans = progress[doc].answers[sectionId][qIdx];
-            if (!ans || !ans.selected) { alert('⚠️ Vui lòng chọn một đáp án trước khi bấm Nộp!'); return; }
+            if (!ans || !ans.selected) { alert(td('selectAnswerAlert')); return; }
             if (ans.locked) return;
 
             const q = progress[doc].quiz[sectionId].questions[qIdx];
@@ -389,7 +1607,7 @@
             btn.disabled = true;
             btn.style.opacity = '0.5';
             btn.style.cursor = 'not-allowed';
-            btn.innerText = isCorrect ? '🎉 Đã hoàn thành (Đáp án chính xác)' : '🔒 Đã nộp (Đáp án chưa đúng)';
+            btn.innerText = isCorrect ? td('submittedCorrect') : td('submittedWrong');
 
             const resBox = document.getElementById(`res-${doc}-${sectionId}-${qIdx}`);
             resBox.className = 'result-box';
@@ -398,30 +1616,131 @@
             resBox.style.background = isCorrect ? '#ecfdf5' : '#fff5f5';
 
             const tagHtml = isCorrect
-                ? `<div class="result-tag" style="color: #059669; font-weight: 700;">🟢 CHÍNH XÁC</div>`
-                : `<div class="result-tag" style="color: #e11d48; font-weight: 700;">🔴 CHƯA ĐÚNG — PHÁT HIỆN HIỂU LẦM</div>`;
+                ? `<div class="result-tag" style="color: #059669; font-weight: 700;">${td('tagCorrect')}</div>`
+                : `<div class="result-tag" style="color: #e11d48; font-weight: 700;">${td('tagWrong')}</div>`;
             const correctBlockHtml = isCorrect ? '' : `
                 <div style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 8px; padding: 10px; margin-top: 8px;">
-                    <div style="font-weight: 700; color: #059669; font-size: 12px;">✅ Đáp án đúng (${correctOpt.key}):</div>
+                    <div style="font-weight: 700; color: #059669; font-size: 12px;">${td('correctAnswerLabel', correctOpt.key)}</div>
                     <div style="font-size: 13px; color: #065f46; margin-top: 4px;">${escapeHtml(correctOpt.text)}</div>
+                </div>`;
+
+            // Wrong answer: no more single "best-match citation" jump link — instead the AI
+            // tutor re-teaches using every page in this section it actually drew on for this
+            // question (q.reviewSummary / q.sourcePages, generated in the same AI call as the quiz).
+            const reviewHtml = isCorrect ? '' : `
+                <div id="review-${doc}-${sectionId}-${qIdx}" style="margin-top: 10px; padding: 12px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
+                    <div style="font-weight: 700; font-size: 12px; color: #334155; margin-bottom: 6px;">${td('aiRecapLabel')}</div>
+                    <div class="result-text">${escapeHtml(q.reviewSummary || td('aiRecapFallback'))}</div>
+                    <div style="margin-top: 8px; display:flex; gap:6px; flex-wrap:wrap; align-items:center; font-size: 12px; color: #64748b;">
+                        <span style="font-weight:600;">${td('reviewSlideLabel')}</span>
+                        ${(Array.isArray(q.sourcePages) && q.sourcePages.length ? q.sourcePages : [citationToPage(q.citation)])
+                            .map(p => `<span class="citation-badge" style="cursor:pointer;" onclick="jumpToCitation('${doc}', ${p})">${td('pageBadge', p)}</span>`).join(' ')}
+                    </div>
                 </div>`;
 
             resBox.innerHTML = `
                 ${tagHtml}
                 <div class="result-text">${escapeHtml(chosen.feedback)}</div>
                 ${correctBlockHtml}
-                <div style="margin-top: 10px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-                    <span class="citation-badge" onclick="jumpToCitation('${doc}', ${citationToPage(q.citation)})">📌 Trích dẫn: ${escapeHtml(q.citation)} — nhảy tới slide</span>
-                    <button style="background: #38bdf8; color: #0f172a; border: none; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; cursor: pointer;" onclick="showTrace('${doc}','${sectionId}',${qIdx},'${chosen.key}','${q.citation}',${isCorrect})">🔍 Xem AI Execution Trace Log</button>
+                ${reviewHtml}
+                <div class="escalate-bar" style="flex-wrap: wrap; gap: 8px;">
+                    <span style="font-size: 12px; color: #64748b;">${isCorrect ? td('wantDeeper') : td('unclearFeedback')}</span>
+                    <button class="btn-explain-live" id="btnExplainLive-${doc}-${sectionId}-${qIdx}" onclick="explainAnswerLive('${doc}','${sectionId}',${qIdx})">${td('explainDeeper')}</button>
+                    ${isCorrect ? '' : `<button class="btn-escalate-ta" onclick="escalateTA('${doc}','${sectionId}',${qIdx})">${td('escalateTa')}</button>`}
                 </div>
-                ${isCorrect ? '' : `<div class="escalate-bar">
-                    <span style="font-size: 12px; color: #64748b;">Chưa rõ nhận xét?</span>
-                    <button class="btn-escalate-ta" onclick="escalateTA('${q.citation}')">📩 Chuyển vùng slide ${escapeHtml(q.citation)} cho TA hỗ trợ</button>
-                </div>`}
+                <div id="explainBox-${doc}-${sectionId}-${qIdx}"></div>
             `;
             resBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
             maybeFinishSection(doc, sectionId);
+        }
+
+        const VERDICT_META = {
+            correct: { icon: '✅', color: '#059669', key: 'verdictCorrect' },
+            misconception: { icon: '🧩', color: '#e11d48', key: 'verdictMisconception' },
+            ambiguous: { icon: '🤔', color: '#b45309', key: 'verdictAmbiguous' },
+            out_of_scope: { icon: '🚧', color: '#64748b', key: 'verdictOutOfScope' },
+            ungrounded_question: { icon: '❓', color: '#64748b', key: 'verdictUngrounded' }
+        };
+
+        function getVerdictLabel(verdict) {
+            const meta = VERDICT_META[verdict];
+            if (meta) return { icon: meta.icon, color: meta.color, label: td(meta.key) };
+            return { icon: '🧠', color: '#3730a3', label: verdict || td('verdictFallback') };
+        }
+
+        // Live "AI phân tích sâu hơn" — calls /api/explain-answer (Gemini, real) for a
+        // fresh, per-answer analysis on top of the static feedback baked into the
+        // question bank, using the same verdict schema as eval/prompts.md Prompt B
+        // (see codebase/server/prompts.js buildExplainAnswerPrompt).
+        async function explainAnswerLive(doc, sectionId, qIdx) {
+            const btn = document.getElementById(`btnExplainLive-${doc}-${sectionId}-${qIdx}`);
+            const box = document.getElementById(`explainBox-${doc}-${sectionId}-${qIdx}`);
+            const q = progress[doc].quiz[sectionId].questions[qIdx];
+            const ans = progress[doc].answers[sectionId][qIdx];
+            if (!q || !ans) return;
+
+            btn.disabled = true;
+            const originalLabel = btn.innerText;
+            btn.innerText = td('analyzing');
+            box.innerHTML = '';
+
+            try {
+                const res = await fetch('/api/explain-answer', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        day: doc,
+                        sectionId,
+                        question: q.question,
+                        options: q.options.map(o => ({ key: o.key, text: o.text, correct: !!o.correct })),
+                        selectedKey: ans.selected
+                    })
+                });
+                if (!res.ok) {
+                    const body = await res.json().catch(() => ({}));
+                    throw new Error(body.error || ('HTTP ' + res.status));
+                }
+                const data = await res.json();
+                const v = getVerdictLabel(data.verdict);
+                const misconceptionHtml = data.misconceptionName
+                    ? `<div style="margin-top:2px;"><strong>${td('misconceptionLabel')}</strong> ${escapeHtml(data.misconceptionName)}</div>`
+                    : '';
+                const citationHtml = (data.citation && data.citation !== 'NONE_OUT_OF_SCOPE')
+                    ? `<div style="margin-top:6px;">${renderChatAnswer(data.citation)}</div>`
+                    : '';
+                box.innerHTML = `
+                    <div class="explain-result-box">
+                        <div class="verdict-tag" style="color:${v.color};">${v.icon} ${escapeHtml(v.label)}</div>
+                        <div>${escapeHtml(data.feedbackToStudent || '')}</div>
+                        ${misconceptionHtml}
+                        ${citationHtml}
+                        <div class="explain-hint">${td('explainHintPrefix')} <a href="#" onclick="openChatWithContext('${doc}','${sectionId}',${qIdx}); return false;">${td('explainHintLink')}</a></div>
+                    </div>`;
+            } catch (err) {
+                box.innerHTML = `<div class="explain-result-box" style="background:#fff5f5; border-color:#fecaca; color:#b91c1c;">${td('explainError', escapeHtml(String(err.message || err)))}</div>`;
+            } finally {
+                btn.disabled = false;
+                btn.innerText = originalLabel;
+            }
+        }
+
+        // Opens the "Hỏi AI" panel and sends a context-seeded message so the student
+        // can keep asking follow-ups about a specific quiz question — chatHistory (see
+        // sendChatMessage) keeps the whole thread, including this seed message, so the
+        // AI remembers what question is being discussed across the rest of the chat.
+        // Rebuilds the seed text from app state (not from the caller) so no quiz
+        // question/answer text ever has to be escaped into an inline onclick attribute.
+        function openChatWithContext(doc, sectionId, qIdx) {
+            const q = progress[doc].quiz[sectionId].questions[qIdx];
+            const ans = progress[doc].answers[sectionId][qIdx];
+            if (!q || !ans) return;
+            const chosenText = (q.options.find(o => o.key === ans.selected) || {}).text || ans.selected;
+
+            document.getElementById('aiChatPanel').classList.add('open');
+            const input = document.getElementById('aiChatInput');
+            input.value = td('chatContextSeed', q.question, chosenText);
+            sendChatMessage();
         }
 
         function maybeFinishSection(doc, sectionId) {
@@ -433,18 +1752,15 @@
 
             const correct = Object.values(answers).filter(a => a.correct).length;
             progress[doc].results[sectionId] = { correct, total };
+            updateFinalScore(doc);
 
-            const passed = (correct / total) >= PASS_THRESHOLD;
             const pct = Math.round((correct / total) * 100);
             const summaryEl = document.getElementById(`sectionSummary-${doc}-${sectionId}`);
             summaryEl.style.display = 'block';
             summaryEl.innerHTML = `
                 <div class="active-recall-section" style="padding:20px; margin-top:0;">
-                    <div style="font-weight:700; font-size:14px;">${passed ? '✅' : '⚠️'} Kết quả phần này: ${correct}/${total} câu đúng (${pct}%)</div>
-                    ${passed
-                    ? `<button class="btn-submit-quiz" style="margin-top:10px;" onclick="advanceSection('${doc}')">Mở khoá phần tiếp theo →</button>`
-                    : `<div style="font-size:13px; color:#64748b; margin-top:8px;">Bạn cần ≥60% đúng để mở khoá phần tiếp theo. Xem lại các nhận xét ở trên rồi làm lại bộ câu hỏi khác cho phần này.</div>
-                           <button class="btn-submit-quiz" style="margin-top:10px; background:#ea580c;" onclick="retrySection('${doc}','${sectionId}')">🔁 Làm lại phần này</button>`}
+                    <div style="font-weight:700; font-size:14px;">${td('sectionResult', correct, total, pct)}</div>
+                    <button class="btn-submit-quiz" style="margin-top:10px; background:#64748b;" onclick="retrySection('${doc}','${sectionId}')">${td('retrySectionBtn')}</button>
                 </div>
             `;
         }
@@ -452,45 +1768,46 @@
         async function retrySection(doc, sectionId) {
             delete progress[doc].results[sectionId];
             progress[doc].answers[sectionId] = {};
+            updateFinalScore(doc);
             const bodyEl = document.getElementById('quizBody-' + doc + '-' + sectionId);
-            bodyEl.innerHTML = `<div style="font-size: 13px; color: #64748b;">⏳ Đang tạo bộ câu hỏi mới...</div>`;
+            bodyEl.innerHTML = `<div style="font-size: 13px; color: #64748b;">${td('generatingNewSet')}</div>`;
             try {
                 const data = await fetchQuiz(doc, sectionId, true);
                 progress[doc].quiz[sectionId] = data;
                 renderQuizQuestions(doc, sectionId);
             } catch (err) {
-                bodyEl.innerHTML = `<div style="font-size:13px;color:#dc2626;">⚠️ Lỗi tạo lại câu hỏi: ${escapeHtml(String(err.message || err))}. <button class="btn-submit-quiz" onclick="retrySection('${doc}','${sectionId}')">Thử lại</button></div>`;
+                bodyEl.innerHTML = `<div style="font-size:13px;color:#dc2626;">${td('retrySectionError', escapeHtml(String(err.message || err)))} <button class="btn-submit-quiz" onclick="retrySection('${doc}','${sectionId}')">${td('retry')}</button></div>`;
             }
         }
 
-        function advanceSection(doc) {
-            progress[doc].unlocked = Math.min(progress[doc].unlocked + 1, sections[doc].length);
-            renderDocProgressive(doc);
-            setTimeout(scrollToQuiz, 80);
-        }
-
-        function finalScoreHtml(doc) {
+        function finalScoreBodyHtml(doc) {
             const list = sections[doc];
-            let correct = 0, total = 0;
+            let correct = 0, total = 0, answeredSections = 0;
             const rows = list.map(s => {
-                const r = progress[doc].results[s.id] || { correct: 0, total: 0 };
-                correct += r.correct; total += r.total;
+                const r = progress[doc].results[s.id];
+                if (r) { correct += r.correct; total += r.total; answeredSections++; }
                 return `<div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #f1f5f9; font-size:13px;">
-                    <span>${escapeHtml(s.title)}</span><span style="font-weight:700;">${r.correct}/${r.total}</span>
+                    <span>${escapeHtml(s.title)}</span><span style="font-weight:700;">${r ? r.correct + '/' + r.total : td('notDone')}</span>
                 </div>`;
             }).join('');
             const pct = total ? Math.round((correct / total) * 100) : 0;
+            const statusText = answeredSections === list.length
+                ? td('finalScoreComplete', list.length, pct, correct, total)
+                : td('finalScorePartial', answeredSections, list.length, pct, correct, total);
             return `
-            <div class="active-recall-section" id="finalScore-${doc}" style="border-color:#10b981;">
                 <div class="quiz-section-header">
                     <div class="quiz-header-icon" style="background: linear-gradient(135deg,#059669,#10b981);">🏁</div>
                     <div class="quiz-header-title">
-                        <h3>HOÀN THÀNH BÀI HỌC — ĐIỂM HIỂU BÀI: ${pct}%</h3>
-                        <p>${correct}/${total} câu đúng trên toàn bộ ${list.length} phần kiến thức của ${doc === 'd1' ? 'Day 01' : 'Day 02'}.</p>
+                        <h3>${td('finalScoreTitle', doc)}</h3>
+                        <p>${statusText}</p>
                     </div>
                 </div>
-                ${rows}
-            </div>`;
+                ${rows}`;
+        }
+
+        function updateFinalScore(doc) {
+            const el = document.getElementById('finalScore-' + doc);
+            if (el) el.innerHTML = finalScoreBodyHtml(doc);
         }
 
         const pdfCache = {};
@@ -593,37 +1910,20 @@
             return `
                 <div class="slide-frame" id="${docKey}-slide-${page}" style="position: relative; border-radius: 16px; background: #fffdf9; border: 1px solid #f1e9db; box-shadow: 0 8px 20px rgba(0,0,0,0.04); padding: 24px 32px; display: flex; flex-direction: column; justify-content: space-between; min-height: 440px; margin-bottom: 24px;">
                     <canvas class="draw-canvas"></canvas>
-                    <div class="watermark" style="position: absolute; top: 14px; right: 20px; font-size: 11px; color: #cbd5e1; font-family: monospace;">${fileLabel}</div>
-
-                    <div>
-                        <div class="slide-page-num" style="font-size: 12px; color: #94a3b8; font-weight: 600; margin-bottom: 10px;">Trang ${page} / ${total}</div>
-                        
-                        <!-- REAL PDF SLIDE RENDERED VIA PDF.JS CANVAS -->
-                        <div class="pdf-canvas-wrapper" style="position: relative; width: 100%; text-align: center; border-radius: 10px; overflow: hidden; background: #ffffff; border: 1px solid #e2e8f0; margin-bottom: 14px; min-height: 300px; display: flex; align-items: center; justify-content: center;">
-                            <canvas id="pdf-canvas-${docKey}-${page}" class="pdf-render-canvas" style="width: 100%; height: auto; display: block; margin: 0 auto;"></canvas>
-                            <div id="pdf-loading-${docKey}-${page}" style="position: absolute; font-size: 12px; color: #64748b;">⏳ Đang render slide PDF trang ${page}...</div>
-                        </div>
-
-
-                        <!-- SLIDE SUMMARY CONTENT CARD -->
-                        <div id="text-fallback-${docKey}-${page}" style="display: block;">
-                            <div class="slide-heading" style="font-size: 22px; font-weight: 800; color: #1e293b; line-height: 1.3;">${heading}</div>
-                            ${subheading}
-                            ${bodyItems}
-                            ${attentionDemo}
-                            ${takeaway}
-                        </div>
-                    </div>
-
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 12px; margin-top: 16px; border-top: 1px solid #f1f5f9; font-size: 11px; color: #94a3b8; font-family: monospace;">
-                        <span>Mã đoạn trích dẫn: <strong style="color: #475569;">[${citation}]</strong></span>
-                        <a href="public/slides/${fileLabel}" target="_blank" style="color: #2563eb; text-decoration: none;">📄 File PDF gốc ↗</a>
+                    <img src="${imgSrc}" alt="${td('slideAlt', fileLabel, page)}" style="width: 100%; display: block;" loading="lazy">
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #ffffff; border-top: 1px solid var(--card-border);">
+                        <span class="slide-page-caption" data-page="${page}" data-total="${total}" style="font-size: 12px; color: #94a3b8;">${td('pageLabel', page, total)}</span>
+                        <span class="slide-citation-caption" data-citation="${citation}" style="font-size: 12px; color: #94a3b8;">${td('citationLabel', citation)}</span>
                     </div>
                 </div>`;
         }
 
+        // Pages in the original PDF that sit past the last defined section — content
+        // never transcribed into d1Slides/d2Slides (e.g. d2 pages 25-29, a recap section
+        // found only after rasterizing the source PDF). Shown for completeness, no quiz —
+        // the AI has no grounding text for them so it can't quiz on them anyway.
         const extras = {
-            d2: { slideStart: 24, slideEnd: 28, title: 'Phụ lục — nội dung bổ sung (không có trong quiz)' }
+            d2: { slideStart: 24, slideEnd: 28 }
         };
         const totalPages = { d1: 29, d2: 29 };
 
@@ -634,7 +1934,7 @@
             let html = `
             <div style="width: 820px; display:flex; align-items:center; gap:10px; margin-top: 4px; color:#94a3b8; font-size:12px; font-weight:700; letter-spacing:0.02em;">
                 <div style="flex:1; border-top:1px dashed #cbd5e1;"></div>
-                <span>📎 ${escapeHtml(extra.title)}</span>
+                <span class="appendix-divider-label">${td('appendixTitle')}</span>
                 <div style="flex:1; border-top:1px dashed #cbd5e1;"></div>
             </div>`;
             for (let idx = extra.slideStart; idx <= extra.slideEnd; idx++) {
@@ -643,53 +1943,35 @@
             return html;
         }
 
+        // Renders the WHOLE document at once: every slide, with each section's quiz
+        // placed right after that section's slides. Nothing is locked — students can
+        // scroll through and answer quizzes in any order.
         function renderDocProgressive(doc) {
             const fileLabel = doc === 'd1' ? 'd1-slide-hackathon.pdf' : 'd2-slide-hackathon.pdf';
             const citationPrefix = doc === 'd1' ? 'T01' : 'T02';
             const container = document.getElementById(doc === 'd1' ? 'docD1Container' : 'docD2Container');
             const list = sections[doc];
-            const unlockedCount = Math.min(progress[doc].unlocked, list.length);
-            const slidesList = doc === 'd1' ? d1Slides : d2Slides;
 
             let html = '';
-            for (let i = 0; i < unlockedCount; i++) {
+            for (let i = 0; i < list.length; i++) {
                 const section = list[i];
                 for (let idx = section.slideStart; idx <= section.slideEnd; idx++) {
                     html += renderSlideHtml(slidesList[idx], idx, fileLabel, citationPrefix, doc, totalPages[doc]);
                 }
-                html += sectionPassed(doc, section.id)
-                    ? `<div class="active-recall-section" style="padding:18px 24px;">
-                           <div style="font-weight:700; font-size:13px; color:#059669;">✅ ${escapeHtml(section.title)} — đã qua quiz (${progress[doc].results[section.id].correct}/${progress[doc].results[section.id].total} đúng)</div>
-                       </div>`
-                    : quizGateHtml(doc, section);
+                html += quizGateHtml(doc, section);
             }
 
-            if (unlockedCount >= list.length) {
-                if (sectionPassed(doc, list[list.length - 1].id)) {
-                    html += finalScoreHtml(doc);
-                }
-                html += extraSlidesHtml(doc, fileLabel, citationPrefix);
-            }
+            html += `<div class="active-recall-section" id="finalScore-${doc}" style="border-color:#10b981;">${finalScoreBodyHtml(doc)}</div>`;
+            html += extraSlidesHtml(doc, fileLabel, citationPrefix);
 
             container.innerHTML = html;
 
-            // Trigger PDF rendering & quiz loading with slight stagger to prevent Gemini rate limit concurrency
-            let quizDelay = 0;
-            for (let i = 0; i < unlockedCount; i++) {
+            for (let i = 0; i < list.length; i++) {
                 const section = list[i];
-                for (let idx = section.slideStart; idx <= section.slideEnd; idx++) {
-                    const page = idx + 1;
-                    renderPdfPageCanvas(doc, page);
-                }
-                if (!sectionPassed(doc, section.id)) {
-                    if (!progress[doc].quiz[section.id]) {
-                        const secId = section.id;
-                        const delay = quizDelay;
-                        setTimeout(() => loadQuizInto(doc, secId), delay);
-                        quizDelay += 350;
-                    } else {
-                        renderQuizQuestions(doc, section.id);
-                    }
+                if (progress[doc].quiz[section.id]) {
+                    renderQuizQuestions(doc, section.id);
+                } else {
+                    loadQuizInto(doc, section.id);
                 }
             }
             if (unlockedCount >= list.length && extraSlidesHtml(doc, fileLabel, citationPrefix)) {
@@ -703,9 +1985,9 @@
             setTimeout(initDrawCanvases, 60);
         }
 
-        function escalateTA(citation) {
-            document.getElementById('taCitationTag').innerText = citation;
-            document.getElementById('taModal').style.display = 'flex';
+        function escalateTA(doc, sectionId, qIdx) {
+            const q = progress[doc].quiz[sectionId].questions[qIdx];
+            openTaModal(q.citation || td('questionLabel', qIdx + 1));
         }
 
         function closeTaModal() {
@@ -714,29 +1996,28 @@
 
         function confirmTaEscalate() {
             document.getElementById('taModal').style.display = 'none';
-            alert(`✅ [PAIR Control] Đã gửi thành công câu hỏi và vị trí slide ${document.getElementById('taCitationTag').innerText} tới TA trực ban! TA sẽ phản hồi bạn trong 15 phút.`);
+            alert(td('taSentAlert', currentTaCitation));
         }
 
-        function showTrace(doc, sectionId, qIdx, selectedKey, citation, isCorrect) {
-            document.getElementById('traceContent').innerHTML = `
-<strong>[REQUEST METADATA]</strong>
-- Timestamp: ${new Date().toISOString()}
-- Endpoint: POST /api/generate-quiz (codebase/server → Gemini, model gemini-flash-latest)
-- Section: ${doc}/${sectionId}, Question ${qIdx + 1}
-
-<strong>[USER INPUT EVALUATED]</strong>
-- Selected MC Option: "${selectedKey}"
-
-<strong>[GRADING RESULT — matched locally against the answer key returned by the same generation call, no second AI call]</strong>
-- Evaluation Status: ${isCorrect ? 'CORRECT' : 'INCORRECT'}
-- Grounding Citation: ${citation}
-- HAX Guidelines Applied: ["G2_Explicit_Confidence", "G10_Scope_Services", "G11_Explain_Why"]
-            `;
-            document.getElementById('traceModal').style.display = 'flex';
-        }
-
-        function closeTraceModal() {
-            document.getElementById('traceModal').style.display = 'none';
+        // Page counter: with every slide visible at once, track which slide is actually
+        // in view while scrolling instead of a static "Trang 1 / N" that never updates.
+        let pageObserver = null;
+        function initPageObserver() {
+            if (pageObserver) pageObserver.disconnect();
+            pageObserver = new IntersectionObserver((entries) => {
+                let best = null, bestRatio = 0;
+                entries.forEach(e => {
+                    if (e.isIntersecting && e.intersectionRatio > bestRatio) {
+                        bestRatio = e.intersectionRatio;
+                        best = e.target;
+                    }
+                });
+                if (!best) return;
+                const m = /^(d\d)-slide-(\d+)$/.exec(best.id);
+                if (!m) return;
+                document.getElementById('pageCounter').innerText = td('pageLabel', m[2], totalPages[m[1]]);
+            }, { root: document.getElementById('scrollViewer'), threshold: [0.5] });
+            document.querySelectorAll('.slide-frame').forEach(f => pageObserver.observe(f));
         }
 
         /* Interactive Drawing Engine for Pen & Text Selection Highlight Tools */
@@ -997,61 +2278,38 @@
             document.getElementById('badgeD2').style.display = isD1 ? 'none' : 'inline-block';
 
             document.getElementById('docTitleMain').innerText = isD1 ? 'd1-slide-hackathon.pdf' : 'd2-slide-hackathon.pdf';
-            document.getElementById('docSub').innerText = isD1 ? 'AI IN ACTION · Day 1 — AI & LLM Foundation' : 'AI IN ACTION · Day 2 — Xác định bài toán cho AI';
-            document.getElementById('pageCounter').innerText = isD1 ? 'Trang 1 / 29' : 'Trang 1 / 24';
+            document.getElementById('docSub').innerText = isD1 ? td('docSubD1') : td('docSubD2');
+            document.getElementById('pageCounter').innerText = td('pageLabel', 1, totalPages[doc]);
 
             document.getElementById('scrollViewer').scrollTop = 0;
             setTimeout(initDrawCanvases, 50);
         }
 
-        window.addEventListener('load', function () {
+        window.addEventListener('load', function() {
+            applyTheme(document.documentElement.getAttribute('data-theme') || 'light');
+            applyLanguage(currentLang);
             renderDocProgressive('d1');
             renderDocProgressive('d2');
             initDrawCanvases();
             initTextHighlight();
+            initPageObserver();
         });
         window.addEventListener('resize', initDrawCanvases);
         setTimeout(initDrawCanvases, 500);
 
         /* ================================================================= */
-        /* AI CHAT — simple keyword retrieval over d1Slides/d2Slides so every  */
-        /* answer stays grounded in a real, citable slide (demo, no live API) */
+        /* AI CHAT — calls codebase/server POST /api/chat-ask (Gemini, real).  */
+        /* Priority order enforced in server/prompts.js buildChatPrompt: slide */
+        /* content first, Google Search web grounding only as a fallback when */
+        /* the slide deck doesn't have the answer.                            */
         /* ================================================================= */
-        const CHAT_STOPWORDS = new Set(['la', 'gi', 'sao', 'tai', 'khi', 'nao', 'co', 'khong', 'va', 'cua', 'cho', 'trong',
-            'mot', 'cac', 'de', 'nen', 'a', 'oi', 'giup', 'minh', 'ban', 'hay', 'lam', 'the', 'nhu', 'neu', 'se', 'duoc', 'nay',
-            'do', 'voi', 've', 'tu', 'ra', 'vi', 'no', 'nhung', 'vay', 'sao', 'ai', 'hon']);
 
-        function stripDiacritics(str) {
-            return str.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D');
-        }
-
-        function tokenize(str) {
-            return stripDiacritics(str.toLowerCase())
-                .replace(/[?.,!;:"'()]/g, ' ')
-                .split(/\s+/)
-                .filter(w => w.length >= 2 && !CHAT_STOPWORDS.has(w));
-        }
-
-        function buildChatIndex() {
-            const d1 = d1Slides.map((s, i) => ({ ...s, doc: 'd1', page: i + 1, prefix: 'T01', file: 'd1-slide-hackathon.pdf' }));
-            const d2 = d2Slides.map((s, i) => ({ ...s, doc: 'd2', page: i + 1, prefix: 'T02', file: 'd2-slide-hackathon.pdf' }));
-            return d1.concat(d2);
-        }
-
-        function findBestSlideMatch(query) {
-            const queryWords = tokenize(query);
-            if (!queryWords.length) return null;
-            const index = buildChatIndex();
-            let best = null, bestScore = 0;
-            index.forEach(s => {
-                const haystack = tokenize([s.heading, s.subheading || '', (s.body || []).join(' '), s.takeaway || ''].join(' '));
-                const haystackSet = new Set(haystack);
-                let score = 0;
-                queryWords.forEach(w => { if (haystackSet.has(w)) score++; });
-                if (score > bestScore) { bestScore = score; best = s; }
-            });
-            return bestScore > 0 ? best : null;
-        }
+        // In-memory conversation log for the current tab session (cleared on page
+        // reload — no login/DB in this prototype, matches the rest of `progress`).
+        // Sent back to /api/chat-ask on every turn (see sendChatMessage) so the
+        // server can build multi-turn `contents` and the AI can reference earlier
+        // turns instead of treating every message as a fresh, context-free question.
+        let chatHistory = [];
 
         function escapeHtml(str) {
             const div = document.createElement('div');
@@ -1103,14 +2361,33 @@
 
         function escalateTAChat(questionText) {
             const shortTag = questionText.length > 34 ? questionText.slice(0, 34) + '…' : questionText;
-            document.getElementById('taCitationTag').innerText = shortTag;
-            document.getElementById('taModal').style.display = 'flex';
+            openTaModal(shortTag);
         }
 
-        function sendChatMessage() {
+        // Turns inline [T0x-NNN] slide citations into clickable badges. Web
+        // sources aren't inlined this way — they come back separately as
+        // data.webSources and are listed under the answer instead, so slide
+        // and web provenance never get visually mixed up.
+        // Shows citations as a page number + jump link instead of the raw [T0x-NNN]
+        // code — the code is an internal grounding id for the AI, not something a
+        // student needs to read; the page number + click-to-jump is what's useful.
+        function renderChatAnswer(text) {
+            const escaped = escapeHtml(text);
+            return escaped
+                .replace(/\[T0([12])-(\d{3})\]/g, (m, dNum, page) => {
+                    const doc = dNum === '1' ? 'd1' : 'd2';
+                    const pageNum = parseInt(page, 10);
+                    return `<span class="citation-badge" style="cursor:pointer;" onclick="jumpToCitation('${doc}', ${pageNum})">📌 Xem trang ${pageNum}</span>`;
+                })
+                .replace(/\n/g, '<br>');
+        }
+
+        async function sendChatMessage() {
             const input = document.getElementById('aiChatInput');
             const text = input.value.trim();
             if (!text) return;
+
+            const doc = document.getElementById('docD1Container').style.display !== 'none' ? 'd1' : 'd2';
 
             appendChatBubble('user', escapeHtml(text));
             input.value = '';
@@ -1126,31 +2403,47 @@
             container.appendChild(typing);
             container.scrollTop = container.scrollHeight;
 
-            setTimeout(() => {
+            try {
+                const res = await fetch('/api/chat-ask', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ day: doc, message: text, history: chatHistory })
+                });
                 typing.remove();
-                const match = findBestSlideMatch(text);
-                if (match) {
-                    const answerText = match.takeaway || (match.body && match.body[0]) || match.heading;
-                    const citation = `${match.prefix}-${String(match.page).padStart(3, '0')}`;
-                    appendChatBubble('ai', `
-                        <div><strong>${escapeHtml(match.heading)}</strong></div>
-                        <div style="margin-top:6px;">${escapeHtml(answerText)}</div>
-                        <div style="margin-top:10px; display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
-                            <span class="citation-badge" onclick="jumpToCitation('${match.doc}', ${match.page})">📌 ${citation} — nhảy tới slide</span>
-                        </div>
-                    `);
-                } else {
-                    const safeText = escapeHtml(text).replace(/'/g, "\\'");
-                    appendChatBubble('ai', `
-                        <div>Mình chưa tìm thấy nội dung liên quan trực tiếp trong slide Day 01 & Day 02. Bạn có muốn chuyển câu hỏi này cho TA trực ban hỗ trợ không?</div>
-                        <div class="escalate-bar" style="margin-top:10px;">
-                            <span style="font-size:12px; color:#64748b;">Chưa chắc chắn?</span>
-                            <button class="btn-escalate-ta" onclick="escalateTAChat('${safeText}')">📩 Chuyển cho TA</button>
-                        </div>
-                    `);
+                if (!res.ok) {
+                    const body = await res.json().catch(() => ({}));
+                    throw new Error(body.error || ('HTTP ' + res.status));
                 }
+                const data = await res.json();
+                const webSourcesHtml = (data.webSources && data.webSources.length)
+                    ? `<div style="margin-top:10px; padding-top:8px; border-top:1px dashed #e2e8f0; font-size:11px; color:#64748b;">
+                           <div style="font-weight:600; margin-bottom:4px;">${td('webSourcesLabel')}</div>
+                           ${data.webSources.map(s => `<div>· <a href="${escapeHtml(s.uri)}" target="_blank" rel="noopener">${escapeHtml(s.title || s.uri)}</a></div>`).join('')}
+                       </div>`
+                    : '';
+                const webUnavailableHtml = data.usedWebSearch === false
+                    ? `<div style="margin-top:8px; font-size:11px; color:#b45309;">${td('webUnavailable')}</div>`
+                    : '';
+                appendChatBubble('ai', `<div>${renderChatAnswer(data.answer || td('noAiContent'))}</div>${webSourcesHtml}${webUnavailableHtml}`);
+
+                // Only remember turns that actually got a real AI answer — a failed
+                // turn (catch branch below) is never added, so a retry after an error
+                // doesn't poison later context with an empty/broken exchange.
+                chatHistory.push({ role: 'user', text });
+                chatHistory.push({ role: 'ai', text: data.answer || '' });
+            } catch (err) {
+                typing.remove();
+                const safeText = escapeHtml(text).replace(/'/g, "\\'");
+                appendChatBubble('ai', `
+                    <div>${td('chatError', escapeHtml(String(err.message || err)))}</div>
+                    <div class="escalate-bar" style="margin-top:10px;">
+                        <span style="font-size:12px; color:#64748b;">${td('notSure')}</span>
+                        <button class="btn-escalate-ta" onclick="escalateTAChat('${safeText}')">${td('escalateTaShort')}</button>
+                    </div>
+                `);
+            } finally {
                 sendBtn.disabled = false;
-            }, 650 + Math.random() * 500);
+            }
         }
 
         window.addEventListener('DOMContentLoaded', function () {

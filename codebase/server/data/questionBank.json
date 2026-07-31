@@ -1,0 +1,2973 @@
+{
+  "generatedAt": "2026-07-31T05:39:23.198Z",
+  "bank": {
+    "d1": {
+      "d1-s1": [
+        {
+          "id": "d1-s1-q01",
+          "question": "Công ty bạn muốn xây dựng một hệ thống lọc email rác (spam) tự động dựa trên lịch sử dữ liệu email cũ. Theo sơ đồ hệ thống các tầng của AI, hệ thống này thuộc tầng nào và vì sao không phải Deep Learning thuần túy?",
+          "citation": "T01-003",
+          "sourcePages": [
+            3
+          ],
+          "reviewSummary": "AI là chiếc ô lớn nhất bao hàm mọi hệ thống thông minh. Machine Learning là tập con học từ dữ liệu thay vì viết luật tay, trong khi Deep Learning là mạng nơ-ron nhiều tầng tự học đặc trưng. GenAI dùng để sinh nội dung mới và LLM là model nền chuyên ngôn ngữ. Do đó, việc học từ dữ liệu lịch sử để lọc spam thuộc về Machine Learning chứ chưa nhất thiết đòi hỏi mạng nơ-ron sâu nhiều tầng.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Thuộc Machine Learning vì hệ thống học từ dữ liệu thay vì viết luật tay, còn Deep Learning đòi hỏi mạng nơ-ron nhiều tầng tự học đặc trưng.",
+              "correct": true,
+              "feedback": "Chính xác! Lọc spam dựa trên dữ liệu lịch sử là đặc trưng kinh điển của Machine Learning."
+            },
+            {
+              "key": "B",
+              "text": "Thuộc Generative AI vì nó tạo ra quyết định lọc email mới.",
+              "correct": false,
+              "feedback": "Không chính xác. Generative AI dùng để sinh nội dung mới như văn bản, ảnh hoặc code, không phải chuyên về phân loại dữ liệu."
+            },
+            {
+              "key": "C",
+              "text": "Thuộc LLM vì LLM là tầng nền của gần hết trải nghiệm AI.",
+              "correct": false,
+              "feedback": "Sai. LLM là model nền chuyên ngôn ngữ, không phải mọi bài toán lọc dữ liệu đều cần đến LLM."
+            },
+            {
+              "key": "D",
+              "text": "Thuộc Deep Learning hoàn toàn vì có sử dụng máy tính.",
+              "correct": false,
+              "feedback": "Sai. Deep Learning yêu cầu mạng nơ-ron nhiều tầng tự học đặc trưng, không phải mọi hệ thống dùng máy tính đều là Deep Learning."
+            }
+          ]
+        },
+        {
+          "id": "d1-s1-q02",
+          "question": "Một đội ngũ phát triển sản phẩm tạo ra một công cụ cho phép người dùng gõ vào một câu lệnh (prompt) và nhận lại một đoạn mã nguồn (code) hoàn chỉnh. Công cụ này nên được xếp vào nhóm AI nào theo phân loại ba nhóm AI chính?",
+          "citation": "T01-004",
+          "sourcePages": [
+            4
+          ],
+          "reviewSummary": "Ba nhóm AI chính bao gồm Discriminative AI (giỏi phân loại, dự đoán như lọc spam, nhận diện ảnh), Generative AI (sinh ra thứ mới như văn bản, ảnh, code từ prompt), và Agentic AI (nhận mục tiêu rồi tự làm nhiều bước như lập kế hoạch, dùng công cụ). Trong đó LLM là engine chung của cả Generative lẫn Agentic.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Discriminative AI, vì nó nhận input và trả về kết quả dự đoán.",
+              "correct": false,
+              "feedback": "Không chính xác. Discriminative AI chỉ trả về một nhãn hoặc một con số (như lọc spam, nhận diện ảnh), không sinh ra code hoàn chỉnh."
+            },
+            {
+              "key": "B",
+              "text": "Generative AI, vì nó nhận prompt và sinh ra nội dung mới là code.",
+              "correct": true,
+              "feedback": "Chính xác! Việc nhận prompt để tạo ra văn bản, ảnh hoặc code hoàn toàn thuộc về nhóm Generative AI."
+            },
+            {
+              "key": "C",
+              "text": "Agentic AI, vì việc viết code đòi hỏi lập kế hoạch phức tạp.",
+              "correct": false,
+              "feedback": "Sai. Agentic AI đòi hỏi nhận mục tiêu tự động làm nhiều bước, lập kế hoạch và dùng công cụ, không chỉ đơn thuần nhận prompt rồi sinh ra nội dung."
+            },
+            {
+              "key": "D",
+              "text": "Machine Learning thuần túy, vì nó không liên quan đến LLM.",
+              "correct": false,
+              "feedback": "Sai vì sinh nội dung mới từ prompt thuộc về Generative AI chứ không gọi chung chung là ML thuần túy trong ngữ cảnh này."
+            }
+          ]
+        },
+        {
+          "id": "d1-s1-q03",
+          "question": "Bạn muốn xây dựng một trợ lý ảo không chỉ trả lời câu hỏi mà còn có thể tự động nhận mục tiêu kinh doanh, tự lập kế hoạch nghiên cứu thị trường, sử dụng các công cụ duyệt web và tự thực hiện nhiều bước hành động liên tiếp. Hệ thống này thể hiện đặc điểm của nhóm AI nào?",
+          "citation": "T01-004",
+          "sourcePages": [
+            4
+          ],
+          "reviewSummary": "Agentic AI là nhóm AI nhận mục tiêu rồi tự làm nhiều bước, bao gồm lập kế hoạch, dùng công cụ và hành động. Khác với Generative AI chỉ sinh nội dung từ prompt, Agentic AI có khả năng tự chủ thực hiện chuỗi hành động phức tạp.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Discriminative AI",
+              "correct": false,
+              "feedback": "Sai. Discriminative AI chỉ cho ra một nhãn hoặc một con số từ input, không thể tự lập kế hoạch và thực hiện nhiều bước."
+            },
+            {
+              "key": "B",
+              "text": "Generative AI",
+              "correct": false,
+              "feedback": "Sai. Generative AI tập trung vào việc sinh nội dung mới (văn bản, ảnh, code) từ prompt chứ không tự động lập kế hoạch và dùng công cụ qua nhiều bước hành động."
+            },
+            {
+              "key": "C",
+              "text": "Agentic AI",
+              "correct": true,
+              "feedback": "Chính xác! Agentic AI đặc trưng bởi việc nhận mục tiêu (Goal) rồi tự lập kế hoạch (Plan) và hành động (Action) qua nhiều bước."
+            },
+            {
+              "key": "D",
+              "text": "Machine Learning cổ điển",
+              "correct": false,
+              "feedback": "Sai. Machine Learning là học từ dữ liệu thay vì viết luật tay, không mô tả đầy đủ khả năng tự lập kế hoạch và hành động đa bước."
+            }
+          ]
+        }
+      ],
+      "d1-s2": [
+        {
+          "id": "d1-s2-q01",
+          "question": "Khi thiết kế một hệ thống AI cho một nhà máy chuyên chẩn đoán lỗi phần cứng máy tính bằng cách tập trung giải thật tốt một miền hẹp thông qua việc mã hóa tri thức từ các kỹ sư trưởng thành các luật cứng, bạn đang áp dụng cách tiếp cận nào trong lịch sử phát triển của AI?",
+          "citation": "[T01-006]",
+          "sourcePages": [
+            6
+          ],
+          "reviewSummary": "Vào năm 1980, hệ chuyên gia (Expert System) ra đời với chiến lược thay đổi là từ bỏ việc theo đuổi trí tuệ tổng quát ban đầu. Thay vào đó, AI tập trung giải thật tốt một miền hẹp bằng cách mã hóa tri thức chuyên gia thành các luật để giải quyết các bài toán chuyên môn hẹp.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Hệ chuyên gia (Expert System)",
+              "correct": true,
+              "feedback": "Chính xác! Hệ chuyên gia tập trung giải thật tốt một miền hẹp bằng cách mã hóa tri thức chuyên gia thành luật."
+            },
+            {
+              "key": "B",
+              "text": "Mô hình Transformer",
+              "correct": false,
+              "feedback": "Chưa chính xác. Transformer là bước ngoặt giúp mô hình hiểu ngôn ngữ linh hoạt bằng cách liên kết các từ trong câu, không phải là việc mã hóa luật chuyên gia."
+            },
+            {
+              "key": "C",
+              "text": "Cách tiếp cận dữ liệu lớn của ImageNet",
+              "correct": false,
+              "feedback": "Chưa chính xác. ImageNet tập trung vào việc xây dựng bộ dữ liệu hình ảnh lớn gán nhãn tay chứ không phải mã hóa luật chuyên gia cho miền hẹp."
+            },
+            {
+              "key": "D",
+              "text": "Mô hình ChatGPT đại chúng",
+              "correct": false,
+              "feedback": "Chưa chính xác. ChatGPT là trải nghiệm giao diện ngôn ngữ đại chúng xuất hiện năm 2022, không liên quan đến việc xây dựng hệ thống luật chuyên gia năm 1980."
+            }
+          ]
+        },
+        {
+          "id": "d1-s2-q02",
+          "question": "Một nhóm nghiên cứu đang tranh cãi: một nhóm muốn tối ưu hóa thuật toán phức tạp hơn để nhận diện hình ảnh, trong khi nhóm còn lại quyết định tập trung thu thập và gán nhãn tay 14 triệu hình ảnh cho hơn 20.000 loại vật để làm nền tảng. Theo lịch sử phát triển của AI, quyết định của nhóm thứ hai gợi nhắc đến cột mốc nào?",
+          "citation": "[T01-007]",
+          "sourcePages": [
+            7
+          ],
+          "reviewSummary": "Vào năm 2009, Fei-Fei Li và ImageNet đã tạo ra cuộc cách mạng của dữ liệu bằng cách xây dựng bộ dữ liệu lớn gồm 14 triệu ảnh gán nhãn tay và hơn 20.000 loại vật, qua đó chứng minh đôi khi dữ liệu tốt hơn đánh bại thuật toán khôn hơn và làm bệ phóng cho AlexNet 2012.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Sự ra đời của hệ chuyên gia năm 1980",
+              "correct": false,
+              "feedback": "Chưa chính xác. Hệ chuyên gia tập trung vào việc mã hóa tri thức chuyên gia thành luật cho miền hẹp chứ không tập trung vào tập dữ liệu ảnh lớn."
+            },
+            {
+              "key": "B",
+              "text": "Cuộc cách mạng dữ liệu ImageNet của Fei-Fei Li năm 2009",
+              "correct": true,
+              "feedback": "Chính xác! Fei-Fei Li đã chọn con đường xây dựng bộ dữ liệu lớn gồm 14 triệu ảnh gán nhãn tay thay vì chỉ chạy theo thuật toán."
+            },
+            {
+              "key": "C",
+              "text": "Sự xuất hiện của Transformer năm 2017",
+              "correct": false,
+              "feedback": "Chưa chính xác. Transformer liên quan đến việc hiểu ngôn ngữ linh hoạt giữa các từ, không phải xây dựng bộ dữ liệu hình ảnh ImageNet."
+            },
+            {
+              "key": "D",
+              "text": "Sự bùng nổ của ChatGPT năm 2022",
+              "correct": false,
+              "feedback": "Chưa chính xác. ChatGPT là trải nghiệm giao diện người dùng phổ thông cho mô hình ngôn ngữ, diễn ra sau sự kiện ImageNet rất nhiều năm."
+            }
+          ]
+        },
+        {
+          "id": "d1-s2-q03",
+          "question": "Khi xây dựng một mô hình xử lý ngôn ngữ tự nhiên để dịch nghĩa của một từ, thay vì bắt mô hình đọc tuần tự từng bước từ đầu đến cuối câu, bạn áp dụng kỹ thuật cho phép từ đó tự động nhìn sang các từ quan trọng khác trong toàn bộ câu. Kỹ thuật này bắt nguồn từ cột mốc nào?",
+          "citation": "[T01-008]",
+          "sourcePages": [
+            8
+          ],
+          "reviewSummary": "Năm 2017 đánh dấu sự ra đời của Transformer, một bước ngoặt giúp mô hình hiểu ngôn ngữ linh hoạt hơn khi mỗi từ có thể nhìn sang những từ quan trọng khác trong cả câu thay vì đi tuần tự từng bước. Đây là nền móng kỹ thuật cho GPT, BERT và toàn bộ làn sóng LLM.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Hệ chuyên gia năm 1980",
+              "correct": false,
+              "feedback": "Chưa chính xác. Hệ chuyên gia dùng luật cho miền hẹp, không xử lý cơ chế nhìn toàn bộ câu của ngôn ngữ."
+            },
+            {
+              "key": "B",
+              "text": "ImageNet năm 2009",
+              "correct": false,
+              "feedback": "Chưa chính xác. ImageNet là bộ dữ liệu hình ảnh lớn phục vụ cho thị giác máy tính, không phải cơ chế xử lý ngôn ngữ của Transformer."
+            },
+            {
+              "key": "C",
+              "text": "Transformer năm 2017",
+              "correct": true,
+              "feedback": "Chính xác! Transformer cho phép mô hình hiểu ngôn ngữ linh hoạt bằng cách để mỗi từ nhìn sang các từ quan trọng khác trong cả câu."
+            },
+            {
+              "key": "D",
+              "text": "ChatGPT năm 2022",
+              "correct": false,
+              "feedback": "Chưa chính xác. ChatGPT là sản phẩm ứng dụng giao diện đại chúng, còn nền móng kỹ thuật xử lý từ trong câu là Transformer (2017)."
+            }
+          ]
+        },
+        {
+          "id": "d1-s2-q04",
+          "question": "Một startup muốn đưa công nghệ AI tiếp cận trực tiếp với hàng triệu người dùng phổ thông thông qua một giao diện cực kỳ đơn giản, giúp bất kỳ ai cũng có thể sử dụng dễ dàng mà không cần kiến thức kỹ thuật phức tạp. Sự kiện lịch sử nào đã chứng minh sức hút đại chúng của cách làm này?",
+          "citation": "[T01-009]",
+          "sourcePages": [
+            9
+          ],
+          "reviewSummary": "Năm 2022, ChatGPT xuất hiện như một trải nghiệm đại chúng, cho phép rất đông người dùng phổ thông trực tiếp chạm vào một mô hình ngôn ngữ mạnh qua giao diện đơn giản đến mức ai cũng hiểu cách dùng.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Sự ra đời của hệ chuyên gia năm 1980",
+              "correct": false,
+              "feedback": "Chưa chính xác. Hệ chuyên gia là giải pháp chuyên môn hẹp cho chuyên gia, không phải trải nghiệm đại chúng cho người dùng phổ thông."
+            },
+            {
+              "key": "B",
+              "text": "Cuộc cách mạng dữ liệu ImageNet năm 2009",
+              "correct": false,
+              "feedback": "Chưa chính xác. ImageNet là bộ dữ liệu dành cho nghiên cứu thuật toán và thị giác máy tính, không phải giao diện đại chúng."
+            },
+            {
+              "key": "C",
+              "text": "Sự ra mắt của Transformer năm 2017",
+              "correct": false,
+              "feedback": "Chưa chính xác. Transformer là nền móng kỹ thuật bên dưới chứ không phải giao diện trải nghiệm đại chúng như ChatGPT."
+            },
+            {
+              "key": "D",
+              "text": "Sự xuất hiện của ChatGPT năm 2022",
+              "correct": true,
+              "feedback": "Chính xác! ChatGPT mang lại trải nghiệm đại chúng với giao diện đơn giản giúp đông đảo người dùng phổ thông dễ dàng sử dụng."
+            }
+          ]
+        },
+        {
+          "id": "d1-s2-q05",
+          "question": "Nhìn tổng quan về hành trình 70 năm của AI từ các model đơn lẻ cho đến việc chuyển dịch thành hệ thống có khả năng hành động như agent, yếu tố nào sau đây tóm tắt đúng thách thức lịch sử lớn nhất của AI?",
+          "citation": "[T01-005]",
+          "sourcePages": [
+            5
+          ],
+          "reviewSummary": "Lịch sử AI 70 năm đi qua giai đoạn khai sinh, 2 lần mùa đông, và cách tiếp cận chạm trần, dẫn đến sự dịch chuyển từ model đơn lẻ sang system có khả năng hành động như agent.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Cách tiếp cận chạm trần và sự dịch chuyển từ model đơn lẻ sang system có khả năng hành động như agent",
+              "correct": true,
+              "feedback": "Chính xác! Lịch sử 70 năm ghi nhận AI từng trải qua khai sinh, 2 lần mùa đông, cách tiếp cận chạm trần và sự dịch chuyển sang system hành động như agent."
+            },
+            {
+              "key": "B",
+              "text": "Việc chỉ cần duy nhất một bộ dữ liệu ImageNet là đủ giải quyết mọi bài toán AI từ trước đến nay",
+              "correct": false,
+              "feedback": "Chưa chính xác. ImageNet chỉ là một cột mốc dữ liệu năm 2009, không phản ánh toàn bộ tiến trình lịch sử 70 năm của AI."
+            },
+            {
+              "key": "C",
+              "text": "Việc hệ chuyên gia năm 1980 đã giải quyết triệt để mọi vấn đề về trí tuệ tổng quát",
+              "correct": false,
+              "feedback": "Chưa chính xác. Hệ chuyên gia cố tình từ bỏ trí tuệ tổng quát để tập trung vào miền hẹp, và AI vẫn tiếp tục phát triển qua nhiều giai đoạn khác."
+            },
+            {
+              "key": "D",
+              "text": "Sự độc quyền hoàn toàn của mô hình Transformer đối với mọi ứng dụng phần cứng",
+              "correct": false,
+              "feedback": "Chưa chính xác. Transformer là nền móng kỹ thuật ngôn ngữ năm 2017 chứ không phải toàn bộ lịch sử hay mọi ứng dụng phần cứng."
+            }
+          ]
+        }
+      ],
+      "d1-s3": [
+        {
+          "id": "d1-s3-q01",
+          "question": "Khi bạn đang phát triển một ứng dụng tích hợp AI và khách hàng yêu cầu \"thiết kế một chatbot độc lập hoàn toàn\", lập luận kỹ thuật nào sau đây là chính xác nhất dựa trên bản chất của công nghệ LLM?",
+          "citation": "[T01-010]",
+          "sourcePages": [
+            10
+          ],
+          "reviewSummary": "LLM thực chất là một bộ não ngôn ngữ nền tảng, được huấn luyện trên hàng nghìn tỷ mảnh chữ để dự đoán từ tiếp theo. Nó có khả năng xử lý nhiều tác vụ khác nhau như dịch thuật, viết code hay tóm tắt. Trong khi đó, chatbot chỉ là một dạng sản phẩm được đóng gói lớp áo bên ngoài để giao tiếp với người dùng.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Chatbot chính là toàn bộ cấu trúc cốt lõi của LLM.",
+              "correct": false,
+              "feedback": "Hiểu lầm phổ biến: Đồng nhất sản phẩm giao tiếp với bộ não công nghệ bên dưới."
+            },
+            {
+              "key": "B",
+              "text": "LLM chỉ là một bộ não ngôn ngữ dùng chung, còn chatbot chỉ là lớp áo sản phẩm đóng gói bên ngoài.",
+              "correct": true,
+              "feedback": "Chính xác! LLM là nền tảng cốt lõi làm được nhiều việc, chatbot chỉ là một hình thức sản phẩm bên ngoài."
+            },
+            {
+              "key": "C",
+              "text": "LLM được tạo ra chuyên biệt chỉ để phục vụ cho các ứng dụng chatbot.",
+              "correct": false,
+              "feedback": "Sai vì LLM có thể làm rất nhiều việc khác ngoài chatbot như dịch, viết code, tóm tắt..."
+            },
+            {
+              "key": "D",
+              "text": "Chatbot có khả năng tự thay đổi kiến trúc mô hình ngôn ngữ lớn bên dưới.",
+              "correct": false,
+              "feedback": "Sai vì chatbot chỉ là lớp giao diện, không can thiệp vào kiến trúc mô hình."
+            }
+          ]
+        },
+        {
+          "id": "d1-s3-q02",
+          "question": "Khi model sinh ra một câu trả lời, cách thức hoạt động toán học bên dưới của nó đối với từ vựng là gì?",
+          "citation": "[T01-011]",
+          "sourcePages": [
+            11
+          ],
+          "reviewSummary": "Đối với mọi ngữ cảnh đầu vào, LLM không đưa ra một từ duy nhất ngay lập tức mà thực hiện chấm điểm phân bố xác suất cho tất cả các từ có trong từ vựng, ví dụ từ này 22% từ kia 9%, sau đó chọn lựa theo phân bố xác suất đó.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Model chọn ngẫu nhiên một từ bất kỳ trong từ điển không theo quy luật.",
+              "correct": false,
+              "feedback": "Sai vì việc lựa chọn dựa trên phân bố xác suất được chấm điểm cẩn thận."
+            },
+            {
+              "key": "B",
+              "text": "Model luôn luôn chọn từ có điểm số xác suất cao tuyệt đối 100%.",
+              "correct": false,
+              "feedback": "Hiểu lầm phổ biến: Nghĩ rằng mô hình chỉ chọn từ cao nhất, bỏ qua tính phân bố xác suất."
+            },
+            {
+              "key": "C",
+              "text": "Model chấm điểm MỌI từ trong từ vựng rồi chọn theo phân bố xác suất đó.",
+              "correct": true,
+              "feedback": "Chính xác! Đầu ra của LLM luôn là một phân bố xác suất trên mọi từ."
+            },
+            {
+              "key": "D",
+              "text": "Model tra cứu câu trả lời có sẵn trong cơ sở dữ liệu lưu trữ cố định.",
+              "correct": false,
+              "feedback": "Sai vì mô hình tính toán sinh chữ mới dựa trên xác suất chứ không tra cứu văn bản cố định."
+            }
+          ]
+        },
+        {
+          "id": "d1-s3-q03",
+          "question": "Bạn nhận thấy quá trình sinh văn bản dài của mô hình diễn ra tuần tự từng chút một. Cơ chế lặp nào đang diễn ra bên trong hệ thống?",
+          "citation": "[T01-012]",
+          "sourcePages": [
+            12
+          ],
+          "reviewSummary": "Quá trình sinh văn bản tuân theo chu trình: mô hình dự đoán một token mới, nối token đó vào ngữ cảnh hiện tại, rồi chạy lại toàn bộ mô hình từ đầu theo vòng lặp predict - append - rerun.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Vòng lặp predict -> append -> rerun (dự đoán token, nối vào câu, chạy lại từ đầu).",
+              "correct": true,
+              "feedback": "Chính xác! Mỗi token mới sinh ra được nối vào ngữ cảnh và mô hình chạy lại từ đầu."
+            },
+            {
+              "key": "B",
+              "text": "Mô hình sinh ra toàn bộ đoạn văn bản hoàn chỉnh trong một lần tính toán duy nhất.",
+              "correct": false,
+              "feedback": "Hiểu lầm phổ biến: Nghĩ rằng LLM viết ra cả đoạn văn ngay lập tức thay vì từng token."
+            },
+            {
+              "key": "C",
+              "text": "Mô hình copy văn bản từ internet ghép lại mà không cần tính toán lại ngữ cảnh.",
+              "correct": false,
+              "feedback": "Sai vì mô hình sinh chữ mới và chạy lại vòng lặp ngữ cảnh liên tục."
+            },
+            {
+              "key": "D",
+              "text": "Chỉ có phần cứng bên ngoài thực hiện việc nối chuỗi, mô hình không tham gia.",
+              "correct": false,
+              "feedback": "Sai vì mô hình trực tiếp thực hiện vòng lặp dự đoán và nối tiếp."
+            }
+          ]
+        },
+        {
+          "id": "d1-s3-q04",
+          "question": "Khi tính chi phí API cho việc xử lý một đoạn văn bản tiếng Việt dài so với tiếng Anh có cùng ý nghĩa, yếu tố nào cần phải lưu ý đặc biệt?",
+          "citation": "[T01-013]",
+          "sourcePages": [
+            13
+          ],
+          "reviewSummary": "Mô hình không đọc từ nguyên vẹn mà cắt văn bản thành các mảnh nhỏ gọi là token (có từ một mảnh, có từ vài mảnh, kể cả dấu câu hay khoảng trắng). Tiếng Việt, code hay JSON thường tốn số lượng token nhiều hơn tiếng Anh thông thường.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Tiếng Việt luôn ít token hơn tiếng Anh nên chi phí sẽ rẻ hơn rất nhiều.",
+              "correct": false,
+              "feedback": "Sai vì tiếng Việt thường tốn nhiều token hơn tiếng Anh thông thường."
+            },
+            {
+              "key": "B",
+              "text": "Mô hình đọc từng từ nguyên vẹn của con người nên ngôn ngữ nào cũng có số từ bằng số token.",
+              "correct": false,
+              "feedback": "Hiểu lầm phổ biến: Nghĩ LLM đọc từ nguyên vẹn thay vì các mảnh token nhỏ."
+            },
+            {
+              "key": "C",
+              "text": "Tiếng Việt, code và JSON tốn token hơn tiếng Anh, và mọi hoạt động đều quy ra token có giá riêng.",
+              "correct": true,
+              "feedback": "Chính xác! Tiếng Việt thường bị bẻ thành nhiều mảnh token hơn, làm tăng chi phí."
+            },
+            {
+              "key": "D",
+              "text": "Khoảng trắng và dấu câu không được tính là token nên không ảnh hưởng chi phí.",
+              "correct": false,
+              "feedback": "Sai vì dấu câu và khoảng trắng cũng được tính là các mảnh token."
+            }
+          ]
+        },
+        {
+          "id": "d1-s3-q05",
+          "question": "Bạn chuẩn bị đưa một tài liệu dài 50 trang vào prompt cho AI đọc và phân tích. Theo mô hình \"bàn làm việc\", bạn nên lưu ý điều gì về vị trí đặt thông tin cốt lõi?",
+          "citation": "[T01-014]",
+          "sourcePages": [
+            14
+          ],
+          "reviewSummary": "Context được ví như bàn làm việc có hạn của model (ví dụ 128K token hay 1M token). Khi bàn quá đầy hoặc thông tin quan trọng bị đặt ở chính giữa prompt rất dài, mô hình rất dễ bị bỏ sót hoặc quên mất.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Đặt thông tin quan trọng ở chính giữa prompt dài để mô hình đọc kỹ hơn.",
+              "correct": false,
+              "feedback": "Hiểu lầm phổ biến: Nghĩ đặt ở đâu mô hình cũng tập trung như nhau, thực tế giữa bàn dễ bị bỏ sót."
+            },
+            {
+              "key": "B",
+              "text": "Context càng rộng thì mô hình càng thông minh và không bao giờ quên chi tiết.",
+              "correct": false,
+              "feedback": "Sai vì bàn rộng không có nghĩa là dùng tốt, context dài dễ làm chậm và tốn kém."
+            },
+            {
+              "key": "C",
+              "text": "Cố gắng nhồi nhét càng nhiều sách lên bàn càng tốt vì chi phí hoàn toàn miễn phí.",
+              "correct": false,
+              "feedback": "Sai vì context càng dài càng tốn tiền và chậm."
+            },
+            {
+              "key": "D",
+              "text": "Tránh đặt thông tin quan trọng ở giữa prompt rất dài vì model có thể bỏ sót, context lớn cũng tốn kém hơn.",
+              "correct": true,
+              "feedback": "Chính xác! Đặt thông tin quan trọng ở giữa rất dễ bị bỏ quên do giới hạn của bàn làm việc."
+            }
+          ]
+        },
+        {
+          "id": "d1-s3-q06",
+          "question": "Cơ chế nào bên trong Transformer giúp từ \"nó\" trong câu xác định chính xác được quy chiếu đến \"quyển sách\" hay \"cái túi\"?",
+          "citation": "[T01-015]",
+          "sourcePages": [
+            15
+          ],
+          "reviewSummary": "Cơ chế Attention cho phép mỗi token chủ động 'quay đầu' nhìn lại các token trước đó trong câu, chấm điểm mức độ liên quan để khóa nghĩa theo ngữ cảnh, giúp model hiểu ngữ cảnh tốt hơn các thế hệ cũ.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Cơ chế Attention (chữ T trong GPT) giúp mỗi token nhìn sang các từ quan trọng khác để khóa nghĩa.",
+              "correct": true,
+              "feedback": "Chính xác! Attention giúp các từ nhìn lại các từ trước đó để hiểu ngữ cảnh chính xác."
+            },
+            {
+              "key": "B",
+              "text": "Cơ chế đọc tuần tự từng chữ một từ trái sang phải như con người đọc sách.",
+              "correct": false,
+              "feedback": "Sai vì Transformer dùng attention thay vì đọc tuần tự đơn thuần."
+            },
+            {
+              "key": "C",
+              "text": "Cơ chế tra cứu từ điển tĩnh để gán một nghĩa cố định duy nhất cho mọi từ.",
+              "correct": false,
+              "feedback": "Sai vì nghĩa của từ thay đổi tùy thuộc vào ngữ cảnh nhờ attention."
+            },
+            {
+              "key": "D",
+              "text": "Cơ chế nén toàn bộ câu thành một ký tự duy nhất để giảm dung lượng xử lý.",
+              "correct": false,
+              "feedback": "Sai, không có cơ chế nén ký tự đơn như vậy trong Transformer."
+            }
+          ]
+        },
+        {
+          "id": "d1-s3-q07",
+          "question": "Khi xây dựng một Agent AI xử lý tài liệu kỹ thuật dài, thay vì bắt model ôm trọn toàn bộ tài liệu trong context, bạn nên áp dụng giải pháp nào dựa trên nguyên lý về attention?",
+          "citation": "[T01-016]",
+          "sourcePages": [
+            16
+          ],
+          "reviewSummary": "Để quản lý sự chú ý và context hiệu quả, cần đặt điều quan trọng ở đầu hoặc cuối prompt, giữ bàn làm việc sạch (context rác tạo attention rác, nên tóm tắt khi chat dài) và cho AI tra sổ (RAG) thay vì bắt nhớ hết tài liệu dài.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Bắt model đọc toàn bộ mọi tài liệu dài cùng lúc để tận dụng context khổng lồ.",
+              "correct": false,
+              "feedback": "Hiểu lầm phổ biến: Nghĩ context lớn thì cứ nhồi nhét, không cần dùng công cụ hỗ trợ."
+            },
+            {
+              "key": "B",
+              "text": "Cho tra sổ thay vì bắt nhớ (RAG): lấy đoạn liên quan nhét vào context thay vì trông chờ model nhớ hết.",
+              "correct": true,
+              "feedback": "Chính xác! Agent mạnh nhờ biết dùng tools lấy đúng thứ vào bàn làm việc đúng lúc."
+            },
+            {
+              "key": "C",
+              "text": "Chôn yêu cầu quan trọng vào chính giữa prompt để AI tập trung tìm kiếm.",
+              "correct": false,
+              "feedback": "Sai vì đặt ở giữa rất dễ bị bỏ sót, cần đặt ở đầu hoặc cuối."
+            },
+            {
+              "key": "D",
+              "text": "Để nguyên lịch sử chat dài dăng dắc mà không cần tóm tắt hay làm sạch.",
+              "correct": false,
+              "feedback": "Sai vì context rác sẽ dẫn đến attention rác, làm giảm hiệu quả xử lý."
+            }
+          ]
+        },
+        {
+          "id": "d1-s3-q08",
+          "question": "Khi so sánh mô hình GPT-3 (175 tỷ tham số theo kiến trúc dense) với mô hình hiện đại hơn áp dụng kiến trúc MoE (Mixture of Experts), nhận định nào sau đây là đúng về chi phí vận hành?",
+          "citation": "[T01-017]",
+          "sourcePages": [
+            17
+          ],
+          "reviewSummary": "Tham số là các khớp nối của model. Các model cũ (dense) bắt mọi token đi qua toàn bộ khớp nối. Các model MoE lớn hơn rất nhiều lần nhưng mỗi token chỉ gọi vài chuyên gia, giúp chi phí mỗi ca khám/xử lý gần như không đổi dù số tham số tăng gấp nhiều lần.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Nhiều tham số hơn đồng nghĩa với việc chi phí xử lý luôn tăng lên tuyến tính cực kỳ đắt đỏ.",
+              "correct": false,
+              "feedback": "Hiểu lầm phổ biến: Nghĩ mô hình lớn hơn thì tốn tiền hơn tuyến tính, bỏ qua ưu điểm của MoE."
+            },
+            {
+              "key": "B",
+              "text": "Kiến trúc MoE giúp mô hình lớn hơn gấp nhiều lần nhưng chi phí mỗi ca khám gần như không đổi vì chỉ gọi vài chuyên gia.",
+              "correct": true,
+              "feedback": "Chính xác! Nhờ MoE, bệnh viện lớn gấp 16 lần nhưng chi phí xử lý token vẫn được tối ưu."
+            },
+            {
+              "key": "C",
+              "text": "Tất cả các token trong mô hình MoE đều bắt buộc phải đi qua toàn bộ các chuyên gia cùng một lúc.",
+              "correct": false,
+              "feedback": "Sai vì trong MoE, mỗi token chỉ gọi một số chuyên gia phù hợp thay vì đi qua tất cả."
+            },
+            {
+              "key": "D",
+              "text": "Số lượng tham số không ảnh hưởng gì đến năng lực hay chi phí của mô hình ngôn ngữ.",
+              "correct": false,
+              "feedback": "Sai vì scaling law cho thấy compute và tham số làm model khôn lên theo quy luật."
+            }
+          ]
+        },
+        {
+          "id": "d1-s3-q09",
+          "question": "Một mô hình LLM vừa hoàn thành giai đoạn Pre-training (\"đọc cả thư viện\") nhưng chưa qua SFT và RLHF sẽ gặp vấn đề gì khi bạn đưa vào sử dụng làm trợ lý ảo?",
+          "citation": "[T01-018]",
+          "sourcePages": [
+            18
+          ],
+          "reviewSummary": "Quy trình tạo ra LLM gồm: Pre-training (đọc cả thư viện học kiến thức), SFT (học cách trả lời ra dáng trợ lý), RLHF/DPO (uốn nắn an toàn, dễ chịu) và luyện suy luận. Đọc vạn cuốn sách chưa chắc biết trả lời phỏng vấn nếu thiếu các bước sau.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Nó sẽ từ chối trả lời mọi câu hỏi vì chưa từng đọc qua bất kỳ dữ liệu nào trên internet.",
+              "correct": false,
+              "feedback": "Sai vì giai đoạn Pre-training đã cho phép nó đọc hàng nghìn tỷ token và học kiến thức."
+            },
+            {
+              "key": "B",
+              "text": "Nó đã đọc vạn cuốn sách nên chắc chắn biết cách làm trợ lý phỏng vấn hoàn hảo ngay lập tức.",
+              "correct": false,
+              "feedback": "Hiểu lầm phổ biến: Nghĩ chỉ cần pre-training là đủ làm chatbot giỏi mà không cần SFT/RLHF."
+            },
+            {
+              "key": "C",
+              "text": "Nó có thể biết nhiều kiến thức từ pre-training nhưng chưa biết cách trả lời ra dáng trợ lý hay an toàn do thiếu SFT và RLHF.",
+              "correct": true,
+              "feedback": "Chính xác! Đọc vạn cuốn sách chưa chắc biết trả lời phỏng vấn nếu thiếu các bước chỉ cách và uốn nắn."
+            },
+            {
+              "key": "D",
+              "text": "Nó không thể sinh ra được từ nào do chưa được học cơ chế dự đoán token.",
+              "correct": false,
+              "feedback": "Sai vì pre-training chính là giai đoạn học cách đoán mảnh chữ tiếp theo từ thư viện khổng lồ."
+            }
+          ]
+        },
+        {
+          "id": "d1-s3-q10",
+          "question": "Trong quá trình huấn luyện RLHF (Reinforcement Learning from Human Feedback) để biến một cỗ máy đoán token thành trợ lý hữu ích, bước huấn luyện nào đóng vai trò thay thế con người chấm điểm tự động ở quy mô lớn?",
+          "citation": "[T01-019]",
+          "sourcePages": [
+            19
+          ],
+          "reviewSummary": "RLHF gồm 3 bước: model viết nhiều câu trả lời, người chấm xếp hạng để huấn luyện reward model chấm điểm thay người, và huấn luyện tăng xác suất câu trả lời điểm cao. Kết quả tạo ra trợ lý helpful, harmless, honest.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Huấn luyện một reward model (mô hình phần thưởng) dựa trên bảng xếp hạng của con người để chấm điểm thay người.",
+              "correct": true,
+              "feedback": "Chính xác! Reward model được huấn luyện từ xếp hạng của con người để tự động chấm điểm."
+            },
+            {
+              "key": "B",
+              "text": "Con người trực tiếp gõ tay chấm điểm cho từng tỷ token sinh ra trong suốt quá trình chạy thực tế.",
+              "correct": false,
+              "feedback": "Hiểu lầm phổ biến: Nghĩ con người phải ngồi chấm điểm thủ công từng câu trả lời mãi mãi."
+            },
+            {
+              "key": "C",
+              "text": "Mô hình tự sinh câu trả lời rồi tự thưởng cho chính mình mà không cần bất kỳ dữ liệu con người nào.",
+              "correct": false,
+              "feedback": "Sai vì RLHF khởi nguồn từ việc con người xếp hạng câu trả lời để tạo chuẩn mực."
+            },
+            {
+              "key": "D",
+              "text": "Cố định cứng các quy tắc lập trình thủ công bằng ngôn ngữ Python để lọc từ khóa nhạy cảm.",
+              "correct": false,
+              "feedback": "Sai vì RLHF sử dụng học tăng cường dựa trên phần thưởng phản hồi chứ không dùng rule cứng."
+            }
+          ]
+        },
+        {
+          "id": "d1-s3-q11",
+          "question": "Khi bạn hỏi một mô hình LLM về một sự kiện vừa xảy ra ngày hôm qua, mô hình tự tin đưa ra một câu trả lời hoàn toàn sai lệch nhưng rất trôi chảy. Hiện tượng này bắt nguồn từ giới hạn nào?",
+          "citation": "[T01-020]",
+          "sourcePages": [
+            20
+          ],
+          "reviewSummary": "Các giới hạn bẩm sinh của LLM gồm: bong bóng thời gian (knowledge cutoff), nói chắc như đúng rồi (tối ưu cho hợp lý thay vì tra sự thật nên gây hallucination) và bàn làm việc có hạn (context trần). Biết nhiều khác làm được.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Mô hình bị cố tình lập trình để nói dối người dùng nhằm tiết kiệm điện năng xử lý.",
+              "correct": false,
+              "feedback": "Sai vì mô hình không chủ tâm nói dối mà bản chất nó tối ưu cho câu nghe hợp lý."
+            },
+            {
+              "key": "B",
+              "text": "Mô hình tối ưu để tạo ra câu trả lời nghe hợp lý chứ không tra cứu sự thật, kết hợp với knowledge cutoff.",
+              "correct": true,
+              "feedback": "Chính xác! Mô hình tối ưu cho sự trôi chảy/hợp lý nên dễ bị ảo giác (hallucination) khi thiếu dữ liệu thực tế."
+            },
+            {
+              "key": "C",
+              "text": "Do context của mô hình quá ngắn nên nó quên mất cách sinh chữ cái tiếng Việt.",
+              "correct": false,
+              "feedback": "Sai vì lỗi tự tin nói sai xuất phát từ mục tiêu tối ưu xác suất từ hợp lý, không phải do quên tiếng Việt."
+            },
+            {
+              "key": "D",
+              "text": "Do mô hình chưa hề qua giai đoạn pre-training nên không có từ vựng nào trong đầu.",
+              "correct": false,
+              "feedback": "Sai, mô hình vẫn có từ vựng nhưng bị giới hạn về thời gian cập nhật và bản chất tối ưu xác suất."
+            }
+          ]
+        },
+        {
+          "id": "d1-s3-q12",
+          "question": "Khi kiểm tra một model phân loại email spam trên tập dữ liệu thực tế ngoài đời, độ chính xác sụt giảm mạnh dù điểm benchmark lúc huấn luyện rất cao. Nguyên nhân sâu xa là gì?",
+          "citation": "[T01-021]",
+          "sourcePages": [
+            21
+          ],
+          "reviewSummary": "Mô hình rất giỏi học vẹt đường tắt (shortcut learning): ví dụ phân loại spam bằng cách đếm hyperlink, phân loại câu chủ quan bằng cách nhìn nguồn film review, hoặc phân loại MNLI bằng từ phủ định. Đổi dữ liệu test là điểm tụt.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Model đã thực sự hiểu sâu sắc bản chất ngữ nghĩa của email spam giống hệt con người.",
+              "correct": false,
+              "feedback": "Hiểu lầm phổ biến: Nghĩ benchmark cao nghĩa là model hiểu đúng bản chất vấn đề."
+            },
+            {
+              "key": "B",
+              "text": "Model đã học vẹt đường tắt (như đếm số hyperlink) thay vì hiểu nội dung, nên đổi dữ liệu test là điểm tụt.",
+              "correct": true,
+              "feedback": "Chính xác! Model học vẹt các đặc trưng bề ngoài (shortcut) thay vì học logic thực sự."
+            },
+            {
+              "key": "C",
+              "text": "Model bị lỗi phần cứng trong quá trình chạy inference trên server của khách hàng.",
+              "correct": false,
+              "feedback": "Sai vì đây là vấn đề về cách model học từ dữ liệu, không phải lỗi phần cứng."
+            },
+            {
+              "key": "D",
+              "text": "Số lượng token của email test quá ngắn khiến cơ chế attention không hoạt động.",
+              "correct": false,
+              "feedback": "Sai vì nguyên nhân chính là hiện tượng học vẹt đường tắt (shortcut learning)."
+            }
+          ]
+        },
+        {
+          "id": "d1-s3-q13",
+          "question": "Bạn đưa một bài toán đố phức tạp cho một LLM và nó trả về kết quả sai ngay lập tức khi trả lời trực tiếp. Tuy nhiên, khi bạn thêm yêu cầu \"hãy nghĩ từng bước\" (Chain-of-Thought), mô hình lại đưa ra đáp án đúng. Bản chất của sự thay đổi này là gì?",
+          "citation": "[T01-022]",
+          "sourcePages": [
+            22
+          ],
+          "reviewSummary": "Chain-of-Thought (thêm giấy nháp) giúp bản chất suy luận của mô hình lộ ra. Cùng một mô hình và câu hỏi, khi được yêu cầu viết nháp từng bước, kết quả từ sai thành đúng.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Việc thêm giấy nháp làm thay đổi hoàn toàn kiến trúc trọng số của mô hình từ đầu đến cuối.",
+              "correct": false,
+              "feedback": "Sai vì kiến trúc mô hình không đổi, chỉ là cách cung cấp không gian suy luận thay đổi."
+            },
+            {
+              "key": "B",
+              "text": "Yêu cầu viết nháp biến model thành một phần mềm lập trình bên ngoài hoàn toàn khác.",
+              "correct": false,
+              "feedback": "Sai vì vẫn là cùng một model xử lý."
+            },
+            {
+              "key": "C",
+              "text": "Giấy nháp giúp mô hình tự động kết nối internet để tải về đáp án chính xác nhất.",
+              "correct": false,
+              "feedback": "Sai vì không có quá trình kết nối internet nào diễn ra ở đây."
+            },
+            {
+              "key": "D",
+              "text": "Việc cho mô hình viết nháp từng bước giúp bản chất suy luận lộ ra, biến câu trả lời từ sai thành đúng.",
+              "correct": true,
+              "feedback": "Chính xác! Thêm giấy nháp (Chain-of-Thought) giúp mô hình bộc lộ quá trình suy luận logic."
+            }
+          ]
+        }
+      ],
+      "d1-s4": [
+        {
+          "id": "d1-s4-q01",
+          "question": "Bạn đang xây dựng một ứng dụng sử dụng LLM thuần túy mà không trang bị thêm bất kỳ công cụ kết nối dữ liệu hay API nào. Ứng dụng này nằm ở mức độ nào trong tháp bốn mức độ từ LLM đến agent?",
+          "citation": "[T01-023]",
+          "sourcePages": [
+            23
+          ],
+          "reviewSummary": "Quá trình tiến hóa từ LLM đến agent gồm bốn mức độ với các năng lực tăng dần. Level 0 là bộ não suy luận thuần túy bằng LLM trần không có công cụ hay dữ liệu mới. Level 1 kết hợp thêm các công cụ như search web hay gọi API để vượt qua bong bóng thời gian. Level 2 nâng cấp khả năng lập kế hoạch bằng cách tự chia mục tiêu và dùng tool nối tiếp. Level 3 là sự phối hợp của nhiều agent chuyên biệt tạo thành đội ngũ multi-agent.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Level 1 — Có kết nối vì LLM vẫn có thể tự suy luận dựa trên dữ liệu sẵn có.",
+              "correct": false,
+              "feedback": "Sai. Đây là hiểu lầm phổ biến giữa việc có kết nối công cụ và việc dùng LLM trần. Level 1 bắt buộc phải có kết nối tools như search web hay gọi API."
+            },
+            {
+              "key": "B",
+              "text": "Level 0 — Bộ não suy luận vì đây là LLM trần không có công cụ hay dữ liệu mới.",
+              "correct": true,
+              "feedback": "Chính xác. LLM trần không công cụ và không dữ liệu mới được định nghĩa là Level 0 trong mô hình bốn mức độ."
+            },
+            {
+              "key": "C",
+              "text": "Level 2 — Biết lập kế hoạch do LLM tự động chia nhỏ mục tiêu.",
+              "correct": false,
+              "feedback": "Sai. Level 2 yêu cầu phải có khả năng tự lập kế hoạch, chia mục tiêu và dùng tool nối tiếp, trong khi trường hợp này không trang bị công cụ nào."
+            },
+            {
+              "key": "D",
+              "text": "Level 3 — Đội agent phối hợp.",
+              "correct": false,
+              "feedback": "Sai. Level 3 đòi hỏi sự tham gia của nhiều agent chuyên biệt phối hợp cùng nhau."
+            }
+          ]
+        },
+        {
+          "id": "d1-s4-q02",
+          "question": "Một hệ thống AI cần tìm kiếm thông tin mới trên internet và đọc dữ liệu từ database nội bộ để trả lời câu hỏi của người dùng. Hệ thống này đang đạt đến mức độ nào?",
+          "citation": "[T01-023]",
+          "sourcePages": [
+            23
+          ],
+          "reviewSummary": "Quá trình tiến hóa từ LLM đến agent gồm bốn mức độ với các năng lực tăng dần. Level 0 là bộ não suy luận thuần túy bằng LLM trần không có công cụ hay dữ liệu mới. Level 1 kết hợp thêm các công cụ như search web hay gọi API để vượt qua bong bóng thời gian. Level 2 nâng cấp khả năng lập kế hoạch bằng cách tự chia mục tiêu và dùng tool nối tiếp. Level 3 là sự phối hợp của nhiều agent chuyên biệt tạo thành đội ngũ multi-agent.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Level 0 — Bộ não suy luận.",
+              "correct": false,
+              "feedback": "Sai. Level 0 chỉ dùng LLM trần mà không có các công cụ kết nối dữ liệu mới."
+            },
+            {
+              "key": "B",
+              "text": "Level 1 — Có kết nối.",
+              "correct": true,
+              "feedback": "Chính xác. Việc tích hợp tools như search web và đọc database giúp vượt khỏi bong bóng thời gian chính là đặc trưng của Level 1."
+            },
+            {
+              "key": "C",
+              "text": "Level 2 — Biết lập kế hoạch.",
+              "correct": false,
+              "feedback": "Sai. Mặc dù có dùng tool, nhưng việc chỉ tìm kiếm và đọc dữ liệu chưa đủ điều kiện tự chia mục tiêu thành nhiều bước và dùng tool nối tiếp của Level 2."
+            },
+            {
+              "key": "D",
+              "text": "Level 3 — Đội agent phối hợp.",
+              "correct": false,
+              "feedback": "Sai. Đây là công việc của một agent đơn lẻ có kết nối công cụ, chưa phải hệ thống đa agent."
+            }
+          ]
+        },
+        {
+          "id": "d1-s4-q03",
+          "question": "Bạn muốn xây dựng một ứng dụng AI có khả năng tự động chia nhỏ mục tiêu phức tạp thành nhiều bước, sử dụng nhiều công cụ nối tiếp nhau và tự kiểm tra kết quả đạt được. Ứng dụng này thuộc Level mấy?",
+          "citation": "[T01-023]",
+          "sourcePages": [
+            23
+          ],
+          "reviewSummary": "Quá trình tiến hóa từ LLM đến agent gồm bốn mức độ với các năng lực tăng dần. Level 0 là bộ não suy luận thuần túy bằng LLM trần không có công cụ hay dữ liệu mới. Level 1 kết hợp thêm các công cụ như search web hay gọi API để vượt qua bong bóng thời gian. Level 2 nâng cấp khả năng lập kế hoạch bằng cách tự chia mục tiêu và dùng tool nối tiếp. Level 3 là sự phối hợp của nhiều agent chuyên biệt tạo thành đội ngũ multi-agent.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Level 0",
+              "correct": false,
+              "feedback": "Sai. Level 0 hoàn toàn không có công cụ và khả năng lập kế hoạch phức tạp."
+            },
+            {
+              "key": "B",
+              "text": "Level 1",
+              "correct": false,
+              "feedback": "Sai. Level 1 chỉ dừng lại ở việc có kết nối tools chứ chưa tự chia mục tiêu nhiều bước hay tự kiểm tra kết quả."
+            },
+            {
+              "key": "C",
+              "text": "Level 2",
+              "correct": true,
+              "feedback": "Chính xác. Năng lực tự chia mục tiêu thành nhiều bước, dùng nhiều tool nối tiếp và tự kiểm tra kết quả thuộc về Level 2."
+            },
+            {
+              "key": "D",
+              "text": "Level 3",
+              "correct": false,
+              "feedback": "Sai. Level 3 là mô hình multi-agent với nhiều agent phối hợp, trong khi mô tả trên tập trung vào năng lực lập kế hoạch của agent."
+            }
+          ]
+        },
+        {
+          "id": "d1-s4-q04",
+          "question": "Khi thiết kế một hệ thống bao gồm nhiều agent chuyên biệt cùng chia sẻ công việc để giải quyết một bài toán lớn, bạn đang ứng dụng mức độ nào?",
+          "citation": "[T01-023]",
+          "sourcePages": [
+            23
+          ],
+          "reviewSummary": "Quá trình tiến hóa từ LLM đến agent gồm bốn mức độ với các năng lực tăng dần. Level 0 là bộ não suy luận thuần túy bằng LLM trần không có công cụ hay dữ liệu mới. Level 1 kết hợp thêm các công cụ như search web hay gọi API để vượt qua bong bóng thời gian. Level 2 nâng cấp khả năng lập kế hoạch bằng cách tự chia mục tiêu và dùng tool nối tiếp. Level 3 là sự phối hợp của nhiều agent chuyên biệt tạo thành đội ngũ multi-agent.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Level 1 — Có kết nối",
+              "correct": false,
+              "feedback": "Sai. Level 1 chỉ đơn thuần là một agent kết nối với công cụ bên ngoài."
+            },
+            {
+              "key": "B",
+              "text": "Level 2 — Biết lập kế hoạch",
+              "correct": false,
+              "feedback": "Sai. Level 2 là khả năng lập kế hoạch của một cá thể agent duy nhất."
+            },
+            {
+              "key": "C",
+              "text": "Level 3 — Đội agent phối hợp",
+              "correct": true,
+              "feedback": "Chính xác. Việc nhiều agent chuyên biệt chia việc như một đội ngũ (multi-agent) chính là đặc điểm của Level 3."
+            },
+            {
+              "key": "D",
+              "text": "Level 0 — Bộ não suy luận",
+              "correct": false,
+              "feedback": "Sai. Level 0 chỉ là LLM trần đơn lẻ."
+            }
+          ]
+        },
+        {
+          "id": "d1-s4-q05",
+          "question": "Theo định nghĩa về bản chất của AI Agent, phát biểu nào sau đây là chính xác nhất khi giải thích Agent là gì cho người mới bắt đầu?",
+          "citation": "[T01-023]",
+          "sourcePages": [
+            23
+          ],
+          "reviewSummary": "Quá trình tiến hóa từ LLM đến agent gồm bốn mức độ với các năng lực tăng dần. Level 0 là bộ não suy luận thuần túy bằng LLM trần không có công cụ hay dữ liệu mới. Level 1 kết hợp thêm các công cụ như search web hay gọi API để vượt qua bong bóng thời gian. Level 2 nâng cấp khả năng lập kế hoạch bằng cách tự chia mục tiêu và dùng tool nối tiếp. Level 3 là sự phối hợp của nhiều agent chuyên biệt tạo thành đội ngũ multi-agent. Takeaway cốt lõi: Agent không phải một loại model khác mà là LLM được đặt vào vòng làm việc có mục tiêu và hành động.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Agent là một loại kiến trúc model AI hoàn toàn khác biệt với LLM.",
+              "correct": false,
+              "feedback": "Sai. Đây là hiểu lầm phổ biến; thực tế takeaway đã khẳng định agent không phải một loại model khác."
+            },
+            {
+              "key": "B",
+              "text": "Agent thực chất là LLM được đặt vào vòng làm việc có mục tiêu và hành động.",
+              "correct": true,
+              "feedback": "Chính xác. Takeaway của phần này nhấn mạnh agent chính là LLM được đặt vào vòng làm việc có mục tiêu và hành động."
+            },
+            {
+              "key": "C",
+              "text": "Agent chỉ đơn thuần là một câu lệnh (prompt) phức tạp được viết sẵn.",
+              "correct": false,
+              "feedback": "Sai. Agent bao gồm vòng làm việc với mục tiêu, hành động, công cụ và bộ nhớ chứ không chỉ là một đoạn prompt."
+            },
+            {
+              "key": "D",
+              "text": "Agent là một cơ sở dữ liệu khổng lồ được tích hợp sẵn bên trong LLM.",
+              "correct": false,
+              "feedback": "Sai. Bản chất của agent nằm ở vòng làm việc có mục tiêu và hành động, không phải là cơ sở dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "d1-s4-q06",
+          "question": "Khi phân tích giải phẫu một AI Agent để xây dựng hệ thống chạy thành vòng lặp cho tới khi xong việc, đâu là 5 bộ phận cấu thành đầy đủ theo tài liệu?",
+          "citation": "[T01-024]",
+          "sourcePages": [
+            24
+          ],
+          "reviewSummary": "Giải phẫu một agent gồm 5 bộ phận kết hợp thành một vòng lặp hoạt động liên tục cho đến khi hoàn thành công việc: Goal (mục tiêu cần đạt), Reasoning (bộ não LLM chia bước), Tools (search, API, database, code), Action (hành động ra đời thật), và Memory (sổ tay ghi nhớ các bước ghi/đọc, quan sát kết quả để lặp lại).",
+          "options": [
+            {
+              "key": "A",
+              "text": "Goal, Reasoning, Tools, Memory, Action",
+              "correct": true,
+              "feedback": "Chính xác. 5 bộ phận cấu thành agent chạy thành vòng lặp gồm Goal, Reasoning, Tools, Memory và Action."
+            },
+            {
+              "key": "B",
+              "text": "Prompt, LLM, Database, API, Output",
+              "correct": false,
+              "feedback": "Sai. Đây là các thành phần kỹ thuật chung chứ không phải cấu trúc giải phẫu chuẩn của một agent theo mô hình 5 bộ phận."
+            },
+            {
+              "key": "C",
+              "text": "Input, Processing, Storage, Network, Display",
+              "correct": false,
+              "feedback": "Sai. Đây là các khối kiến trúc máy tính truyền thống, không phản ánh đúng cấu trúc giải phẫu của AI Agent."
+            },
+            {
+              "key": "D",
+              "text": "Level 0, Level 1, Level 2, Level 3, Takeaway",
+              "correct": false,
+              "feedback": "Sai đây là bốn mức độ tiến hóa từ LLM đến agent chứ không phải giải phẫu 5 bộ phận của một agent."
+            }
+          ]
+        }
+      ],
+      "d1-s5": [
+        {
+          "id": "d1-s5-q01",
+          "question": "Bạn đang cần xây dựng một ứng dụng AI tự động hóa các tác vụ lặp đi lặp lại hằng ngày với mức độ phức tạp trung bình, không đòi hỏi khả năng suy luận tối tân nhất. Theo chiến lược chọn model theo tầng, bạn nên bắt đầu thử nghiệm với tầng nào?",
+          "citation": "[T01-026]",
+          "sourcePages": [
+            26
+          ],
+          "reviewSummary": "Việc lựa chọn model nên được chia theo tầng thay vì gọi tên cụ thể. Tầng 1 là Frontier đóng dành cho việc thật sự khó và đắt nhất. Tầng 2 bao gồm các model rẻ mà mạnh như Sonnet, Haiku hay Flash, được dùng cho đa số việc hằng ngày và là mặc định nên thử trước. Tầng 3 là Self-host hoặc siêu rẻ dùng khi cần kiểm soát dữ liệu hoặc quy mô lớn. Hai lỗi đối xứng cần tránh là dùng frontier cho việc đơn giản gây phí tiền, hoặc dùng model quá rẻ cho việc khó gây kết quả tệ.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Tầng 1 — Frontier đóng (như Fable 5, GPT-5.6 Sol, Opus 4.8)",
+              "correct": false,
+              "feedback": "Sai. Đây là lỗi đối xứng: việc đơn giản mà gọi frontier sẽ dẫn đến phí tiền."
+            },
+            {
+              "key": "B",
+              "text": "Tầng 2 — Rẻ mà mạnh (như Sonnet 4.6, Terra, Haiku, Flash)",
+              "correct": true,
+              "feedback": "Đúng. Tầng 2 chuyên giải quyết đa số việc hằng ngày và là mặc định nên thử trước."
+            },
+            {
+              "key": "C",
+              "text": "Tầng 3 — Self-host / siêu rẻ (như DeepSeek, Qwen)",
+              "correct": false,
+              "feedback": "Sai. Tầng 3 thường dùng khi cần kiểm soát dữ liệu hoặc chi phí quy mô lớn, không phải là lựa chọn mặc định để thử nghiệm ban đầu."
+            },
+            {
+              "key": "D",
+              "text": "Kết hợp đồng thời cả ba tầng cho mọi tác vụ để đảm bảo chất lượng",
+              "correct": false,
+              "feedback": "Sai. Cách này không tối ưu chi phí và vi phạm nguyên tắc chọn model theo tầng."
+            }
+          ]
+        },
+        {
+          "id": "d1-s5-q02",
+          "question": "Khi tối ưu hóa chi phí cho một hệ thống gọi API LLM, bạn nhận thấy hóa đơn đang tăng cao chủ yếu do lượng dữ liệu sinh ra từ model. Dựa vào đặc điểm của token, đâu là giải thích chính xác nhất?",
+          "citation": "[T01-027]",
+          "sourcePages": [
+            27
+          ],
+          "reviewSummary": "Token có giá khác nhau giữa đầu vào và đầu ra. Vé vào (input) rẻ vì model chỉ cần đọc prompt, system instruction và context. Vé ra (output) đắt gấp 3 đến 5 lần vì model phải tự sinh từng mảnh một, vừa chậm vừa tốn kém. Tổng chi phí gọi API phụ thuộc vào tổng số token input và output, trong đó kiểm soát output chính là núm vặn lớn nhất.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Token đầu vào (input) đắt gấp 3-5 lần token đầu ra (output) vì chứa lịch sử chat và tài liệu lớn.",
+              "correct": false,
+              "feedback": "Sai. Hiểu lầm phổ biến: thực tế token đầu vào rẻ hơn, còn token đầu ra mới đắt gấp 3-5 lần."
+            },
+            {
+              "key": "B",
+              "text": "Token đầu ra (output) đắt gấp 3-5 lần token đầu vào vì model phải tự sinh từng mảnh một, do đó kiểm soát output là núm vặn lớn nhất.",
+              "correct": true,
+              "feedback": "Đúng. Vé ra đắt hơn đáng kể và việc kiểm soát output là núm vặn lớn nhất để tối ưu chi phí."
+            },
+            {
+              "key": "C",
+              "text": "Cả token input và output đều có giá hoàn toàn bằng nhau trong mọi lần gọi API.",
+              "correct": false,
+              "feedback": "Sai. Giá của input và output khác nhau rõ rệt, trong đó output đắt hơn đáng kể."
+            },
+            {
+              "key": "D",
+              "text": "Chi phí API chỉ tính trên số lượng từ của người dùng gửi đi, không tính phần model sinh ra.",
+              "correct": false,
+              "feedback": "Sai vì hóa đơn gọi API tính trên tổng của cả input tokens và output tokens."
+            }
+          ]
+        },
+        {
+          "id": "d1-s5-q03",
+          "question": "Bạn muốn cấu trúc một prompt hoàn chỉnh cho ứng dụng chatbot chăm sóc khách hàng. Theo mô hình giải phẫu prompt bốn lớp, phần định nghĩa xem model là ai, cư xử thế nào và không được làm gì nằm ở lớp nào?",
+          "citation": "[T01-028]",
+          "sourcePages": [
+            28
+          ],
+          "reviewSummary": "Một prompt hoàn chỉnh được chia thành bốn lớp xếp chồng: Lớp 1 là System instruction (lời dặn đầu ca về nhân dạng và quy tắc ứng xử); Lớp 2 là User input (câu hỏi của người dùng); Lớp 3 là Context bổ sung (tài liệu, lịch sử chat trên bàn làm việc); Lớp 4 là Output mong muốn (định dạng kết quả). Viết rõ cả 4 lớp đồng nghĩa với việc hoàn thành tốt một nửa công việc prompt engineering.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Lớp 2 — User input",
+              "correct": false,
+              "feedback": "Sai. User input là câu hỏi hoặc yêu cầu cụ thể của người dùng trong lượt tương tác đó."
+            },
+            {
+              "key": "B",
+              "text": "Lớp 3 — Context bổ sung",
+              "correct": false,
+              "feedback": "Sai. Context bổ sung chứa tài liệu, lịch sử chat hoặc dữ liệu tra sổ."
+            },
+            {
+              "key": "C",
+              "text": "Lớp 1 — System instruction",
+              "correct": true,
+              "feedback": "Đúng. System instruction chính là 'lời dặn đầu ca' quy định model là ai và cách cư xử."
+            },
+            {
+              "key": "D",
+              "text": "Lớp 4 — Output mong muốn",
+              "correct": false,
+              "feedback": "Sai. Lớp 4 quy định dạng kết quả trả về như gạch đầu dòng, bảng hoặc JSON."
+            }
+          ]
+        },
+        {
+          "id": "d1-s5-q04",
+          "question": "Bạn đang viết một ứng dụng sinh mã lập trình (code) và phân tích dữ liệu đòi hỏi độ chính xác và tính ổn định cao. Bạn nên cài đặt tham số temperature như thế nào để đảm bảo kết quả tốt nhất?",
+          "citation": "[T01-029]",
+          "sourcePages": [
+            29
+          ],
+          "reviewSummary": "Hai núm vặn chọn từ là temperature và top_p. Temperature là núm vặn độ liều: T=0 luôn chọn từ chắc nhất giúp ổn định, rất hợp cho code và phân tích; T=1 cân bằng tự nhiên; T=2 phân bố phẳng tạo sự đa dạng nhưng dễ lạc đề. Top_p giới hạn xác suất cộng dồn. Các núm vặn này không làm model thông minh hơn mà chỉ đổi cách chọn từ. Mặc định an toàn cho việc cần ổn định là temperature bằng 0.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Cài đặt temperature = 2 để model có độ đa dạng tối đa và tự do sáng tạo code.",
+              "correct": false,
+              "feedback": "Sai. Temperature = 2 tạo phân bố phẳng, dễ làm model lạc đề, không phù hợp với tác vụ cần phân tích và code."
+            },
+            {
+              "key": "B",
+              "text": "Cài đặt temperature = 0 để model luôn chọn từ chắc nhất, đảm bảo tính ổn định.",
+              "correct": true,
+              "feedback": "Đúng. T=0 là mặc định an toàn cho việc cần ổn định, rất hợp cho code và phân tích."
+            },
+            {
+              "key": "C",
+              "text": "Cài đặt temperature rất cao để làm model thông minh hơn khi giải quyết bài toán khó.",
+              "correct": false,
+              "feedback": "Sai. Hiểu lầm phổ biến: các núm vặn này không làm model thông minh hơn mà chỉ thay đổi cách chọn từ."
+            },
+            {
+              "key": "D",
+              "text": "Bắt buộc phải vặn đồng thời cả temperature và top_p ở mức tối đa trong mọi trường hợp.",
+              "correct": false,
+              "feedback": "Sai vì thông thường người ta chỉ vặn một trong hai tham số này."
+            }
+          ]
+        },
+        {
+          "id": "d1-s5-q05",
+          "question": "Khi xem xét xu hướng phát triển của các mô hình ngôn ngữ lớn, nếu năm ngoái bạn phải sử dụng một model rất đắt tiền để giải quyết một bài toán, thì trong năm nay điều gì thường diễn ra với mức chi phí cho cùng một mức năng lực?",
+          "citation": "[T01-025]",
+          "sourcePages": [
+            25
+          ],
+          "reviewSummary": "Cùng một mức năng lực, giá của các mô hình AI giảm khoảng 10 lần mỗi năm. Điều này có nghĩa là những tác vụ năm ngoái bắt buộc phải dùng model đắt nhất thì sang năm nay các model giá rẻ đã có thể thực hiện được.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Chi phí giữ nguyên vì năng lực của model không thay đổi theo thời gian.",
+              "correct": false,
+              "feedback": "Sai. Năng lực và giá thành của model thay đổi rất nhanh theo thời gian."
+            },
+            {
+              "key": "B",
+              "text": "Giá giảm khoảng 10 lần mỗi năm, nghĩa là model rẻ năm nay đã làm được việc năm ngoái phải dùng model đắt nhất.",
+              "correct": true,
+              "feedback": "Đúng. Cùng một mức năng lực, giá rơi khoảng 10 lần mỗi năm."
+            },
+            {
+              "key": "C",
+              "text": "Giá tăng lên vì nhu cầu sử dụng AI trên thị trường ngày càng lớn.",
+              "correct": false,
+              "feedback": "Sai. Sự tiến bộ công nghệ giúp giảm giá thành cho cùng một mức năng lực."
+            },
+            {
+              "key": "D",
+              "text": "Model đắt nhất năm ngoái sẽ bị xoá bỏ hoàn toàn và không còn tồn tại.",
+              "correct": false,
+              "feedback": "Sai. Đoạn văn không đề cập đến việc model cũ bị xoá bỏ mà nói về xu hướng giảm giá của cùng mức năng lực."
+            }
+          ]
+        },
+        {
+          "id": "d1-s5-q06",
+          "question": "Bạn đang thiết kế một đoạn prompt yêu cầu model phải trả kết quả dưới dạng một bảng dữ liệu (table) đi kèm các gạch đầu dòng tóm tắt. Theo cấu trúc giải phẫu prompt, yêu cầu về định dạng kết quả này nên được đặt ở lớp nào?",
+          "citation": "[T01-028]",
+          "sourcePages": [
+            28
+          ],
+          "reviewSummary": "Giải phẫu một prompt gồm bốn lớp xếp chồng: Lớp 1 là System instruction (lời dặn đầu ca), Lớp 2 là User input (câu hỏi người dùng), Lớp 3 là Context bổ sung (tài liệu, lịch sử), và Lớp 4 là Output mong muốn (quy định dạng kết quả như gạch đầu dòng, bảng, JSON hay độ dài).",
+          "options": [
+            {
+              "key": "A",
+              "text": "Lớp 1 — System instruction",
+              "correct": false,
+              "feedback": "Sai. Lớp 1 là lời dặn đầu ca về nhân dạng và quy tắc chung của model, không phải nơi tập trung mô tả chi tiết định dạng kết quả cho từng lượt."
+            },
+            {
+              "key": "B",
+              "text": "Lớp 3 — Context bổ sung",
+              "correct": false,
+              "feedback": "Sai. Context bổ sung dùng để chứa tài liệu hoặc lịch sử chat, giống như bày lên bàn làm việc."
+            },
+            {
+              "key": "C",
+              "text": "Lớp 4 — Output mong muốn",
+              "correct": true,
+              "feedback": "Đúng. Lớp 4 chịu trách nhiệm định nghĩa dạng kết quả như gạch đầu dòng, bảng hoặc JSON."
+            },
+            {
+              "key": "D",
+              "text": "Không cần đưa vào prompt vì model tự động biết cách trình bày bảng.",
+              "correct": false,
+              "feedback": "Sai. Viết rõ Lớp 4 là một phần quan trọng để làm tốt prompt engineering."
+            }
+          ]
+        },
+        {
+          "id": "d1-s5-q07",
+          "question": "Khi bạn muốn tìm hiểu về cơ chế hoạt động của tham số top_p trong việc lựa chọn từ của model, phát biểu nào sau đây là chính xác?",
+          "citation": "[T01-029]",
+          "sourcePages": [
+            29
+          ],
+          "reviewSummary": "Tham số top_p hoạt động theo nguyên tắc chỉ xem top đầu bảng (ví dụ p=0.9 sẽ giữ nhóm có xác suất cộng dồn lớn hơn hoặc bằng 90% và loại bỏ phần đuôi có xác suất thấp). Núm vặn này cùng với temperature chỉ làm thay đổi cách chọn từ chứ không làm model thông minh hơn hay bổ sung tri thức mới.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Top_p giúp bổ sung thêm tri thức mới vào cơ sở dữ liệu của model.",
+              "correct": false,
+              "feedback": "Sai. Các núm vặn chọn từ như top_p không làm model thông minh hơn hay thêm tri thức mới."
+            },
+            {
+              "key": "B",
+              "text": "Top_p với giá trị 0.9 sẽ giữ lại nhóm từ có tổng xác suất cộng dồn từ 90% trở lên và loại bỏ đuôi xác suất thấp.",
+              "correct": true,
+              "feedback": "Đúng. Định nghĩa top_p là giữ nhóm cộng dồn xác suất lớn hơn hoặc bằng giá trị p."
+            },
+            {
+              "key": "C",
+              "text": "Top_p bắt buộc phải được sử dụng đồng thời cùng lúc với temperature ở giá trị tối đa.",
+              "correct": false,
+              "feedback": "Sai. Thông thường người ta chỉ vặn một trong hai núm temperature hoặc top_p."
+            },
+            {
+              "key": "D",
+              "text": "Top_p làm nhiệm vụ quy định nhân dạng và lời dặn đầu ca cho model.",
+              "correct": false,
+              "feedback": "Sai. Quy định nhân dạng thuộc về System instruction trong giải phẫu prompt."
+            }
+          ]
+        },
+        {
+          "id": "d1-s5-q08",
+          "question": "Bạn đang chuẩn bị gửi một lượng lớn tài liệu và lịch sử chat dài vào API để làm ngữ cảnh cho model trả lời. Thành phần dữ liệu này thuộc loại token nào và có đặc điểm chi phí ra sao?",
+          "citation": "[T01-027]",
+          "sourcePages": [
+            27
+          ],
+          "reviewSummary": "Token đầu vào (input tokens) bao gồm chữ bạn gửi đi như prompt, system instruction, context và lịch sử chat. Vé vào này rất rẻ vì model chỉ cần đọc. Ngược lại, token đầu ra (output) là chữ model viết ra, đắt gấp 3-5 lần do model phải tự sinh từng mảnh.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Thuộc token đầu ra (output) và có chi phí rất đắt vì chứa nhiều dữ liệu.",
+              "correct": false,
+              "feedback": "Sai. Lịch sử chat và tài liệu gửi đi được tính là token đầu vào (input), không phải đầu ra."
+            },
+            {
+              "key": "B",
+              "text": "Thuộc token đầu vào (input) và có chi phí rẻ hơn vì model chỉ cần đọc.",
+              "correct": true,
+              "feedback": "Đúng. Tài liệu và lịch sử chat là vé vào (input), có giá rẻ vì model chỉ cần đọc."
+            },
+            {
+              "key": "C",
+              "text": "Không tốn chi phí token vì đây là dữ liệu có sẵn trong ngữ cảnh hệ thống.",
+              "correct": false,
+              "feedback": "Sai. Mọi nội dung gửi đi trong prompt và context đều được tính vào token input."
+            },
+            {
+              "key": "D",
+              "text": "Thuộc token đầu ra và có giá rẻ bằng một phần ba token input.",
+              "correct": false,
+              "feedback": "Sai. Token đầu ra luôn đắt hơn đáng kể so với token đầu vào."
+            }
+          ]
+        },
+        {
+          "id": "d1-s5-q09",
+          "question": "Bạn đang làm việc trong một dự án cần bảo mật dữ liệu tuyệt đối hoặc cần xử lý khối lượng công việc ở quy mô cực lớn. Theo phân tầng model, bạn nên hướng tới lựa chọn nào?",
+          "citation": "[T01-026]",
+          "sourcePages": [
+            26
+          ],
+          "reviewSummary": "Chọn model theo tầng giúp tránh lãng phí. Tầng 3 (Self-host / siêu rẻ như Kimi K3 open-weight, DeepSeek, Qwen) là lựa chọn phù hợp nhất khi cần kiểm soát dữ liệu hoặc chi phí ở quy mô lớn.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Tầng 1 — Frontier đóng vì đây là các model thông minh và đắt tiền nhất.",
+              "correct": false,
+              "feedback": "Sai. Tầng 1 chỉ dành cho việc thật sự khó, không phải là giải pháp tối ưu khi cần kiểm soát dữ liệu hay quy mô lớn."
+            },
+            {
+              "key": "B",
+              "text": "Tầng 2 — Rẻ mà mạnh vì là mặc định thử trước cho mọi việc.",
+              "correct": false,
+              "feedback": "Sai. Khi đặc thù bài toán yêu cầu kiểm soát dữ liệu hoặc quy mô lớn, Tầng 3 mới là lựa chọn đúng."
+            },
+            {
+              "key": "C",
+              "text": "Tầng 3 — Self-host / siêu rẻ để kiểm soát dữ liệu hoặc chi phí quy mô lớn.",
+              "correct": true,
+              "feedback": "Đúng. Tầng 3 chuyên dùng khi cần kiểm soát dữ liệu hoặc chi phí quy mô lớn."
+            },
+            {
+              "key": "D",
+              "text": "Không sử dụng model nào cả mà tự viết code thuần túy từ đầu.",
+              "correct": false,
+              "feedback": "Sai vì ngữ cảnh đang nói về việc lựa chọn tầng model AI."
+            }
+          ]
+        }
+      ]
+    },
+    "d2": {
+      "d2-s1": [
+        {
+          "id": "d2-s1-q01",
+          "question": "Trong phần lộ trình và định hướng tại Day 02, hoạt động nào sau đây thuộc phần nội dung thực hành của buổi CHIỀU (4h) thay vì phần khung lý thuyết buổi sáng?",
+          "citation": "[T02-002]",
+          "sourcePages": [
+            2
+          ],
+          "reviewSummary": "Nội dung Day 02 được chia thành buổi sáng (khung lý thuyết 4h bao gồm Problem Discovery, Problem Statement, các tiêu chí PAIR, HITL, Go/Not Yet/No-Go) và buổi chiều (thực hành Lab 4h bao gồm tìm bài toán, điền Problem Card, phản biện chéo, xác thực dữ liệu, xác định giải pháp và viết Reflection Log). Bài nộp cuối buổi bao gồm nhật ký tìm & lọc bài toán, Problem Statement hoàn chỉnh và nhật ký phản tư.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Tìm 5 bài toán và điền 3 Problem Card.",
+              "correct": true,
+              "feedback": "Đúng! Đây là nhiệm vụ thực hành Lab thuộc buổi chiều theo slide Day 02."
+            },
+            {
+              "key": "B",
+              "text": "Phân tích khung lý thuyết về Double Diamond và Human-in-the-loop.",
+              "correct": false,
+              "feedback": "Sai. Đây là nội dung lý thuyết thuộc buổi sáng."
+            },
+            {
+              "key": "C",
+              "text": "Học về các tiêu chí PAIR và Reward function.",
+              "correct": false,
+              "feedback": "Sai. Đây là nội dung khung lý thuyết diễn ra vào buổi sáng."
+            },
+            {
+              "key": "D",
+              "text": "Nghiên cứu khái niệm Problem Discovery và định lượng hóa vấn đề.",
+              "correct": false,
+              "feedback": "Sai. Đây là kiến thức lý thuyết của buổi sáng."
+            }
+          ]
+        },
+        {
+          "id": "d2-s1-q02",
+          "question": "Một đội ngũ phát triển sản phẩm lập tức nhảy vào việc xây dựng một hệ thống chatbot AI thông minh cho bộ phận chăm sóc khách hàng mà chưa hề làm rõ quy trình vận hành thực tế và điểm nghẽn của nhân viên. Theo nội dung bài học, đây là sai lầm nào?",
+          "citation": "[T02-007]",
+          "sourcePages": [
+            7
+          ],
+          "reviewSummary": "Các sai lầm thường gặp (anti-patterns) trong Problem Discovery bao gồm: Ưu tiên giải pháp (Solution-first) khi xây chatbot/agent trước khi làm rõ quy trình; Mơ hồ hiện trạng (No baseline) khi không lượng hóa tổn thất; Bỏ qua đánh giá (No evaluation) khi thiếu kịch bản kiểm thử; và Mập mờ ranh giới (No boundary) khi không rõ phạm vi tự chủ của AI và thời điểm cần con người phê duyệt.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Mập mờ ranh giới (No boundary).",
+              "correct": false,
+              "feedback": "Sai. Mập mờ ranh giới là không rõ phạm vi tự chủ của AI và thời điểm cần con người phê duyệt."
+            },
+            {
+              "key": "B",
+              "text": "Ưu tiên giải pháp (Solution-first).",
+              "correct": true,
+              "feedback": "Đúng! Đây là sai lầm Ưu tiên giải pháp khi xây chatbot trước khi làm rõ quy trình vận hành và điểm nghẽn thực tế."
+            },
+            {
+              "key": "C",
+              "text": "Mơ hồ hiện trạng (No baseline).",
+              "correct": false,
+              "feedback": "Sai. Mơ hồ hiện trạng là không lượng hóa tổn thất hiện tại để làm căn cứ đánh giá."
+            },
+            {
+              "key": "D",
+              "text": "Bỏ qua đánh giá (No evaluation).",
+              "correct": false,
+              "feedback": "Sai. Bỏ qua đánh giá là không thiết lập kịch bản kiểm thử hoặc chỉ số đo lường."
+            }
+          ]
+        },
+        {
+          "id": "d2-s1-q03",
+          "question": "Trong mô hình Double Diamond, Diamond 1 tập trung vào việc tìm đúng vấn đề thông qua hai giai đoạn nào?",
+          "citation": "[T02-003]",
+          "sourcePages": [
+            3
+          ],
+          "reviewSummary": "Double Diamond gồm hai diamond: Diamond 1 tìm đúng vấn đề với Discover (mở rộng, khảo sát vấn đề căn bản) và Define (thu hẹp, xác định đúng bài toán gốc); Diamond 2 tìm đúng giải pháp với Develop (mở rộng giải pháp tiềm năng) và Deliver (chọn và triển khai). Kỹ sư giải quyết vấn đề, nhà thiết kế khám phá vấn đề.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Develop và Deliver.",
+              "correct": false,
+              "feedback": "Sai. Develop và Deliver là hai giai đoạn của Diamond 2 (Tìm đúng giải pháp)."
+            },
+            {
+              "key": "B",
+              "text": "Discover và Define.",
+              "correct": true,
+              "feedback": "Đúng! Discover (mở rộng) và Define (thu hẹp) là hai giai đoạn của Diamond 1 giúp tìm đúng vấn đề."
+            },
+            {
+              "key": "C",
+              "text": "Discover và Develop.",
+              "correct": false,
+              "feedback": "Sai. Đây là sự kết hợp chéo giữa hai diamond khác nhau."
+            },
+            {
+              "key": "D",
+              "text": "Define và Deliver.",
+              "correct": false,
+              "feedback": "Sai. Hai giai đoạn này không nằm chung trong một diamond theo mô hình."
+            }
+          ]
+        },
+        {
+          "id": "d2-s1-q04",
+          "question": "Khi thực hiện giai đoạn Phân kỳ (Discover) trong Diamond 1 để thấu hiểu sâu sắc vấn đề, bạn có thể sử dụng những công cụ hoặc phương pháp nào?",
+          "citation": "[T02-004]",
+          "sourcePages": [
+            4
+          ],
+          "reviewSummary": "Diamond 1 chia làm Discover (Phân kỳ: quan sát thực tế, phỏng vấn người dùng, khảo sát, nhật ký hành vi, phân tích dữ liệu/log, bản đồ các bên liên quan) và Define (Hội tụ: sơ đồ đồng cảm/gom nhóm, 5 Whys, Impact-Effort, dot voting, How Might We, Problem Statement).",
+          "options": [
+            {
+              "key": "A",
+              "text": "Sơ đồ đồng cảm, 5 Whys và ma trận Impact–Effort.",
+              "correct": false,
+              "feedback": "Sai. Đây là các công cụ hội tụ thuộc giai đoạn Define."
+            },
+            {
+              "key": "B",
+              "text": "Quan sát thực tế, phỏng vấn người dùng và phân tích dữ liệu/log hệ thống.",
+              "correct": true,
+              "feedback": "Đúng! Đây là các phương pháp phân kỳ thuộc giai đoạn Discover để quan sát và thu thập thông tin thực tế."
+            },
+            {
+              "key": "C",
+              "text": "Xác định How Might We và viết Problem Statement.",
+              "correct": false,
+              "feedback": "Sai. Đây là các hoạt động hội tụ ở giai đoạn Define."
+            },
+            {
+              "key": "D",
+              "text": "Dot voting và gom nhóm affinity mapping.",
+              "correct": false,
+              "feedback": "Sai. Đây là phương pháp hội tụ trong giai đoạn Define."
+            }
+          ]
+        },
+        {
+          "id": "d2-s1-q05",
+          "question": "Trường hợp sản phẩm ứng dụng đọc tin tích hợp AI xuất sắc nhưng thị trường quá hẹp để thương mại hóa (đã đóng cửa vào tháng 1/2024) minh họa cho bài học cốt lõi nào?",
+          "citation": "[T02-005]",
+          "sourcePages": [
+            5
+          ],
+          "reviewSummary": "Khởi nguồn từ bài toán chứ không bắt đầu từ AI: ví dụ Cursor từ bỏ CAD để làm AI code editor do am hiểu nghiệp vụ; Artifact đóng cửa vì 'Sản phẩm tốt ≠ Thị trường lớn'; NotebookLM định vị đúng điểm đau hỏi đáp tài liệu cá nhân. Lộ trình chuẩn: Bài toán -> Quy trình vận hành -> Chỉ số đo lường -> Giải pháp AI.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Lệch năng lực cốt lõi.",
+              "correct": false,
+              "feedback": "Sai. 'Lệch năng lực cốt lõi' là bài học từ ví dụ Cursor khi ban đầu làm AI cho thiết kế cơ khí CAD."
+            },
+            {
+              "key": "B",
+              "text": "Sản phẩm tốt chưa chắc thị trường lớn.",
+              "correct": true,
+              "feedback": "Đúng! Ví dụ của Artifact minh họa cho việc ứng dụng AI xuất sắc nhưng thị trường quá hẹp để thương mại hóa."
+            },
+            {
+              "key": "C",
+              "text": "Thiếu chỉ số đo lường hiệu quả vận hành.",
+              "correct": false,
+              "feedback": "Sai. Đây không phải là bài học cốt lõi được rút ra từ trường hợp của Artifact trong slide."
+            },
+            {
+              "key": "D",
+              "text": "Định vị sai điểm đau hỏi đáp tài liệu.",
+              "correct": false,
+              "feedback": "Sai. Định vị đúng điểm đau là bài học rút ra từ trường hợp của NotebookLM."
+            }
+          ]
+        },
+        {
+          "id": "d2-s1-q06",
+          "question": "Khi sử dụng bộ khung 4 Lenses để tìm bài toán AI, ống kính 'AI Advantage' yêu cầu bạn tìm kiếm các tác vụ có đặc điểm gì?",
+          "citation": "[T02-006]",
+          "sourcePages": [
+            6
+          ],
+          "reviewSummary": "Tìm bài toán AI qua 4 Lenses: Repetitive (tác vụ lặp lại, cần chuẩn hóa để tự động hóa), Time-consuming (tiêu tốn thời gian, khối lượng lớn), AI Advantage (đòi hỏi phân tích ngữ cảnh, xử lý ngôn ngữ tự nhiên, tổng hợp đa nguồn), User Pain Points (điểm đau, khó khăn, phàn nàn của người dùng). Chưa vội đề xuất giải pháp buổi sáng.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Các công việc diễn ra thường xuyên cần chuẩn hóa để tự động hóa.",
+              "correct": false,
+              "feedback": "Sai. Đây là đặc điểm của ống kính Repetitive (tác vụ lặp lại)."
+            },
+            {
+              "key": "B",
+              "text": "Các tác vụ đòi hỏi phân tích ngữ cảnh, xử lý ngôn ngữ tự nhiên và tổng hợp đa nguồn.",
+              "correct": true,
+              "feedback": "Đúng! AI Advantage tập trung vào các tác vụ đòi hỏi phân tích ngữ cảnh, NLP và tổng hợp đa nguồn."
+            },
+            {
+              "key": "C",
+              "text": "Những khâu có khối lượng xử lý lớn gây hao phí thời gian tìm kiếm hoặc đọc hiểu.",
+              "correct": false,
+              "feedback": "Sai. Đây là đặc điểm của ống kính Time-consuming (tiêu tốn thời gian)."
+            },
+            {
+              "key": "D",
+              "text": "Những nơi người dùng đang gặp khó khăn, phàn nàn hoặc tắc nghẽn liên tục.",
+              "correct": false,
+              "feedback": "Sai. Đây là đặc điểm của ống kính User Pain Points."
+            }
+          ]
+        },
+        {
+          "id": "d2-s1-q07",
+          "question": "Một nhóm triển khai AI không thiết lập bất kỳ kịch bản kiểm thử, chỉ số đo lường hay phương án đối chứng nào trước khi đưa mô hình vào chạy thực tế. Lỗi này thuộc anti-pattern nào?",
+          "citation": "[T02-007]",
+          "sourcePages": [
+            7
+          ],
+          "reviewSummary": "Các anti-pattern gồm: Ưu tiên giải pháp (Solution-first), Mơ hồ hiện trạng (No baseline), Bỏ qua đánh giá (No evaluation - không thiết lập kịch bản kiểm thử, chỉ số đo lường hoặc phương án đối chứng), Mập mờ ranh giới (No boundary). Cần quay lại làm rõ Problem Statement nếu mắc phải.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Ưu tiên giải pháp (Solution-first).",
+              "correct": false,
+              "feedback": "Sai. Ưu tiên giải pháp là xây chatbot/agent trước khi làm rõ quy trình và điểm nghẽn."
+            },
+            {
+              "key": "B",
+              "text": "Mơ hồ hiện trạng (No baseline).",
+              "correct": false,
+              "feedback": "Sai. Mơ hồ hiện trạng là không lượng hóa tổn thất hiện tại."
+            },
+            {
+              "key": "C",
+              "text": "Bỏ qua đánh giá (No evaluation).",
+              "correct": true,
+              "feedback": "Đúng! Bỏ qua đánh giá là không thiết lập kịch bản kiểm thử, chỉ số đo lường hoặc phương án đối chứng."
+            },
+            {
+              "key": "D",
+              "text": "Mập mờ ranh giới (No boundary).",
+              "correct": false,
+              "feedback": "Sai. Mập mờ ranh giới là không rõ phạm vi tự chủ của AI và thời điểm cần con người phê duyệt."
+            }
+          ]
+        },
+        {
+          "id": "d2-s1-q08",
+          "question": "Theo takeaway của phần Diamond 1, phát biểu nào sau đây diễn tả chính xác vai trò của nhà thiết kế so với kỹ sư/doanh nhân?",
+          "citation": "[T02-003]",
+          "sourcePages": [
+            3
+          ],
+          "reviewSummary": "Takeaway của Double Diamond: 'Kỹ sư và doanh nhân được đào tạo để giải vấn đề. Nhà thiết kế được đào tạo để khám phá vấn đề thật.' Giải pháp xuất sắc cho sai vấn đề có thể còn tệ hơn không có giải pháp.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Nhà thiết kế được đào tạo để khám phá vấn đề thật, trong khi kỹ sư/doanh nhân giải quyết vấn đề.",
+              "correct": true,
+              "feedback": "Đúng! Phát biểu này bám sát nguyên văn takeaway trong slide về việc khám phá và giải quyết vấn đề."
+            },
+            {
+              "key": "B",
+              "text": "Nhà thiết kế tập trung tìm giải pháp công nghệ, còn kỹ sư tìm hiểu nhu cầu người dùng.",
+              "correct": false,
+              "feedback": "Sai. Nội dung slide nêu ngược lại vai trò của nhà thiết kế là khám phá vấn đề thật."
+            },
+            {
+              "key": "C",
+              "text": "Kỹ sư được đào tạo để thiết kế giao diện, còn nhà thiết kế xây dựng thuật toán.",
+              "correct": false,
+              "feedback": "Sai. Slide không định nghĩa vai trò của kỹ sư và nhà thiết kế theo cách này."
+            },
+            {
+              "key": "D",
+              "text": "Doanh nhân tìm kiếm giải pháp xuất sắc, nhà thiết kế đánh giá thị trường.",
+              "correct": false,
+              "feedback": "Sai. Điểm cốt lõi được nhấn mạnh là kỹ sư/doanh nhân giải vấn đề còn nhà thiết kế khám phá vấn đề."
+            }
+          ]
+        },
+        {
+          "id": "d2-s1-q09",
+          "question": "Khi bạn phân tích một quy trình công việc và nhận ra có một công đoạn diễn ra cực kỳ thường xuyên, bạn cần xem xét chuẩn hóa nó để tự động hóa. Công đoạn này phù hợp với ống kính nào trong 4 Lenses?",
+          "citation": "[T02-006]",
+          "sourcePages": [
+            6
+          ],
+          "reviewSummary": "4 Lenses gồm Repetitive (tác vụ lặp lại thường xuyên để chuẩn hóa tự động hóa), Time-consuming (tiêu tốn thời gian, khối lượng xử lý lớn), AI Advantage (lợi thế ngữ cảnh, NLP, tổng hợp), và User Pain Points (điểm đau người dùng).",
+          "options": [
+            {
+              "key": "A",
+              "text": "Time-consuming.",
+              "correct": false,
+              "feedback": "Sai. Time-consuming nói đến khối lượng xử lý lớn và thời gian hao phí."
+            },
+            {
+              "key": "B",
+              "text": "AI Advantage.",
+              "correct": false,
+              "feedback": "Sai. AI Advantage đề cập đến tác vụ đòi hỏi phân tích ngữ cảnh, xử lý ngôn ngữ tự nhiên."
+            },
+            {
+              "key": "C",
+              "text": "Repetitive.",
+              "correct": true,
+              "feedback": "Đúng! Repetitive là ống kính hướng tới các tác vụ lặp lại diễn ra thường xuyên cần chuẩn hóa để tự động hóa."
+            },
+            {
+              "key": "D",
+              "text": "User Pain Points.",
+              "correct": false,
+              "feedback": "Sai. User Pain Points tập trung vào khó khăn, phàn nàn hoặc tắc nghẽn của người dùng."
+            }
+          ]
+        },
+        {
+          "id": "d2-s1-q10",
+          "question": "Trong quá trình xác định bài toán AI, nếu đội ngũ hoàn toàn không lượng hóa được tổn thất hiện tại của quy trình, họ sẽ gặp phải sai lầm nào?",
+          "citation": "[T02-007]",
+          "sourcePages": [
+            7
+          ],
+          "reviewSummary": "Anti-pattern 'Mơ hồ hiện trạng' (No baseline) xảy ra khi không lượng hóa tổn thất hiện tại, dẫn đến mất căn cứ đánh giá hiệu quả cải tiến. Cần quay lại làm rõ Problem Statement nếu gặp phải.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Mơ hồ hiện trạng (No baseline).",
+              "correct": true,
+              "feedback": "Đúng! Không lượng hóa tổn thất hiện tại dẫn đến hiện trạng mơ hồ (No baseline), mất căn cứ đánh giá."
+            },
+            {
+              "key": "B",
+              "text": "Mập mờ ranh giới (No boundary).",
+              "correct": false,
+              "feedback": "Sai. Mập mờ ranh giới liên quan đến phạm vi tự chủ của AI và thời điểm cần con người phê duyệt."
+            },
+            {
+              "key": "C",
+              "text": "Bỏ qua đánh giá (No evaluation).",
+              "correct": false,
+              "feedback": "Sai. Bỏ qua đánh giá là thiếu kịch bản kiểm thử hoặc chỉ số đo lường kết quả."
+            },
+            {
+              "key": "D",
+              "text": "Ưu tiên giải pháp (Solution-first).",
+              "correct": false,
+              "feedback": "Sai. Ưu tiên giải pháp là chọn công nghệ hoặc xây chatbot trước khi làm rõ quy trình."
+            }
+          ]
+        },
+        {
+          "id": "d2-s1-q11",
+          "question": "Theo lộ trình chuẩn được khuyến nghị khi khởi nguồn từ bài toán, thứ tự các bước đúng từ đầu đến cuối là gì?",
+          "citation": "[T02-005]",
+          "sourcePages": [
+            5
+          ],
+          "reviewSummary": "Lộ trình chuẩn khi khởi nguồn từ bài toán: Bài toán -> Quy trình vận hành -> Chỉ số đo lường -> Giải pháp AI. Không bắt đầu từ AI hay giải pháp công nghệ trước.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Giải pháp AI -> Bài toán -> Quy trình vận hành -> Chỉ số đo lường.",
+              "correct": false,
+              "feedback": "Sai. Đây là cách tiếp cận bắt đầu từ AI/giải pháp, trái với nguyên tắc."
+            },
+            {
+              "key": "B",
+              "text": "Bài toán -> Quy trình vận hành -> Chỉ số đo lường -> Giải pháp AI.",
+              "correct": true,
+              "feedback": "Đúng! Đây là lộ trình chuẩn: xuất phát từ Bài toán, đi qua Quy trình vận hành, xác định Chỉ số đo lường rồi mới đến Giải pháp AI."
+            },
+            {
+              "key": "C",
+              "text": "Quy trình vận hành -> Giải pháp AI -> Bài toán -> Chỉ số đo lường.",
+              "correct": false,
+              "feedback": "Sai. Trật tự này không đúng với lộ trình chuẩn trong slide."
+            },
+            {
+              "key": "D",
+              "text": "Chỉ số đo lường -> Bài toán -> Giải pháp AI -> Quy trình vận hành.",
+              "correct": false,
+              "feedback": "Sai. Trật tự các bước bị đảo lộn so với lộ trình tiêu chuẩn."
+            }
+          ]
+        },
+        {
+          "id": "d2-s1-q12",
+          "question": "Khi bạn muốn hội tụ sau giai đoạn tìm hiểu vấn đề ở Diamond 1, phương pháp hoặc công cụ nào sau đây KHÔNG nằm trong nhóm các công cụ hội tụ của giai đoạn Define?",
+          "citation": "[T02-004]",
+          "sourcePages": [
+            4
+          ],
+          "reviewSummary": "Discover (Phân kỳ) dùng quan sát, phỏng vấn, khảo sát, nhật ký hành vi, phân tích dữ liệu/log, bản đồ bên liên quan. Define (Hội tụ) dùng sơ đồ đồng cảm/gom nhóm, 5 Whys, ma trận Impact-Effort, dot voting, How Might We, Problem Statement.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Sơ đồ đồng cảm và gom nhóm (affinity mapping).",
+              "correct": false,
+              "feedback": "Sai. Đây là công cụ hội tụ thuộc giai đoạn Define."
+            },
+            {
+              "key": "B",
+              "text": "Phân tích dữ liệu/log hệ thống.",
+              "correct": true,
+              "feedback": "Đúng! Phân tích dữ liệu/log hệ thống là phương pháp phân kỳ thuộc giai đoạn Discover, không phải công cụ hội tụ của Define."
+            },
+            {
+              "key": "C",
+              "text": "5 Whys và ma trận Impact–Effort.",
+              "correct": false,
+              "feedback": "Sai. Đây là các công cụ hội tụ trong giai đoạn Define."
+            },
+            {
+              "key": "D",
+              "text": "Dot voting và How Might We.",
+              "correct": false,
+              "feedback": "Sai. Đây là các phương pháp hội tụ thuộc giai đoạn Define."
+            }
+          ]
+        },
+        {
+          "id": "d2-s1-q13",
+          "question": "Trường hợp đội ngũ Cursor từ bỏ mảng AI thiết kế cơ khí (CAD) để tập trung vào AI code editor thể hiện bài học nào liên quan đến việc chọn bài toán?",
+          "citation": "[T02-005]",
+          "sourcePages": [
+            5
+          ],
+          "reviewSummary": "Cursor gặp phải vấn đề 'Lệch năng lực cốt lõi' khi làm AI thiết kế cơ khí (CAD) và đã từ bỏ để tập trung vào AI code editor, nơi đội ngũ am hiểu sâu quy trình nghiệp vụ.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Sản phẩm tốt nhưng thị trường quá hẹp.",
+              "correct": false,
+              "feedback": "Sai. Đây là bài học từ trường hợp của Artifact."
+            },
+            {
+              "key": "B",
+              "text": "Lệch năng lực cốt lõi do thiếu am hiểu quy trình nghiệp vụ.",
+              "correct": true,
+              "feedback": "Đúng! Cursor từ bỏ mảng CAD do 'Lệch năng lực cốt lõi' để tập trung vào mảng code editor nơi họ am hiểu nghiệp vụ."
+            },
+            {
+              "key": "C",
+              "text": "Định vị sai điểm đau hỏi đáp tài liệu cá nhân.",
+              "correct": false,
+              "feedback": "Sai. Định vị đúng điểm đau là điểm nhấn từ NotebookLM."
+            },
+            {
+              "key": "D",
+              "text": "Bỏ qua đánh giá và không thiết lập baseline.",
+              "correct": false,
+              "feedback": "Sai. Đây là các sai lầm anti-patterns chứ không phải ví dụ của Cursor."
+            }
+          ]
+        },
+        {
+          "id": "d2-s1-q14",
+          "question": "Khi thiết kế hệ thống AI mà không xác định rõ phạm vi tự chủ của AI cũng như thời điểm bắt buộc phải có con người phê duyệt (human-in-the-loop), đội ngũ đang mắc phải sai lầm gì?",
+          "citation": "[T02-007]",
+          "sourcePages": [
+            7
+          ],
+          "reviewSummary": "Anti-pattern 'Mập mờ ranh giới' (No boundary) là việc không rõ phạm vi tự chủ của AI và thời điểm cần con người phê duyệt (human-in-the-loop). Cần quay lại làm rõ Problem Statement.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Mập mờ ranh giới (No boundary).",
+              "correct": true,
+              "feedback": "Đúng! Không rõ phạm vi tự chủ và thời điểm HITL là lỗi Mập mờ ranh giới (No boundary)."
+            },
+            {
+              "key": "B",
+              "text": "Mơ hồ hiện trạng (No baseline).",
+              "correct": false,
+              "feedback": "Sai. Mơ hồ hiện trạng là không lượng hóa tổn thất hiện tại."
+            },
+            {
+              "key": "C",
+              "text": "Ưu tiên giải pháp (Solution-first).",
+              "correct": false,
+              "feedback": "Sai. Ưu tiên giải pháp là xây chatbot/agent trước khi làm rõ quy trình."
+            },
+            {
+              "key": "D",
+              "text": "Bỏ qua đánh giá (No evaluation).",
+              "correct": false,
+              "feedback": "Sai. Bỏ qua đánh giá là thiếu kịch bản kiểm thử hay chỉ số đo lường."
+            }
+          ]
+        },
+        {
+          "id": "d2-s1-q15",
+          "question": "Tại sao việc đưa ra một giải pháp xuất sắc cho sai vấn đề được ví là có thể còn tệ hơn là không có giải pháp nào cả?",
+          "citation": "[T02-003]",
+          "sourcePages": [
+            3
+          ],
+          "reviewSummary": "Double Diamond nhấn mạnh việc tìm đúng vấn đề trước khi tìm giải pháp thông qua Discover và Define. Takeaway khẳng định: Giải pháp xuất sắc cho sai vấn đề có thể còn tệ hơn không có giải pháp vì lãng phí nguồn lực giải quyết sai hướng.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Vì nó làm tốn kém chi phí công nghệ mà không giải quyết đúng điểm đau gốc rễ của thực tế.",
+              "correct": true,
+              "feedback": "Đúng! Giải quyết sai vấn đề gốc rễ nghĩa là lãng phí nguồn lực vào việc không mang lại giá trị thực tế."
+            },
+            {
+              "key": "B",
+              "text": "Vì giải pháp xuất sắc luôn đòi hỏi mô hình AI quá lớn để triển khai.",
+              "correct": false,
+              "feedback": "Sai. Slide không đề cập kích thước mô hình AI là nguyên nhân của vấn đề này."
+            },
+            {
+              "key": "C",
+              "text": "Vì kỹ sư không được đào tạo để giải quyết vấn đề kinh doanh.",
+              "correct": false,
+              "feedback": "Sai. Slide nêu kỹ sư được đào tạo để giải quyết vấn đề, nhưng cần nhà thiết kế để khám phá đúng vấn đề thật."
+            },
+            {
+              "key": "D",
+              "text": "Vì nó vi phạm quy tắc Human-in-the-loop trong vận hành.",
+              "correct": false,
+              "feedback": "Sai. Vi phạm Human-in-the-loop thuộc về lỗi ranh giới vận hành, không phải bản chất của việc giải sai vấn đề."
+            }
+          ]
+        }
+      ],
+      "d2-s2": [
+        {
+          "id": "d2-s2-q01",
+          "question": "Khi một trưởng phòng đề xuất trong cuộc họp: \"Chúng ta có nên dùng AI để tự động hóa khâu trả lời email khách hàng hay không?\", bạn nên áp dụng nguyên tắc Reframe câu hỏi từ PAIR Chương 1 như thế nào để định hướng đúng tư duy giải quyết vấn đề?",
+          "citation": "[T02-008]",
+          "sourcePages": [
+            8
+          ],
+          "reviewSummary": "Thay vì đặt câu hỏi khởi đầu bằng việc liệu có thể ứng dụng AI hay không, khung PAIR Chương 1 yêu cầu tách bạch rõ ràng thành hai câu hỏi riêng biệt: xác định cách giải quyết bài toán và kiểm tra xem AI có giải quyết vấn đề đó theo một cách độc đáo hay không. Takeaway cốt lõi là luôn tập trung phân tích bản chất bài toán trước rồi mới xem xét AI như một trong nhiều phương án khả dĩ.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Lập tức đồng ý và yêu cầu đội ngũ kỹ thuật xây dựng ngay một chatbot AI để xử lý email.",
+              "correct": false,
+              "feedback": "Sai. Đây là hiểu lầm \"Nghĩ về công nghệ trước, bài toán sau\", đi ngược lại với nguyên tắc phải đặt câu hỏi về bài toán trước và xem AI chỉ là một trong các phương án."
+            },
+            {
+              "key": "B",
+              "text": "Đặt lại thành hai câu hỏi: \"How might we solve the customer email overload?\" và \"Can AI solve this problem in a unique way?\", coi AI là một trong các phương án khả dĩ.",
+              "correct": true,
+              "feedback": "Đúng. Đây là cách áp dụng trực tiếp việc reframe câu hỏi từ \"Can we use AI to...\" sang việc tìm hiểu bài toán và đánh giá tính độc đáo của AI."
+            },
+            {
+              "key": "C",
+              "text": "Bác bỏ hoàn toàn ý tưởng dùng AI vì AI quá đắt đỏ và chỉ nên dùng phương pháp thủ công.",
+              "correct": false,
+              "feedback": "Sai. Nguyên tắc không loại trừ AI, mà yêu cầu xem xét AI như một phương án khả dĩ sau khi đã hiểu rõ bài toán cần giải quyết."
+            },
+            {
+              "key": "D",
+              "text": "Yêu cầu đo lường ngay lập tức thời gian hoàn thành email hiện tại trước khi bàn về AI.",
+              "correct": false,
+              "feedback": "Sai. Mặc dù việc đo lường là quan trọng, nhưng bước reframe câu hỏi ban đầu tập trung vào việc đặt câu hỏi về bài toán và vai trò của AI, chưa đi sâu vào định lượng ở bước này."
+            }
+          ]
+        },
+        {
+          "id": "d2-s2-q02",
+          "question": "Bạn đang điền thông tin vào Quick Problem Card cho một quy trình duyệt đơn vay vốn. Tại phần \"Bài toán (1 câu)\", nội dung nào sau đây viết ĐÚNG theo hướng dẫn của khung định hình bài toán?",
+          "citation": "[T02-009]",
+          "sourcePages": [
+            9
+          ],
+          "reviewSummary": "Quick Problem Card là khung định hình bài toán gồm các thành phần: Bài toán (vấn đề cụ thể, không gồm giải pháp), Đối tượng ảnh hưởng (cá nhân/bộ phận chịu tác động), Quy trình hiện tại, Nút thắt & tác động, Chỉ số đo thành công, và Định hướng giải pháp (No AI / Rule / Workflow / Agent / chưa xác định).",
+          "options": [
+            {
+              "key": "A",
+              "text": "Xây dựng hệ thống Agent AI để tự động đọc và phê duyệt hồ sơ vay vốn của khách hàng.",
+              "correct": false,
+              "feedback": "Sai. Đây là hiểu lầm \"Đưa giải pháp vào tên bài toán\", trong khi phần bài toán chỉ mô tả vấn đề cụ thể cần giải quyết mà không bao gồm giải pháp."
+            },
+            {
+              "key": "B",
+              "text": "Thời gian thẩm định và phê duyệt hồ sơ vay vốn kéo dài gây chậm trễ cho khách hàng.",
+              "correct": true,
+              "feedback": "Đúng. Nội dung này nêu đúng vấn đề cụ thể cần giải quyết mà không chứa đựng giải pháp công nghệ hay phần mềm cụ thể."
+            },
+            {
+              "key": "C",
+              "text": "Bộ phận tín dụng và khách hàng cá nhân.",
+              "correct": false,
+              "feedback": "Sai. Đây là thông tin thuộc phần \"Đối tượng ảnh hưởng\", không phải là phần mô tả bài toán."
+            },
+            {
+              "key": "D",
+              "text": "Giảm 50% thời gian xử lý hồ sơ bằng công nghệ tự động hóa.",
+              "correct": false,
+              "feedback": "Sai. Nội dung này chứa đựng cả mục tiêu cải tiến và giải pháp, không phù hợp với định nghĩa bài toán cần giải quyết."
+            }
+          ]
+        },
+        {
+          "id": "d2-s2-q03",
+          "question": "Khi phỏng vấn nhân sự vận hành để điền Quick Problem Card, bạn muốn xác định rõ phần \"Nút thắt & tác động\". Câu hỏi nào trong các câu hỏi khai thác bài toán sau đây là phù hợp nhất để làm rõ nội dung này?",
+          "citation": "[T02-010]",
+          "sourcePages": [
+            10
+          ],
+          "reviewSummary": "Các câu hỏi khai thác bài toán bao gồm việc tìm hiểu quy trình hiện tại, xác định nút thắt (bước nào chậm, dễ sai sót, lặp lại), tính toán hao phí, tiêu chí thành công, hậu quả khi xảy ra sai sót và việc cân nhắc các giải pháp phi AI đơn giản hơn.",
+          "options": [
+            {
+              "key": "A",
+              "text": "\"Quy trình hiện tại gồm những công cụ, các bước và cách bàn giao thông tin như thế nào?\"",
+              "correct": false,
+              "feedback": "Sai. Câu hỏi này tập trung khai thác bước \"Quy trình hiện tại\", không phải là phần xác định nút thắt và tác động gây chậm trễ."
+            },
+            {
+              "key": "B",
+              "text": "\"Bước nào trong quy trình đang gây chậm trễ, dễ xảy ra sai sót hoặc bị lặp lại nhiều lần?\"",
+              "correct": true,
+              "feedback": "Đúng. Câu hỏi này nhắm thẳng vào việc tìm kiếm nút thắt theo đúng định nghĩa của câu hỏi khai thác số 02."
+            },
+            {
+              "key": "C",
+              "text": "\"Tiêu chí thành công của dự án cải tiến này được đo lường bằng chỉ số gì?\"",
+              "correct": false,
+              "feedback": "Sai. Câu hỏi này thuộc về việc xác định tiêu chí thành công (câu hỏi khai thác số 04), không khai thác nút thắt vận hành."
+            },
+            {
+              "key": "D",
+              "text": "\"Chúng ta có thể dùng giải pháp phi AI nào đơn giản hơn như checklist hay quy tắc không?\"",
+              "correct": false,
+              "feedback": "Sai. Câu hỏi này dùng để tìm kiếm giải pháp phi AI (câu hỏi khai thác số 06), không phải để xác định nút thắt."
+            }
+          ]
+        },
+        {
+          "id": "d2-s2-q04",
+          "question": "Một đội ngũ dự án đề xuất cải tiến quy trình xử lý ticket hỗ trợ khách hàng. Khi được hỏi về Baseline (hiện trạng), quản lý trả lời: \"Hiện tại quy trình của chúng ta đang khá chậm và cần cải thiện nhiều\". Nhận xét nào sau đây ĐÚNG theo nguyên tắc định lượng hóa bài toán?",
+          "citation": "[T02-011]",
+          "sourcePages": [
+            11
+          ],
+          "reviewSummary": "Định lượng hóa bài toán đòi hỏi phải xác định rõ Baseline (hiện trạng với mức hao phí bằng con số cụ thể), Target (mục tiêu cải thiện với ngưỡng cụ thể), và Measurement (chỉ số và cách thu thập). Takeaway cốt lõi: Điểm đau chưa được định lượng thì không thể xác định giá trị thực tế của AI.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Baseline đã đạt yêu cầu vì đã chỉ rõ vấn đề là quy trình đang chậm.",
+              "correct": false,
+              "feedback": "Sai. Đây là hiểu lầm \"Định tính thay cho định lượng\", vì hiện trạng chưa được biểu diễn bằng con số cụ thể theo đúng yêu cầu của Baseline."
+            },
+            {
+              "key": "B",
+              "text": "Baseline chưa đạt vì điểm đau chưa được định lượng bằng con số cụ thể, do đó chưa thể xác định giá trị thực tế của AI.",
+              "correct": true,
+              "feedback": "Đúng. Theo tài liệu, điểm đau chưa được định lượng thì không thể xác định giá trị thực tế của AI, Baseline bắt buộc phải có mức hao phí bằng con số cụ thể."
+            },
+            {
+              "key": "C",
+              "text": "Có thể bỏ qua Baseline và nhảy thẳng sang đặt Target mục tiêu giảm thời gian xử lý ticket.",
+              "correct": false,
+              "feedback": "Sai. Việc xác định mục tiêu (Target) cần dựa trên hiện trạng (Baseline) đã được định lượng rõ ràng."
+            },
+            {
+              "key": "D",
+              "text": "Phải chuyển ngay sang xác định Measurement bằng cách dùng giải pháp phi AI.",
+              "correct": false,
+              "feedback": "Sai. Measurement là việc xác định chỉ số chứng minh hiệu quả và cách thu thập, không thay thế cho việc xác định Baseline."
+            }
+          ]
+        },
+        {
+          "id": "d2-s2-q05",
+          "question": "Khi thiết lập chỉ số đánh giá hiệu quả cho một dự án trợ lý AI hỗ trợ giải đáp thắc mắc cho Teaching Assistant (TA), đội ngũ đề xuất chỉ số: \"Nâng cao hiệu suất làm việc của TA\". Dựa trên phần thiết lập chỉ số, nhận định nào sau đây là chính xác?",
+          "citation": "[T02-012]",
+          "sourcePages": [
+            12
+          ],
+          "reviewSummary": "Thiết lập chỉ số chia thành Output metric (kết quả cuối cùng như thời lượng hoàn tất giảm, tỷ lệ sai sót thay đổi, giá trị người dùng) và Input metrics (các đòn bẩy như tỷ lệ phân loại chính xác, thời gian hiệu chỉnh bản nháp). Takeaway: \"Nâng cao hiệu suất\" không phải chỉ số — cần gắn với hiện trạng, mục tiêu và phương pháp đo.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Đây là một Output metric hoàn chỉnh vì thể hiện được kết quả cuối cùng mong đợi.",
+              "correct": false,
+              "feedback": "Sai. Theo takeaway của tài liệu, \"Nâng cao hiệu suất\" không phải chỉ số vì nó chưa được gắn với hiện trạng, mục tiêu và phương pháp đo cụ thể."
+            },
+            {
+              "key": "B",
+              "text": "Đây là một Input metric tốt vì đo lường đòn bẩy cải thiện công việc của TA.",
+              "correct": false,
+              "feedback": "Sai. Chỉ số này quá chung chung, không phải là một Input metric cụ thể như tỷ lệ câu hỏi phân loại chính xác hay thời gian TA hiệu chỉnh bản nháp."
+            },
+            {
+              "key": "C",
+              "text": "Đây không phải là chỉ số hợp lệ vì \"Nâng cao hiệu suất\" không gắn với hiện trạng, mục tiêu và phương pháp đo.",
+              "correct": true,
+              "feedback": "Đúng. Tài liệu nhấn mạnh takeaway rằng \"Nâng cao hiệu suất\" không phải chỉ số và bắt buộc phải gắn với hiện trạng, mục tiêu và phương pháp đo."
+            },
+            {
+              "key": "D",
+              "text": "Chỉ số này cần được thay thế bằng định nghĩa của Quick Problem Card.",
+              "correct": false,
+              "feedback": "Sai. Quick Problem Card là khung định hình bài toán ở các trang trước, trong khi đây là vấn đề thiết lập Output/Input metric."
+            }
+          ]
+        },
+        {
+          "id": "d2-s2-q06",
+          "question": "Trong việc phân loại các chỉ số đánh giá cho hệ thống phân loại tin nhắn tự động, chỉ số nào sau đây được xếp vào nhóm Output metric?",
+          "citation": "[T02-012]",
+          "sourcePages": [
+            12
+          ],
+          "reviewSummary": "Output metric phản ánh kết quả cuối cùng như thời lượng hoàn tất quy trình giảm bao nhiêu, tỷ lệ sai sót/chất lượng đầu ra thay đổi thế nào hoặc giá trị thực tế người dùng nhận được. Ngược lại, Input metrics đo lường các đòn bẩy như tỷ lệ phân loại chính xác hay thời gian hiệu chỉnh.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Tỷ lệ tin nhắn được phân loại chính xác bởi hệ thống tự động.",
+              "correct": false,
+              "feedback": "Sai. Đây là một Input metric (đòn bẩy kỹ thuật), không phải là kết quả cuối cùng mà người dùng nhận được."
+            },
+            {
+              "key": "B",
+              "text": "Thời gian TA hiệu chỉnh bản nháp phản hồi tin nhắn.",
+              "correct": false,
+              "feedback": "Sai. Đây cũng là một Input metric thể hiện nỗ lực điều chỉnh trong quy trình."
+            },
+            {
+              "key": "C",
+              "text": "Thời lượng hoàn tất quy trình xử lý tin nhắn giảm đi đáng kể.",
+              "correct": true,
+              "feedback": "Đúng. Thời lượng hoàn tất quy trình giảm là kết quả cuối cùng (Output metric) thuộc nhóm kết quả đánh giá giá trị thực tế."
+            },
+            {
+              "key": "D",
+              "text": "Tỷ lệ yêu cầu được chuyển tiếp hỗ trợ kịp thời.",
+              "correct": false,
+              "feedback": "Sai. Đây là một Input metric thể hiện đòn bẩy trong việc chuyển tiếp yêu cầu."
+            }
+          ]
+        },
+        {
+          "id": "d2-s2-q07",
+          "question": "Khi điền mục \"Định hướng giải pháp\" trong Quick Problem Card cho một bài toán doanh nghiệp, bạn có thể lựa chọn những phương án nào theo đúng khung hướng dẫn?",
+          "citation": "[T02-009]",
+          "sourcePages": [
+            9
+          ],
+          "reviewSummary": "Quick Problem Card bao gồm các phần: Bài toán, Đối tượng ảnh hưởng, Quy trình hiện tại, Nút thắt & tác động, Chỉ số đo thành công, và Định hướng giải pháp với các lựa chọn cụ thể như No AI, Rule, Workflow, Agent hoặc chưa xác định.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Chỉ được chọn duy nhất phương án Agent AI.",
+              "correct": false,
+              "feedback": "Sai. Định hướng giải pháp trong khung không giới hạn ở Agent AI mà bao gồm nhiều mức độ khác nhau."
+            },
+            {
+              "key": "B",
+              "text": "No AI / Rule / Workflow / Agent / chưa xác định.",
+              "correct": true,
+              "feedback": "Đúng. Đây là các tùy chọn định hướng giải pháp chuẩn được liệt kê trong Quick Problem Card."
+            },
+            {
+              "key": "C",
+              "text": "Baseline / Target / Measurement.",
+              "correct": false,
+              "feedback": "Sai. Baseline, Target và Measurement là các thành phần thuộc phần định lượng hóa bài toán, không phải các lựa chọn định hướng giải pháp."
+            },
+            {
+              "key": "D",
+              "text": "Output metric / Input metrics.",
+              "correct": false,
+              "feedback": "Sai. Đây là phân loại các chỉ số đo lường, không phải các tùy chọn định hướng giải pháp."
+            }
+          ]
+        },
+        {
+          "id": "d2-s2-q08",
+          "question": "Trong các câu hỏi khai thác bài toán, việc đặt câu hỏi về \"Hậu quả khi xảy ra sai sót?\" nhằm mục đích chủ yếu gì?",
+          "citation": "[T02-010]",
+          "sourcePages": [
+            10
+          ],
+          "reviewSummary": "Các câu hỏi khai thác bài toán giúp làm rõ quy trình, nút thắt, hao phí, tiêu chí thành công, hậu quả khi sai sót (phạm vi tự quyết của AI, điểm cần con người phê duyệt) và cân nhắc các giải pháp phi AI đơn giản hơn.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Để xác định phạm vi tự quyết của AI và những điểm cần con người phê duyệt.",
+              "correct": true,
+              "feedback": "Đúng. Theo câu hỏi khai thác số 05, việc hỏi về hậu quả khi xảy ra sai sót gắn liền với việc xác định phạm vi tự quyết của AI và điểm cần con người phê duyệt."
+            },
+            {
+              "key": "B",
+              "text": "Để tính toán chính xác số tiền hao phí về chi phí nhân sự và SLA.",
+              "correct": false,
+              "feedback": "Sai. Việc tính toán hao phí về thời gian, chi phí nhân sự và SLA thuộc về câu hỏi khai thác số 03."
+            },
+            {
+              "key": "C",
+              "text": "Để tìm hiểu công cụ, các bước và cách bàn giao thông tin hiện tại.",
+              "correct": false,
+              "feedback": "Sai. Nội dung này thuộc về câu hỏi khai thác số 01 về quy trình hiện tại."
+            },
+            {
+              "key": "D",
+              "text": "Để kiểm tra xem có giải pháp checklist hoặc quy tắc phi AI nào đơn giản hơn không.",
+              "correct": false,
+              "feedback": "Sai. Việc tìm giải pháp phi AI đơn giản hơn thuộc về câu hỏi khai thác số 06."
+            }
+          ]
+        }
+      ],
+      "d2-s3": [
+        {
+          "id": "d2-s3-q01",
+          "question": "Bạn đang cân nhắc đưa AI vào một quy trình xét duyệt khoản vay ngân hàng, nơi mọi quyết định từ chối hay phê duyệt đều phải giải thích tường minh và truy vết rõ ràng từng tiêu chí theo luật định. Dựa trên khung PAIR, bạn nên quyết định thế nào?",
+          "citation": "[T02-015]",
+          "sourcePages": [
+            15
+          ],
+          "reviewSummary": "AI không phải lúc nào cũng tốt hơn các phương pháp truyền thống. Các trường hợp không nên dùng AI bao gồm khi cần duy trì tính dự đoán được, thông tin tĩnh ít thay đổi, khi lỗi quá tốn kém, khi yêu cầu minh bạch tuyệt đối cần giải thích và truy vết mọi quyết định, khi tối ưu tốc độ và chi phí thấp, hoặc khi đó là việc giá trị cao mà người dùng muốn tự làm. Trong những trường hợp này, rule hoặc heuristic là lựa chọn tối ưu vì dễ build, dễ giải thích, dễ debug và bảo trì.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Dùng AI dự đoán vì nằm trong nhóm trường hợp AI có lợi thế về dự đoán tương lai.",
+              "correct": false,
+              "feedback": "Sai, đây là hiểu lầm phổ biến khi thấy bài toán dự đoán là áp dụng AI mà bỏ qua yêu cầu minh bạch tuyệt đối."
+            },
+            {
+              "key": "B",
+              "text": "Không dùng AI, ưu tiên rule/heuristic vì bài toán đòi hỏi minh bạch tuyệt đối và giải thích được mọi quyết định.",
+              "correct": true,
+              "feedback": "Đúng, khi hệ thống yêu cầu minh bạch tuyệt đối và mọi quyết định phải giải thích, truy vết được thì AI không phải là lựa chọn tốt."
+            },
+            {
+              "key": "C",
+              "text": "Xây dựng Agent tự động hoàn toàn để tiết kiệm chi phí nhân sự xét duyệt.",
+              "correct": false,
+              "feedback": "Sai, vì chi phí và rủi ro do lỗi trong xét duyệt khoản vay là cực kỳ lớn, không phù hợp cho Agent tự động hóa hoàn toàn."
+            },
+            {
+              "key": "D",
+              "text": "Dùng mô hình LLM dạng Workflow để tăng tốc độ xử lý hồ sơ.",
+              "correct": false,
+              "feedback": "Sai, vì workflow LLM có thể làm giảm độ minh bạch và khả năng truy vết chính xác theo quy định pháp lý."
+            }
+          ]
+        },
+        {
+          "id": "d2-s3-q02",
+          "question": "Một đội ngũ muốn xây dựng một hệ thống hỗ trợ giáo viên chấm bài. Họ tích hợp LLM (model), kết nối cơ sở dữ liệu quy chế chấm (context), cài đặt quy trình tự phân rã đề bài thành các tiêu chí chấm nhỏ (planning) và kết nối API hệ thống nộp bài (tools). Hệ thống này thể hiện bản chất gì theo bài học?",
+          "citation": "[T02-016]",
+          "sourcePages": [
+            16
+          ],
+          "reviewSummary": "Hệ thống AI không chỉ là model mà là sự kết hợp của 4 thành phần: Model (tư duy & sáng tạo như đọc hiểu, soạn thảo, tổng hợp), Context (tri thức chuyên biệt từ CSDL, tài liệu), Planning (điều phối quy trình, tự phân rã tác vụ), và Tools (liên kết hệ thống như CRM, database, API). Giải pháp AI luôn là một hệ thống hoàn chỉnh.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Đây là một mô hình LLM thuần túy được tinh chỉnh chuyên sâu cho ngành giáo dục.",
+              "correct": false,
+              "feedback": "Sai, vì mô hình chỉ là một thành phần nhỏ trong một hệ thống AI toàn diện."
+            },
+            {
+              "key": "B",
+              "text": "Đây là một Hệ thống AI bao gồm đầy đủ 4 thành phần: Model, Context, Planning và Tools.",
+              "correct": true,
+              "feedback": "Đúng, hệ thống này tận dụng cả model, tri thức chuyên biệt, điều phối quy trình và liên kết công cụ ngoài."
+            },
+            {
+              "key": "C",
+              "text": "Đây là một dạng Workflow đơn giản ở cấp độ 2 không cần sử dụng Tools.",
+              "correct": false,
+              "feedback": "Sai, việc tích hợp API hệ thống nộp bài chính là thành phần Tools trong kiến trúc hệ thống AI."
+            },
+            {
+              "key": "D",
+              "text": "Đây là giải pháp Automate cấp độ 1 hoàn toàn bằng rule/script.",
+              "correct": false,
+              "feedback": "Sai, hệ thống có sử dụng LLM và lập kế hoạch phân rã tác vụ, vượt xa một rule/script thông thường."
+            }
+          ]
+        },
+        {
+          "id": "d2-s3-q03",
+          "question": "Bạn đang thiết kế tính năng soạn email phản hồi khách hàng. Người dùng thực tế rất thích tự viết email nhưng hay bị bí ý tưởng và mất nhiều thời gian cấu trúc câu. Họ muốn giữ quyền kiểm soát từng câu chữ cuối cùng. Theo PAIR, bạn nên chọn Automate hay Augment?",
+          "citation": "[T02-017]",
+          "sourcePages": [
+            17
+          ],
+          "reviewSummary": "Automate được chọn khi việc khó/nhàm chán/nguy hiểm, cần scale, người dùng thiếu kiến thức hoặc có đáp án đúng mọi người đồng thuận. Augment được chọn khi người dùng thích tự làm, stakes cao, cần trách nhiệm cá nhân, hoặc sở thích khó diễn đạt thành lời, đo bằng mức độ thích thú, cảm giác kiểm soát và sáng tạo tăng. Việc automate vẫn luôn cần human oversight.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Automate toàn bộ để AI tự động gửi email đi mà không cần người dùng xem lại.",
+              "correct": false,
+              "feedback": "Sai, vì người dùng muốn tự viết và giữ quyền kiểm soát, việc automate toàn bộ bỏ qua yếu tố con người."
+            },
+            {
+              "key": "B",
+              "text": "Augment bằng cách dùng AI hỗ trợ gợi ý dàn ý hoặc viết nháp để người dùng tự chỉnh sửa.",
+              "correct": true,
+              "feedback": "Đúng, khi người dùng thích tự làm và cần cảm giác kiểm soát, Augment là lựa chọn phù hợp."
+            },
+            {
+              "key": "C",
+              "text": "Không dùng AI vì việc viết email không nằm trong danh sách 8 trường hợp AI có lợi thế.",
+              "correct": false,
+              "feedback": "Sai, viết email liên quan đến hiểu ngôn ngữ tự nhiên và sáng tạo nội dung, rất phù hợp để AI hỗ trợ dạng Augment."
+            },
+            {
+              "key": "D",
+              "text": "Dùng Cấp độ 1 Rule/Script để sinh mẫu câu cố định cho mọi khách hàng.",
+              "correct": false,
+              "feedback": "Sai, mẫu câu cố định không giải quyết được nhu cầu sáng tạo và tùy biến linh hoạt của người dùng."
+            }
+          ]
+        },
+        {
+          "id": "d2-s3-q04",
+          "question": "Học phần của bạn có yêu cầu sinh viên nộp bài tập. Đầu vào hoàn toàn ổn định (định dạng file PDF chuẩn), logic kiểm tra định dạng và đếm số trang có thể viết trọn vẹn bằng các câu lệnh điều kiện if/else, yêu cầu độ chính xác tuyệt đối 100%. Bạn nên chọn cấp độ giải pháp nào?",
+          "citation": "[T02-018]",
+          "sourcePages": [
+            18
+          ],
+          "reviewSummary": "Ba mức giải pháp gồm: Cấp độ 1 (Rule/Script) cho đầu vào ổn định, logic if/else, cần đúng 100%, quy định pháp lý chặt; Cấp độ 2 (LLM Feature/Workflow) cho đầu vào đa dạng, đầu ra linh hoạt cần kiểm tra trước khi gửi; Cấp độ 3 (Agent) cho nhiều bước, dùng nhiều công cụ, tự ra quyết định. Ưu tiên thực dụng bắt đầu từ bên trái (Rule).",
+          "options": [
+            {
+              "key": "A",
+              "text": "Cấp độ 3 — Agent tự động để linh hoạt xử lý mọi tình huống nộp bài.",
+              "correct": false,
+              "feedback": "Sai, đây là hiểu lầm phổ biến khi dùng mô hình quá phức tạp cho một bài toán đơn giản có logic cố định."
+            },
+            {
+              "key": "B",
+              "text": "Cấp độ 2 — LLM Workflow để hệ thống đọc hiểu nội dung file PDF.",
+              "correct": false,
+              "feedback": "Sai, vì bài toán chỉ yêu cầu kiểm tra định dạng và đếm số trang với logic if/else rõ ràng, không cần đến khả năng đọc hiểu của LLM."
+            },
+            {
+              "key": "C",
+              "text": "Cấp độ 1 — Rule/Script vì logic viết được thành if/else và cần chính xác tuyệt đối.",
+              "correct": true,
+              "feedback": "Đúng, đầu vào ổn định và logic if/else chính xác 100% là đặc trưng hoàn hảo của cấp độ Rule/Script."
+            },
+            {
+              "key": "D",
+              "text": "Không dùng giải pháp nào vì không thể tự động hóa việc kiểm tra file.",
+              "correct": false,
+              "feedback": "Sai, việc kiểm tra file theo định dạng hoàn toàn tự động hóa được bằng rule đơn giản."
+            }
+          ]
+        },
+        {
+          "id": "d2-s3-q05",
+          "question": "Trong hệ thống hỗ trợ học tập, bạn cần xây dựng một tính năng kiểm tra xem Problem Card do học viên nộp đã đủ các trường thông tin bắt buộc chưa. Nếu thiếu, hệ thống tự động yêu cầu bổ sung trước khi chuyển cho trợ giảng (TA). Cấp độ giải pháp nào phù hợp nhất?",
+          "citation": "[T02-019]",
+          "sourcePages": [
+            19
+          ],
+          "reviewSummary": "Một tình huống có ba cấp độ giải pháp: Cấp độ 1 (Rule) trả lời FAQ, nhắc nhở checklist; Cấp độ 2 (Workflow) AI kiểm tra độ đầy đủ của Problem Card, yêu cầu bổ sung nếu thiếu rồi chuyển TA; Cấp độ 3 (Agent) tự động theo dõi tiến độ, phát hiện học viên bị kẹt và đề xuất TA duyệt. Không bắt buộc nâng cấp tuần tự, dừng ở cấp tối giản đáp ứng mục tiêu.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Cấp độ 1 — Rule/Script đơn thuần dựa vào từ khóa.",
+              "correct": false,
+              "feedback": "Sai, việc kiểm tra độ đầy đủ của nội dung Problem Card đòi hỏi khả năng hiểu ngữ nghĩa ở mức độ linh hoạt hơn rule tĩnh."
+            },
+            {
+              "key": "B",
+              "text": "Cấp độ 2 — Workflow kiểm tra độ đầy đủ, yêu cầu bổ sung và chuyển TA.",
+              "correct": true,
+              "feedback": "Đúng, đây chính xác là ví dụ về cấp độ Workflow trong việc kiểm tra và định tuyến dữ liệu."
+            },
+            {
+              "key": "C",
+              "text": "Cấp độ 3 — Agent tự động hoàn toàn không cần TA can thiệp.",
+              "correct": false,
+              "feedback": "Sai, yêu cầu nghiệp vụ là chuyển cho TA giải quyết sau khi bổ sung, không phải Agent tự động toàn bộ."
+            },
+            {
+              "key": "D",
+              "text": "Không dùng giải pháp nào vì việc này bắt buộc con người tự kiểm tra thủ công.",
+              "correct": false,
+              "feedback": "Sai, workflow LLM hoàn toàn xử lý được việc kiểm tra độ đầy đủ thông tin này."
+            },
+            {
+              "key": "E",
+              "text": "Dùng Rule kết hợp Agent đa tầng phức tạp.",
+              "correct": false,
+              "feedback": "Sai, độ phức tạp này vượt quá mức cần thiết so với yêu cầu bài toán."
+            }
+          ]
+        },
+        {
+          "id": "d2-s3-q06",
+          "question": "Bạn muốn xây dựng một hệ thống viết bài luận tự động qua các bước: Viết dàn ý -> Kiểm tra chất lượng dàn ý qua gate -> Viết bài chi tiết dựa trên dàn ý đã duyệt. Pattern nào trong Anthropic workflow patterns phù hợp nhất cho bài toán này?",
+          "citation": "[T02-020]",
+          "sourcePages": [
+            20
+          ],
+          "reviewSummary": "Workflow patterns gồm 3 loại chính: Prompt Chaining (chia task thành chuỗi bước tuần tự có gate kiểm tra giữa các bước, đổi độ trễ lấy độ chính xác), Routing (phân loại input đưa vào nhánh chuyên biệt), và Parallelization (chạy song song rồi tổng hợp hoặc lấy vote để giảm rủi ro). Luôn ưu tiên giải pháp đơn giản nhất.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Routing pattern để phân loại bài luận thành các chủ đề khác nhau.",
+              "correct": false,
+              "feedback": "Sai, routing dùng để phân loại input đầu vào rồi điều hướng, không phải chia chuỗi bước tuần tự có kiểm duyệt."
+            },
+            {
+              "key": "B",
+              "text": "Prompt Chaining pattern vì chia task thành các bước tuần tự có gate kiểm tra giữa các bước.",
+              "correct": true,
+              "feedback": "Đúng, chuỗi bước từ viết dàn ý đến kiểm tra và viết bài chính là định nghĩa của Prompt Chaining."
+            },
+            {
+              "key": "C",
+              "text": "Parallelization pattern để chạy nhiều model viết bài cùng lúc.",
+              "correct": false,
+              "feedback": "Sai, việc chạy tuần tự có kiểm tra từng bước không phải là chạy song song (parallelization)."
+            },
+            {
+              "key": "D",
+              "text": "Agent pattern cấp độ 3 với nhiều công cụ tìm kiếm bên ngoài.",
+              "correct": false,
+              "feedback": "Sai, bài toán chỉ cần các bước tuần tự đơn giản có kiểm soát, chưa cần đến tính năng tự trị của Agent."
+            }
+          ]
+        },
+        {
+          "id": "d2-s3-q07",
+          "question": "Bạn đang xây dựng cổng hỗ trợ khách hàng (CS) nhận các yêu cầu rất đa dạng từ khiếu nại hoàn tiền, câu hỏi FAQ chung cho đến lỗi kỹ thuật phức tạp. Bạn muốn câu hỏi dễ xử lý bằng model rẻ, câu khó chuyển sang model mạnh chuyên biệt. Bạn nên dùng workflow pattern nào?",
+          "citation": "[T02-020]",
+          "sourcePages": [
+            20
+          ],
+          "reviewSummary": "Workflow patterns bao gồm Prompt Chaining, Routing và Parallelization. Routing pattern thực hiện việc phân loại input rồi đưa vào nhánh chuyên biệt (ví dụ CS query đi vào FAQ, refund hoặc kỹ thuật), giúp tối ưu chi phí bằng cách cho câu dễ đi model rẻ và câu khó đi model mạnh.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Prompt Chaining pattern",
+              "correct": false,
+              "feedback": "Sai, chaining là chuỗi bước tuần tự một nhiệm vụ, không phải phân loại đầu vào ra các nhánh chuyên biệt."
+            },
+            {
+              "key": "B",
+              "text": "Routing pattern",
+              "correct": true,
+              "feedback": "Đúng, Routing pattern chuyên dùng để phân loại input và điều hướng đến các nhánh hoặc model phù hợp."
+            },
+            {
+              "key": "C",
+              "text": "Parallelization pattern",
+              "correct": false,
+              "feedback": "Sai, parallelization chạy song song các tác vụ hoặc lấy vote, không dùng để phân loại điều hướng."
+            },
+            {
+              "key": "D",
+              "text": "Cấp độ 3 Agent pattern",
+              "correct": false,
+              "feedback": "Sai, routing là pattern tinh gọn trong workflow, không cần thiết phải đẩy lên mức agent phức tạp."
+            }
+          ]
+        },
+        {
+          "id": "d2-s3-q08",
+          "question": "Khi áp dụng bước ① (Giao điểm nhu cầu × thế mạnh AI) theo khung PAIR, làm sao để xác định bài toán của bạn thực sự cần AI?",
+          "citation": "[T02-013]",
+          "sourcePages": [
+            13
+          ],
+          "reviewSummary": "Ba bước quyết định AI theo PAIR gồm: Bước ① giao điểm nhu cầu và thế mạnh AI (xem bài toán có nằm trong nhóm AI làm tốt hơn rule/heuristic không); Bước ② Automate hay Augment; Bước ③ Reward function & tiêu chí thành công. Đi hết 3 bước trả lời được các câu hỏi cốt lõi để đưa ra quyết định Go, Not Yet, hoặc No-Go.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Kiểm tra xem bài toán có nằm trong nhóm việc AI làm tốt hơn hẳn rule/heuristic không.",
+              "correct": true,
+              "feedback": "Đúng, đây chính là nội dung cốt lõi của Bước ① trong ba bước quyết định AI theo PAIR."
+            },
+            {
+              "key": "B",
+              "text": "Xây dựng ngay một Agent phức tạp để thử nghiệm trực tiếp trên dữ liệu thật.",
+              "correct": false,
+              "feedback": "Sai, việc xây dựng vội vã khi chưa qua bước đánh giá nhu cầu và thế mạnh sẽ dẫn đến lãng phí."
+            },
+            {
+              "key": "C",
+              "text": "Định nghĩa chính xác precision và recall của hệ thống.",
+              "correct": false,
+              "feedback": "Sai, việc định nghĩa precision và recall thuộc về Bước ③ (Reward function & tiêu chí thành công)."
+            },
+            {
+              "key": "D",
+              "text": "Đảm bảo hệ thống có tích hợp đầy đủ công cụ API bên thứ ba.",
+              "correct": false,
+              "feedback": "Sai, tích hợp công cụ (Tools) là thành phần cấu thành hệ thống AI, không phải bước đầu tiên để xác định nhu cầu."
+            }
+          ]
+        },
+        {
+          "id": "d2-s3-q09",
+          "question": "Trong các trường hợp sau đây theo PAIR, trường hợp nào KHÔNG nằm trong danh sách các tình huống AI có lợi thế ('AI probably better')?",
+          "citation": "[T02-014]",
+          "sourcePages": [
+            14
+          ],
+          "reviewSummary": "8 trường hợp AI có lợi thế theo PAIR bao gồm: Gợi ý theo từng người, dự đoán tương lai, cá nhân hóa, hiểu ngôn ngữ tự nhiên, nhận diện cả một lớp thực thể, phát hiện cái hiếm & biến đổi (như gian lận), agent/bot cho một lĩnh vực cụ thể, và nội dung động thay giao diện tĩnh.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Hệ thống gợi ý sản phẩm cá nhân hóa theo từng người dùng.",
+              "correct": false,
+              "feedback": "Sai, cá nhân hóa và gợi ý là một trong các trường hợp AI có lợi thế rõ rệt."
+            },
+            {
+              "key": "B",
+              "text": "Duy trì nút Home và nút Cancel luôn nằm cố định ở một vị trí quen thuộc trên giao diện.",
+              "correct": true,
+              "feedback": "Đúng, việc duy trì tính dự đoán được của giao diện tĩnh thuộc về trường hợp AI KHÔNG tốt hơn (cần rule/thiết kế cố định)."
+            },
+            {
+              "key": "C",
+              "text": "Phát hiện các giao dịch gian lận tài chính hiếm gặp và biến đổi liên tục.",
+              "correct": false,
+              "feedback": "Sai, phát hiện cái hiếm & biến đổi là một trong 8 trường hợp AI thể hiện lợi thế vượt trội."
+            },
+            {
+              "key": "D",
+              "text": "Tạo nội dung hiển thị động thay vì giao diện tĩnh dựa trên ngữ cảnh người dùng.",
+              "correct": false,
+              "feedback": "Sai, nội dung động thay giao diện tĩnh nằm trong danh sách 'AI probably better'."
+            }
+          ]
+        },
+        {
+          "id": "d2-s3-q10",
+          "question": "Vì sao các tác vụ có thông tin tĩnh, ít thay đổi lại KHÔNG nên ứng dụng giải pháp AI để sinh lại nội dung mỗi lần người dùng truy cập?",
+          "citation": "[T02-015]",
+          "sourcePages": [
+            15
+          ],
+          "reviewSummary": "Các trường hợp AI không tốt hơn bao gồm thông tin tĩnh, ít thay đổi — không cần AI sinh lại mỗi lần; cần duy trì tính dự đoán được; lỗi quá tốn kém; yêu cầu minh bạch tuyệt đối; tối ưu tốc độ & chi phí thấp; việc giá trị cao người dùng muốn tự làm.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Vì AI không có khả năng hiểu ngôn ngữ tự nhiên đối với thông tin tĩnh.",
+              "correct": false,
+              "feedback": "Sai, AI hoàn toàn hiểu được nhưng việc dùng AI cho thông tin tĩnh là lãng phí và không cần thiết."
+            },
+            {
+              "key": "B",
+              "text": "Vì thông tin ít thay đổi không cần AI sinh lại mỗi lần, việc dùng AI chỉ thêm độ trễ và chi phí không cần thiết.",
+              "correct": true,
+              "feedback": "Đúng, thông tin tĩnh không cần AI sinh lại mỗi lần, tránh việc AI gây thêm độ trễ và chi phí."
+            },
+            {
+              "key": "C",
+              "text": "Vì thông tin tĩnh vi phạm quy định về minh bạch tuyệt đối.",
+              "correct": false,
+              "feedback": "Sai, vấn đề ở đây là sự lãng phí chi phí và độ trễ do sinh lại nội dung không đổi, không liên quan đến minh bạch pháp lý."
+            },
+            {
+              "key": "D",
+              "text": "Vì người dùng luôn muốn tự làm các tác vụ liên quan đến thông tin tĩnh.",
+              "correct": false,
+              "feedback": "Sai, người dùng không cần tự làm thông tin tĩnh mà họ chỉ cần truy xuất dữ liệu cố định nhanh chóng."
+            }
+          ]
+        },
+        {
+          "id": "d2-s3-q11",
+          "question": "Khi thiết kế hệ thống giải pháp AI, thành phần nào chịu trách nhiệm đọc hiểu, soạn thảo, tổng hợp, phân loại và đưa ra gợi ý sáng tạo?",
+          "citation": "[T02-016]",
+          "sourcePages": [
+            16
+          ],
+          "reviewSummary": "Hệ thống AI bao gồm Model (tư duy & sáng tạo: đọc hiểu, soạn thảo, tổng hợp, phân loại, gợi ý), Context (tri thức chuyên biệt: CSDL, tài liệu), Planning (điều phối quy trình, phân rã tác vụ), và Tools (liên kết hệ thống như CRM, database, API).",
+          "options": [
+            {
+              "key": "A",
+              "text": "Context",
+              "correct": false,
+              "feedback": "Sai, Context là thành phần chứa tri thức chuyên biệt, tài liệu nghiệp vụ và cơ sở dữ liệu."
+            },
+            {
+              "key": "B",
+              "text": "Model",
+              "correct": true,
+              "feedback": "Đúng, Model là thành phần đảm nhiệm tư duy và sáng tạo như đọc hiểu, soạn thảo, tổng hợp và phân loại."
+            },
+            {
+              "key": "C",
+              "text": "Planning",
+              "correct": false,
+              "feedback": "Sai, Planning là thành phần điều phối quy trình và tự động phân rã tác vụ phức tạp."
+            },
+            {
+              "key": "D",
+              "text": "Tools",
+              "correct": false,
+              "feedback": "Sai, Tools là thành phần liên kết hệ thống với CRM, database hoặc API bên thứ ba."
+            }
+          ]
+        },
+        {
+          "id": "d2-s3-q12",
+          "question": "Khi nào bạn nên chọn phương án Automate (AI làm thay) thay vì Augment (AI hỗ trợ con người)?",
+          "citation": "[T02-017]",
+          "sourcePages": [
+            17
+          ],
+          "reviewSummary": "Automate được chọn khi việc khó, nhàm chán, nguy hiểm hoặc cần scale; người dùng thiếu kiến thức tự làm; hoặc có đáp án đúng mọi người đồng thuận. Đo bằng hiệu quả tăng, an toàn hơn, giảm việc tẻ nhạt. Augment được chọn khi người dùng thích tự làm, stakes cao, cần trách nhiệm cá nhân.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Khi công việc mang tính sáng tạo cao và người dùng rất thích tự thực hiện.",
+              "correct": false,
+              "feedback": "Sai, đây là đặc điểm phù hợp với phương án Augment, không phải Automate."
+            },
+            {
+              "key": "B",
+              "text": "Khi công việc tẻ nhạt, nguy hiểm hoặc cần scale với đáp án đúng mọi người đồng thuận.",
+              "correct": true,
+              "feedback": "Đúng, đây là các tiêu chí cốt lõi để quyết định chọn Automate."
+            },
+            {
+              "key": "C",
+              "text": "Khi quyết định có mức độ rủi ro (stakes) về tiền bạc và pháp lý cực kỳ cao.",
+              "correct": false,
+              "feedback": "Sai, các vấn đề stakes cao thường đòi hỏi Augment kèm trách nhiệm cá nhân hoặc human oversight chặt chẽ."
+            },
+            {
+              "key": "D",
+              "text": "Khi sở thích và cảm xúc của người dùng quá phức tạp khó diễn đạt thành lời.",
+              "correct": false,
+              "feedback": "Sai, sở thích khó diễn đạt thành lời là dấu hiệu chọn Augment."
+            }
+          ]
+        },
+        {
+          "id": "d2-s3-q13",
+          "question": "Đặc điểm nào sau đây mô tả chính xác Cấp độ 3 — Agent trong ba mức giải pháp (Rule / Workflow / Agent)?",
+          "citation": "[T02-018]",
+          "sourcePages": [
+            18
+          ],
+          "reviewSummary": "Ba mức giải pháp gồm: Cấp độ 1 Rule/Script (đầu vào ổn định, logic if/else, đúng 100%); Cấp độ 2 LLM Feature/Workflow (đầu đa dạng, đầu ra linh hoạt, có kiểm tra trước khi gửi); Cấp độ 3 Agent (nhiều bước, dùng nhiều công cụ, tình huống thay đổi liên tục, tự ra quyết định, kiểm soát rủi ro rõ ràng).",
+          "options": [
+            {
+              "key": "A",
+              "text": "Logic viết trọn vẹn bằng các câu lệnh điều kiện if/else, cần độ chính xác tuyệt đối 100%.",
+              "correct": false,
+              "feedback": "Sai, đây là đặc điểm của Cấp độ 1 — Rule/Script."
+            },
+            {
+              "key": "B",
+              "text": "Đầu vào đa dạng, đầu ra linh hoạt dùng để tóm tắt hoặc dịch thuật với sự kiểm duyệt trước khi gửi.",
+              "correct": false,
+              "feedback": "Sai, đây là mô tả của Cấp độ 2 — LLM Feature/Workflow."
+            },
+            {
+              "key": "C",
+              "text": "Thực hiện nhiều bước, dùng nhiều công cụ, tình huống thay đổi liên tục và tự ra quyết định với kiểm soát rủi ro rõ ràng.",
+              "correct": true,
+              "feedback": "Đúng, đây là định nghĩa chuẩn xác của Cấp độ 3 — Agent."
+            },
+            {
+              "key": "D",
+              "text": "Chỉ thực hiện một tác vụ đơn lẻ dựa trên từ khóa tĩnh không cần kết nối API.",
+              "correct": false,
+              "feedback": "Sai, Agent đòi hỏi sử dụng nhiều công cụ và xử lý quy trình phức tạp nhiều bước."
+            }
+          ]
+        },
+        {
+          "id": "d2-s3-q14",
+          "question": "Trong ngữ cảnh hỗ trợ học tập, ví dụ nào sau đây thể hiện Cấp độ 3 — Agent?",
+          "citation": "[T02-019]",
+          "sourcePages": [
+            19
+          ],
+          "reviewSummary": "Ví dụ cho 3 cấp độ: Cấp độ 1 (Rule) trả lời FAQ, gửi link thời khóa biểu, nhắc nhở checklist; Cấp độ 2 (Workflow) AI kiểm tra độ đầy đủ của Problem Card, yêu cầu bổ sung; Cấp độ 3 (Agent) tự động theo dõi tiến độ nộp bài, phát hiện nhóm học viên bị kẹt lâu, chuẩn bị câu trả lời và đề xuất TA duyệt.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Tự động gửi link thời khóa biểu và tài liệu sửa lỗi cài đặt cơ bản cho học viên.",
+              "correct": false,
+              "feedback": "Sai, đây là ví dụ về Cấp độ 1 — Rule."
+            },
+            {
+              "key": "B",
+              "text": "Kiểm tra độ đầy đủ của Problem Card và yêu cầu học viên bổ sung nếu thiếu.",
+              "correct": false,
+              "feedback": "Sai, đây là ví dụ về Cấp độ 2 — Workflow."
+            },
+            {
+              "key": "C",
+              "text": "Tự động theo dõi tiến độ nộp bài, phát hiện học viên bị kẹt lâu và đề xuất phương án xử lý cho TA.",
+              "correct": true,
+              "feedback": "Đúng, hệ thống tự động theo dõi tiến độ, phát hiện học viên bị kẹt và chuẩn bị đề xuất là đặc trưng của Cấp độ 3 — Agent."
+            },
+            {
+              "key": "D",
+              "text": "Tính thuế tự động bằng các quy định pháp lý cứng nhắc.",
+              "correct": false,
+              "feedback": "Sai, đây là tính chất của Rule/Script giải quyết bài toán tuân thủ tĩnh."
+            }
+          ]
+        },
+        {
+          "id": "d2-s3-q15",
+          "question": "Parallelization (chạy song song) trong các workflow patterns mang lại lợi ích chính nào cho hệ thống AI?",
+          "citation": "[T02-020]",
+          "sourcePages": [
+            20
+          ],
+          "reviewSummary": "Parallelization là pattern chạy song song rồi tổng hợp, hoặc chạy nhiều lần lấy vote (ví dụ guardrail và response đồng thời). Mục đích chính của việc lấy vote này là để giảm rủi ro một đầu ra sai từ mô hình.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Chia nhỏ nhiệm vụ thành các bước tuần tự để tăng độ chính xác.",
+              "correct": false,
+              "feedback": "Sai, chia nhỏ tuần tự là đặc điểm của Prompt Chaining, không phải Parallelization."
+            },
+            {
+              "key": "B",
+              "text": "Phân loại câu hỏi đầu vào để chuyển đến các model chuyên biệt khác nhau.",
+              "correct": false,
+              "feedback": "Sai, đây là chức năng của Routing pattern."
+            },
+            {
+              "key": "C",
+              "text": "Chạy song song hoặc chạy nhiều lần lấy vote nhằm giảm rủi ro một đầu ra sai.",
+              "correct": true,
+              "feedback": "Đúng, chạy song song và lấy vote giúp giảm thiểu rủi ro đầu ra sai lệch của mô hình."
+            },
+            {
+              "key": "D",
+              "text": "Loại bỏ hoàn toàn sự cần thiết của con người trong khâu kiểm duyệt cuối cùng.",
+              "correct": false,
+              "feedback": "Sai, hệ thống vẫn luôn cần sự giám sát của con người (human oversight)."
+            }
+          ]
+        },
+        {
+          "id": "d2-s3-q16",
+          "question": "Bước ③ trong ba bước quyết định AI theo PAIR liên quan đến yếu tố nào sau đây?",
+          "citation": "[T02-013]",
+          "sourcePages": [
+            13
+          ],
+          "reviewSummary": "Bước ③ trong PAIR là Reward function & tiêu chí thành công: định nghĩa 'đúng/sai' của hệ thống (precision ↔ recall) và ngưỡng thành công đo được. Kết hợp với bước 1 và 2 giúp trả lời có cần AI không, cấp độ nào và đủ rõ để đo lường để đưa ra quyết định Go / Not Yet / No-Go.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Xác định xem bài toán có thuộc nhóm gợi ý hoặc cá nhân hóa không.",
+              "correct": false,
+              "feedback": "Sai, việc xác định bài toán thuộc nhóm AI có lợi thế nằm ở Bước ①."
+            },
+            {
+              "key": "B",
+              "text": "Quyết định lựa chọn giữa phương án Automate hay Augment dựa trên mức độ rủi ro.",
+              "correct": false,
+              "feedback": "Sai, lựa chọn Automate hay Augment là nội dung của Bước ②."
+            },
+            {
+              "key": "C",
+              "text": "Định nghĩa 'đúng/sai' của hệ thống (precision ↔ recall) và thiết lập ngưỡng thành công đo được.",
+              "correct": true,
+              "feedback": "Đúng, đây chính xác là nội dung của Bước ③ (Reward function & tiêu chí thành công)."
+            },
+            {
+              "key": "D",
+              "text": "Lựa chọn các API công cụ (Tools) và cơ sở dữ liệu chuyên biệt (Context) để kết nối.",
+              "correct": false,
+              "feedback": "Sai, việc chọn Context và Tools thuộc về kiến trúc thành phần hệ thống AI (Model/Context/Planning/Tools)."
+            }
+          ]
+        },
+        {
+          "id": "d2-s3-q17",
+          "question": "Takeaway cốt lõi khi so sánh giữa giải pháp dùng Rule/Heuristic và giải pháp dùng AI là gì?",
+          "citation": "[T02-015]",
+          "sourcePages": [
+            15
+          ],
+          "reviewSummary": "Takeaway của phần so sánh khi nào AI không tốt hơn là: Rule/heuristic dễ build, dễ giải thích, dễ debug và bảo trì hơn — nếu nó giải quyết được, đó là lựa chọn tối ưu. Không nên lạm dụng AI khi quy tắc đơn giản đã giải quyết xong.",
+          "options": [
+            {
+              "key": "A",
+              "text": "AI luôn luôn thay thế hoàn toàn rule/heuristic trong mọi bài toán hiện đại.",
+              "correct": false,
+              "feedback": "Sai, đây là hiểu lầm phổ biến, rule/heuristic vẫn là lựa chọn tối ưu nếu giải quyết được bài toán."
+            },
+            {
+              "key": "B",
+              "text": "Rule/heuristic dễ build, dễ giải thích, dễ debug và bảo trì hơn — nếu giải quyết được, đó là lựa chọn tối ưu.",
+              "correct": true,
+              "feedback": "Đúng, đây là takeaway quan trọng giúp tránh lạm dụng AI vào những nơi rule đơn giản đã đủ."
+            },
+            {
+              "key": "C",
+              "text": "Chỉ nên dùng rule khi chi phí xây dựng AI quá cao vượt ngân sách.",
+              "correct": false,
+              "feedback": "Sai, bản chất rule tốt hơn không chỉ vì chi phí mà vì tính dễ giải thích, dễ debug và bảo trì."
+            },
+            {
+              "key": "D",
+              "text": "Mọi hệ thống rule cuối cùng đều phải nâng cấp lên Cấp độ 3 Agent theo thời gian.",
+              "correct": false,
+              "feedback": "Sai, không bắt buộc nâng cấp tuần tự nếu cấp độ tối giản đã đáp ứng mục tiêu."
+            }
+          ]
+        }
+      ],
+      "d2-s4": [
+        {
+          "id": "d2-s4-q01",
+          "question": "Khi thiết kế một hệ thống AI thực chiến, bạn đang phân vân giữa việc xây dựng một Rule đơn giản, một Workflow nhiều bước hay một Agent phức tạp. Theo nguyên tắc cây quyết định lựa chọn cấp độ giải pháp, bạn nên tiếp cận theo hướng nào để tối ưu hiệu quả?",
+          "citation": "[T02-021]",
+          "sourcePages": [
+            21
+          ],
+          "reviewSummary": "Cây quyết định giúp lựa chọn cấp độ giải pháp từ bài toán cốt lõi đến việc chọn Rule, Workflow hay Agent. Nguyên tắc cốt lõi là đi từ trên xuống dưới trong cây quyết định. Mỗi nhánh trả lời 'KHÔNG' chính là một lần chúng ta tránh được độ phức tạp không cần thiết cho hệ thống.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Bắt đầu ngay từ Agent phức tạp nhất để bao trùm mọi trường hợp có thể xảy ra trong tương lai.",
+              "correct": false,
+              "feedback": "Sai. Điều này vi phạm nguyên tắc đi từ trên xuống, tạo ra độ phức tạp không cần thiết."
+            },
+            {
+              "key": "B",
+              "text": "Đi từ trên xuống, ưu tiên các giải pháp đơn giản trước và mỗi nhánh 'KHÔNG' giúp tránh độ phức tạp không cần thiết.",
+              "correct": true,
+              "feedback": "Đúng. Đây là takeaway chính của phần cây quyết định lựa chọn cấp độ giải pháp."
+            },
+            {
+              "key": "C",
+              "text": "Luôn chọn Workflow vì nó cân bằng hoàn hảo giữa Rule và Agent mà không cần phân tích bài toán cốt lõi.",
+              "correct": false,
+              "feedback": "Sai. Lựa chọn phải đi từ bài toán cốt lõi và đi từ trên xuống."
+            },
+            {
+              "key": "D",
+              "text": "Sử dụng Rule cho mọi bài toán AI để đảm bảo không bao giờ gặp lỗi hệ thống.",
+              "correct": false,
+              "feedback": "Sai. Rule chỉ phù hợp với một số bài toán nhất định, không phải toàn bộ cây quyết định."
+            }
+          ]
+        },
+        {
+          "id": "d2-s4-q02",
+          "question": "Trong hệ thống AI gợi ý câu trả lời cho học viên, trường hợp AI nhận diện nhầm là có câu hỏi nghẽn và gửi thẳng câu trả lời sai (hallucination) cho học viên làm họ đi sai hướng được gọi là gì?",
+          "citation": "[T02-022]",
+          "sourcePages": [
+            22
+          ],
+          "reviewSummary": "Reward function định nghĩa hệ thống hiểu đúng/sai qua các trường hợp: TP (gợi ý đúng lúc nghẽn), TN (có sẵn tài liệu, AI không can thiệp), FP (AI gợi ý sai, gửi thẳng cho học viên làm đi lạc hướng), và FN (học viên kẹt thật nhưng AI bỏ sót). Chi phí giữa FP và FN không đối xứng, đòi hỏi reward function phải được thiết kế liên chức năng giữa UX, Product và Engineering.",
+          "options": [
+            {
+              "key": "A",
+              "text": "True Positive (TP)",
+              "correct": false,
+              "feedback": "Sai. True Positive là trường hợp AI gợi ý đúng khi có câu hỏi nghẽn thật."
+            },
+            {
+              "key": "B",
+              "text": "True Negative (TN)",
+              "correct": false,
+              "feedback": "Sai. True Negative là trường hợp câu hỏi đã có tài liệu và AI không can thiệp."
+            },
+            {
+              "key": "C",
+              "text": "False Positive (FP)",
+              "correct": true,
+              "feedback": "Đúng. False Positive xảy ra khi AI gợi ý sai (hallucination) và gửi thẳng cho học viên."
+            },
+            {
+              "key": "D",
+              "text": "False Negative (FN)",
+              "correct": false,
+              "feedback": "Sai. False Negative là trường hợp học viên kẹt thật nhưng AI bỏ sót không gợi ý."
+            }
+          ]
+        },
+        {
+          "id": "d2-s4-q03",
+          "question": "Khi xem xét hệ thống AI gợi ý học viên, đội ngũ phát triển nhận thấy chi phí của False Positive và False Negative không đối xứng (báo cháy giả khác với bỏ sót đám cháy). Ai là những người cần tham gia thiết kế reward function cho bài toán này?",
+          "citation": "[T02-022]",
+          "sourcePages": [
+            22
+          ],
+          "reviewSummary": "Reward function giúp hệ thống phân biệt đúng sai qua các trường hợp TP, TN, FP, FN. Takeaway quan trọng là chi phí của FP và FN không đối xứng, do đó reward function phải được thiết kế liên chức năng giữa UX, Product và Engineering.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Chỉ riêng bộ phận Engineering (Kỹ sư AI).",
+              "correct": false,
+              "feedback": "Sai. Thiết kế reward function đòi hỏi sự tham gia liên chức năng, không chỉ riêng kỹ sư."
+            },
+            {
+              "key": "B",
+              "text": "Chỉ riêng bộ phận Product và UX.",
+              "correct": false,
+              "feedback": "Sai. Engineering cũng đóng vai trò cốt lõi trong việc triển khai reward function."
+            },
+            {
+              "key": "C",
+              "text": "UX, Product và Engineering.",
+              "correct": true,
+              "feedback": "Đúng. Reward function phải được thiết kế liên chức năng kết hợp UX, Product và Engineering."
+            },
+            {
+              "key": "D",
+              "text": "Thuê chuyên gia bên ngoài độc lập thiết kế toàn bộ.",
+              "correct": false,
+              "feedback": "Sai. Nội dung kiến thức quy định rõ phải được thiết kế liên chức năng giữa UX, Product và Engineering."
+            }
+          ]
+        },
+        {
+          "id": "d2-s4-q04",
+          "question": "Bạn cấu hình hệ thống AI sao cho đạt Precision cao (TP/(TP+FP)). Hệ quả nhãn tiền đối với trải nghiệm của người dùng/học viên là gì?",
+          "citation": "[T02-023]",
+          "sourcePages": [
+            23
+          ],
+          "reviewSummary": "Precision và Recall có sự đánh đổi không tránh khỏi. Precision cao nghĩa là ít gợi ý nhưng chắc đúng, người dùng tin từng gợi ý nhưng hệ quả là nhiều False Negative, bỏ sót học viên cần giúp. Ngược lại, Recall cao bao trọn mọi trường hợp cần giúp nhưng sinh ra nhiều False Positive, khiến TA phải lọc lại thủ công.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Hệ thống sẽ gợi ý mọi trường hợp, bao trọn toàn bộ học viên cần giúp.",
+              "correct": false,
+              "feedback": "Sai. Đây là đặc điểm của cấu hình Recall cao."
+            },
+            {
+              "key": "B",
+              "text": "Hệ thống ít gợi ý nhưng chắc đúng, tuy nhiên gây ra nhiều False Negative và bỏ sót học viên cần giúp.",
+              "correct": true,
+              "feedback": "Đúng. Đây là hệ quả trực tiếp của việc đẩy Precision lên cao."
+            },
+            {
+              "key": "C",
+              "text": "TA sẽ phải lọc lại thủ công rất nhiều gợi ý sai từ hệ thống.",
+              "correct": false,
+              "feedback": "Sai. Việc TA phải lọc thủ công là hệ quả của cấu hình Recall cao gây ra nhiều False Positive."
+            },
+            {
+              "key": "D",
+              "text": "Hệ thống sẽ đạt cấu hình đúng tuyệt đối mà không có bất kỳ đánh đổi nào.",
+              "correct": false,
+              "feedback": "Sai. Bài học khẳng định không có cấu hình đúng tuyệt đối, luôn phải đánh đổi."
+            }
+          ]
+        },
+        {
+          "id": "d2-s4-q05",
+          "question": "Nếu bạn cấu hình hệ thống AI với Recall cao (TP/(TP+FN)), điều gì sẽ xảy ra và đội ngũ TA phải đối mặt với hệ quả gì?",
+          "citation": "[T02-023]",
+          "sourcePages": [
+            23
+          ],
+          "reviewSummary": "Precision và Recall luôn có sự đánh đổi. Precision cao giúp ít gợi ý sai nhưng dễ bỏ sót học viên (nhiều False Negative). Recall cao giúp bao trọn mọi trường hợp cần giúp nhưng gây ra nhiều False Positive, buộc TA phải lọc lại thủ công. Do đó không có cấu hình đúng tuyệt đối và phải test điểm cân bằng với người dùng.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Hệ thống ít gợi ý, người dùng phải chờ đợi lâu vì bỏ sót nhiều học viên.",
+              "correct": false,
+              "feedback": "Sai. Đây là hệ quả của Precision cao."
+            },
+            {
+              "key": "B",
+              "text": "Hệ thống bao trọn mọi trường hợp cần giúp, nhưng sinh ra nhiều False Positive khiến TA phải lọc lại thủ công.",
+              "correct": true,
+              "feedback": "Đúng. Recall cao giúp bao quát học viên cần giúp nhưng dẫn đến nhiều False Positive và TA phải lọc thủ công."
+            },
+            {
+              "key": "C",
+              "text": "Hệ thống tự động loại bỏ hoàn toàn sai sót mà không cần TA can thiệp.",
+              "correct": false,
+              "feedback": "Sai. Recall cao tạo ra nhiều False Positive đòi hỏi TA vẫn phải lọc lại thủ công."
+            },
+            {
+              "key": "D",
+              "text": "Đạt được cấu hình đúng tuyệt đối cho mọi tình huống học tập.",
+              "correct": false,
+              "feedback": "Sai. Slide khẳng định không có cấu hình đúng tuyệt đối."
+            }
+          ]
+        },
+        {
+          "id": "d2-s4-q06",
+          "question": "Khi muốn kiểm tra và tìm ra điểm cân bằng tối ưu giữa Precision và Recall cho hệ thống AI, bạn nên thực hiện việc này với đối tượng nào?",
+          "citation": "[T02-023]",
+          "sourcePages": [
+            23
+          ],
+          "reviewSummary": "Sự đánh đổi giữa Precision và Recall là không tránh khỏi. Precision cao tạo ra ít False Negative nhưng bỏ sót học viên, còn Recall cao tạo ra nhiều False Positive khiến TA phải lọc thủ công. Takeaway là không có cấu hình đúng tuyệt đối mà phải test điểm cân bằng với chính người dùng.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Test điểm cân bằng với chính người dùng.",
+              "correct": true,
+              "feedback": "Đúng. Takeaway của phần này nhấn mạnh phải test điểm cân bằng với chính người dùng."
+            },
+            {
+              "key": "B",
+              "text": "Chỉ dựa vào mô hình toán học trên giấy mà không cần thực tế.",
+              "correct": false,
+              "feedback": "Sai. Cần phải test trực tiếp với chính người dùng."
+            },
+            {
+              "key": "C",
+              "text": "Chỉ dựa vào cảm nhận chủ quan của lập trình viên.",
+              "correct": false,
+              "feedback": "Sai. Lập trình viên không thể thay thế việc test thực tế với người dùng."
+            },
+            {
+              "key": "D",
+              "text": "Quyết định cố định một thông số duy nhất dùng mãi mãi.",
+              "correct": false,
+              "feedback": "Sai. Không có cấu hình đúng tuyệt đối và cần test thực tế."
+            }
+          ]
+        },
+        {
+          "id": "d2-s4-q07",
+          "question": "Bạn muốn viết một tiêu chuẩn thành công có hành động được cho tính năng AI theo template PAIR. Đâu là cách viết đúng cấu trúc chuẩn được cung cấp?",
+          "citation": "[T02-024]",
+          "sourcePages": [
+            24
+          ],
+          "reviewSummary": "Viết tiêu chí thành công hành động được dùng template PAIR: 'If {chỉ số cụ thể} for {tính năng AI} {drops below/goes above} {ngưỡng có nghĩa}, we will {hành động cụ thể}.' Ví dụ trường hợp TA 1000 học viên sửa câu trả lời AI > 30% trong 2 tuần thì hạ mức tự động về pha 1. Ngoài ra cần check metric có ý nghĩa không, có ai bị ảnh hưởng tiêu cực không, và lên lịch review metric định kỳ theo thời gian.",
+          "options": [
+            {
+              "key": "A",
+              "text": "If AI is good enough, we will keep it running forever.",
+              "correct": false,
+              "feedback": "Sai. Không đúng cấu trúc template PAIR yêu cầu chỉ số cụ thể, ngưỡng có nghĩa và hành động cụ thể."
+            },
+            {
+              "key": "B",
+              "text": "If tỷ lệ câu trả lời AI gợi ý bị TA sửa > 30% trong 2 tuần, ta sẽ hạ mức tự động về pha 1.",
+              "correct": true,
+              "feedback": "Đúng. Đây là ví dụ chuẩn theo template PAIR được cung cấp trong bài giảng."
+            },
+            {
+              "key": "C",
+              "text": "If người dùng phàn nàn, chúng ta sẽ xem xét lại hệ thống.",
+              "correct": false,
+              "feedback": "Sai. Thiếu chỉ số cụ thể, ngưỡng có nghĩa và template chuẩn của PAIR."
+            },
+            {
+              "key": "D",
+              "text": "If độ chính xác tăng lên, chúng ta sẽ tăng tốc độ xử lý.",
+              "correct": false,
+              "feedback": "Sai. Chưa bám sát cấu trúc template PAIR với các thông số đo lường cụ thể."
+            }
+          ]
+        },
+        {
+          "id": "d2-s4-q08",
+          "question": "Khi đã thiết lập xong các tiêu chí thành công cho tính năng AI vào 'ngày đầu tiên' (day 1), bạn cần lưu ý điều gì tiếp theo để đảm bảo hệ thống vận hành bền vững?",
+          "citation": "[T02-024]",
+          "sourcePages": [
+            24
+          ],
+          "reviewSummary": "Template PAIR giúp định hình tiêu chí thành công có hành động cụ thể. Trước khi chốt metric cần check xem metric có ý nghĩa với mọi người dùng không, có nhóm nào bị ảnh hưởng tiêu cực không, và đặt câu hỏi về ngày 1000. Takeaway là phải lên lịch review metric định kỳ vì tiêu chí thành công cũng cần được bảo trì theo thời gian.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Giữ nguyên metric đó vĩnh viễn vì ngày đầu tiên đã thành công.",
+              "correct": false,
+              "feedback": "Sai. Tiêu chí thành công ngày 1 khác với ngày 1000, cần phải bảo trì theo thời gian."
+            },
+            {
+              "key": "B",
+              "text": "Lên lịch review metric định kỳ — tiêu chí thành công cũng cần được bảo trì theo thời gian.",
+              "correct": true,
+              "feedback": "Đúng. Takeaway khẳng định phải lên lịch review metric định kỳ và bảo trì theo thời gian."
+            },
+            {
+              "key": "C",
+              "text": "Chỉ quan trọng kết quả ban đầu, không cần quan tâm đến ngày 1000.",
+              "correct": false,
+              "feedback": "Sai. Bài giảng đặt câu hỏi về ngày 1000 và yêu cầu review định kỳ."
+            },
+            {
+              "key": "D",
+              "text": "Thay đổi metric liên tục mỗi ngày mà không cần theo dõi template PAIR.",
+              "correct": false,
+              "feedback": "Sai. Thay đổi liên tục mà không có lịch review định kỳ dựa trên PAIR sẽ làm mất định hướng hệ thống."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

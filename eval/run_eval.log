@@ -1,0 +1,23 @@
+﻿Running TC01... PASS (verdict misconception, citation [T04-056])
+Running TC02... PASS (verdict misconception, citation [T04-040])
+Running TC03... PASS (verdict misconception, citation [T04-086])
+Running TC04... FAIL (verdict misconception, citation [T04-060])
+Running TC05... FAIL (verdict misconception, citation [T02-033])
+Running TC06... PASS (verdict misconception, citation [T02-036])
+Running TC07... FAIL (verdict correct, citation [T02-033])
+Running TC08... PASS (verdict correct, citation [T04-056])
+Running TC09... PASS (verdict ungrounded_question, citation NONE_OUT_OF_SCOPE)
+Running TC10... PASS (verdict ungrounded_question, citation NONE_OUT_OF_SCOPE)
+Running TC11... PASS (verdict ungrounded_question, citation NONE_OUT_OF_SCOPE)
+Running TC12... FAIL (verdict out_of_scope, citation NONE_OUT_OF_SCOPE)
+Running TC13... PASS (verdict ambiguous, citation NONE_OUT_OF_SCOPE)
+Running TC14... PASS (verdict ambiguous, citation NONE_OUT_OF_SCOPE)
+Running TC15... PASS (verdict ambiguous, citation NONE_OUT_OF_SCOPE)
+Running TC16... PASS (verdict out_of_scope, citation NONE_OUT_OF_SCOPE)
+Running TC17...   quota hit, retry 1/5 sau 37s...
+PASS (verdict out_of_scope, citation NONE_OUT_OF_SCOPE)
+Running TC18... PASS (verdict out_of_scope, citation NONE_OUT_OF_SCOPE)
+Running TC19... PASS (verdict out_of_scope, citation NONE_OUT_OF_SCOPE)
+Running TC20... FAIL (verdict ungrounded_question, citation NONE_OUT_OF_SCOPE)
+
+15/20 = 75.0% — viết eval/results_run2.md và eval/trace_log_run2.json
