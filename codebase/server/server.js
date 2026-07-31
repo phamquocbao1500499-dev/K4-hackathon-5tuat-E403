@@ -139,6 +139,8 @@ app.post("/api/generate-quiz", async (req, res) => {
             payload = { day, sectionId, sectionTitle: section.title, questions: fallbackQuestions };
         }
 
+        quizCache.set(cacheKey, payload);
+        res.json(payload);
     } catch (err) {
         console.error("generate-quiz outer error:", err);
         const section = getSection(req.body?.day, req.body?.sectionId) || { title: "Kiểm tra hiểu bài" };
