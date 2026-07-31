@@ -141,7 +141,47 @@
             padding: 20px 16px;
             gap: 16px;
             overflow-y: auto;
+            overflow-x: hidden;
             flex-shrink: 0;
+            transition: width 0.2s ease, padding 0.2s ease;
+        }
+
+        .sidebar.collapsed {
+            width: 0;
+            padding-left: 0;
+            padding-right: 0;
+            border-right: none;
+        }
+
+        .sidebar-toggle-btn {
+            position: absolute;
+            top: 20px;
+            left: 300px;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            background: #fff;
+            color: var(--text-muted);
+            font-size: 11px;
+            line-height: 1;
+            cursor: pointer;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+            transition: left 0.2s ease;
+        }
+
+        .sidebar-toggle-btn:hover {
+            color: var(--primary-blue);
+            border-color: #bfdbfe;
+        }
+
+        .workspace.sidebar-collapsed .sidebar-toggle-btn {
+            left: 0;
         }
 
         .sidebar-title {
@@ -963,10 +1003,10 @@
     </header>
 
     <!-- Main Workspace -->
-    <div class="workspace">
+    <div class="workspace" id="workspaceRoot">
 
         <!-- Left Accordion Sidebar -->
-        <div class="sidebar">
+        <div class="sidebar" id="sidebarPanel">
             <div>
                 <div class="sidebar-title" data-i18n="sidebarTitle">Học liệu môn học</div>
                 <div class="sidebar-sub" data-i18n="sidebarSub">Chương, slide và tài liệu đã upload</div>
@@ -999,7 +1039,7 @@
                 </div>
                 <div class="file-list">
                     <div class="file-item" id="fileItemD2" onclick="switchDoc('d2')" data-i18n="fileItemD2">
-                        📄 d2-slide-hackathon.pdf (24 trang)
+                        📄 d2-slide-hackathon.pdf (29 trang)
                     </div>
                 </div>
             </div>
@@ -1026,6 +1066,9 @@
                 </div>
             </div>
         </div>
+
+        <!-- Sidebar collapse/expand toggle -->
+        <button class="sidebar-toggle-btn" id="sidebarToggleBtn" onclick="toggleSidebar()" title="Thu gọn/Mở rộng thanh bên">‹</button>
 
         <!-- Center Document Content Area -->
         <div class="content-area">
@@ -1073,6 +1116,7 @@
                      the next section only appears after the current section's quiz is passed. -->
                 <div id="docD1Container" class="doc-container"></div>
                 <div id="docD2Container" class="doc-container" style="display:none;"></div>
+
             </div>
 
         </div>
@@ -1179,6 +1223,18 @@
             applyTheme(next);
         }
 
+        function applySidebarCollapsed(collapsed) {
+            document.getElementById('workspaceRoot').classList.toggle('sidebar-collapsed', collapsed);
+            document.getElementById('sidebarPanel').classList.toggle('collapsed', collapsed);
+            document.getElementById('sidebarToggleBtn').textContent = collapsed ? '›' : '‹';
+            localStorage.setItem('vlearn-sidebar-collapsed', collapsed ? '1' : '0');
+        }
+
+        function toggleSidebar() {
+            const isCollapsed = document.getElementById('sidebarPanel').classList.contains('collapsed');
+            applySidebarCollapsed(!isCollapsed);
+        }
+
         let currentLang = localStorage.getItem('vlearn-lang') || 'vi';
         let currentTaCitation = '[T01-022]';
 
@@ -1192,7 +1248,7 @@
                 docCountThree: '3 TÀI LIỆU · PUBLISHED',
                 studying: 'STUDYING',
                 fileItemD1: '📄 d1-slide-hackathon.pdf (29 trang)',
-                fileItemD2: '📄 d2-slide-hackathon.pdf (24 trang)',
+                fileItemD2: '📄 d2-slide-hackathon.pdf (29 trang)',
                 toolRead: '👁️ Đọc',
                 toolPen: '✏️ Bút',
                 colorLabel: 'Màu:',
@@ -1223,7 +1279,7 @@
                 docCountThree: '3 DOCUMENTS · PUBLISHED',
                 studying: 'STUDYING',
                 fileItemD1: '📄 d1-slide-hackathon.pdf (29 pages)',
-                fileItemD2: '📄 d2-slide-hackathon.pdf (24 pages)',
+                fileItemD2: '📄 d2-slide-hackathon.pdf (29 pages)',
                 toolRead: '👁️ Read',
                 toolPen: '✏️ Pen',
                 colorLabel: 'Color:',
@@ -1880,6 +1936,7 @@
         function renderSlideHtml(s, idx, fileLabel, citationPrefix, docKey, total) {
             const page = idx + 1;
             const citation = `${citationPrefix}-${String(page).padStart(3, '0')}`;
+            const imgSrc = `assets/${docKey}/page-${String(page).padStart(3, '0')}.png`;
 
             const heading = s ? escapeHtml(s.heading || '') : `Trang ${page}`;
             const subheading = s && s.subheading ? `<div class="slide-subheading" style="color: #2563eb; margin-top: 6px; font-size: 15px; font-weight: 600;">${escapeHtml(s.subheading)}</div>` : '';
@@ -1951,6 +2008,7 @@
             const citationPrefix = doc === 'd1' ? 'T01' : 'T02';
             const container = document.getElementById(doc === 'd1' ? 'docD1Container' : 'docD2Container');
             const list = sections[doc];
+            const slidesList = doc === 'd1' ? d1Slides : d2Slides;
 
             let html = '';
             for (let i = 0; i < list.length; i++) {
@@ -1961,8 +2019,8 @@
                 html += quizGateHtml(doc, section);
             }
 
-            html += `<div class="active-recall-section" id="finalScore-${doc}" style="border-color:#10b981;">${finalScoreBodyHtml(doc)}</div>`;
             html += extraSlidesHtml(doc, fileLabel, citationPrefix);
+            html += `<div class="active-recall-section" id="finalScore-${doc}" style="border-color:#10b981;">${finalScoreBodyHtml(doc)}</div>`;
 
             container.innerHTML = html;
 
@@ -1972,14 +2030,6 @@
                     renderQuizQuestions(doc, section.id);
                 } else {
                     loadQuizInto(doc, section.id);
-                }
-            }
-            if (unlockedCount >= list.length && extraSlidesHtml(doc, fileLabel, citationPrefix)) {
-                const extra = extras[doc];
-                if (extra) {
-                    for (let idx = extra.slideStart; idx <= extra.slideEnd; idx++) {
-                        renderPdfPageCanvas(doc, idx + 1);
-                    }
                 }
             }
             setTimeout(initDrawCanvases, 60);
@@ -2288,6 +2338,7 @@
         window.addEventListener('load', function() {
             applyTheme(document.documentElement.getAttribute('data-theme') || 'light');
             applyLanguage(currentLang);
+            applySidebarCollapsed(localStorage.getItem('vlearn-sidebar-collapsed') === '1');
             renderDocProgressive('d1');
             renderDocProgressive('d2');
             initDrawCanvases();
