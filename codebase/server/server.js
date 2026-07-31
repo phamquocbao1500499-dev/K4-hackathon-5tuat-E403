@@ -10,9 +10,10 @@ const PORT = process.env.PORT || 3000;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const CANDIDATE_MODELS = [
     process.env.GEMINI_MODEL,
-    "gemini-2.5-flash",
-    "gemini-1.5-flash",
-    "gemini-2.0-flash"
+    "gemini-2.0-flash-lite",     // quota free tier thường cao hơn
+    "gemini-flash-lite-latest",  // alias, tự trỏ bản mới nhất
+    "gemini-2.5-flash",          // dự phòng (nhưng bạn đã dùng hết 20/ngày)
+    "gemini-2.0-flash-001",
 ].filter((m, i, self) => m && self.indexOf(m) === i);
 
 async function generateWithModelFallback(contents, schema) {
@@ -29,7 +30,7 @@ async function generateWithModelFallback(contents, schema) {
                 }
             });
             const timeoutPromise = new Promise((_, reject) =>
-                setTimeout(() => reject(new Error(`Timeout model ${modelName}`)), 10000)
+                setTimeout(() => reject(new Error(`Timeout model ${modelName}`)), 30000)
             );
             const res = await Promise.race([apiPromise, timeoutPromise]);
             if (res && res.text) {
@@ -155,6 +156,8 @@ app.post("/api/generate-quiz", async (req, res) => {
             payload = { day, sectionId, sectionTitle: section.title, questions: fallbackQuestions };
         }
 
+        quizCache.set(cacheKey, payload);
+        res.json(payload);
     } catch (err) {
         console.error("generate-quiz outer error:", err);
         const section = getSection(req.body?.day, req.body?.sectionId) || { title: "Kiểm tra hiểu bài" };
